@@ -192,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		const isDark = document.documentElement.classList.contains('dark');
 		const meta = document.querySelector('meta[name="theme-color"]');
 		if (meta) meta.setAttribute('content', isDark ? '#231926' : '#fff3f8');
+		const label = document.querySelector('[data-theme-shortcut-label]');
+		if (label) label.textContent = isDark ? 'light mode' : 'dark mode';
 	}
 
 	themeToggle.addEventListener('click', () => {
@@ -628,6 +630,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			reset();
 		} else if ((e.key === 'm' || e.key === 'M') && !typing) {
 			musicPlayBtn.click();
+		} else if ((e.key === 'd' || e.key === 'D') && !typing) {
+			themeToggle.click();
 		} else if (e.key === 'Escape') {
 			closePanels();
 		}
