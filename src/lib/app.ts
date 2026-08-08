@@ -151,6 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			remaining = totalSec;
 			updateTime();
 			updateRing();
+			updateStartBtn();
+			updateTitle();
 		}
 	}
 
@@ -429,6 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function reset() {
 		stopTicker();
 		running = false;
+		totalSec = phaseDuration();
 		remaining = totalSec;
 		updateTime();
 		updateRing();
