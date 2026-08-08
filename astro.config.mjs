@@ -7,8 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   fonts: [
     {
-      name: 'Quicksand',
-      cssVariable: '--font-quicksand',
+      name: 'Baloo 2',
+      cssVariable: '--font-baloo',
       provider: fontProviders.google(),
       weights: [400, 500, 600, 700],
       styles: ['normal'],

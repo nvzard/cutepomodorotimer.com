@@ -13,7 +13,7 @@
 /* Semantic theme tokens — resolve through vars so they react to .dark */
 /* ------------------------------------------------------------------ */
 @theme inline {
-  --font-sans: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-baloo), ui-sans-serif, system-ui, sans-serif;
 
   --color-canvas: var(--canvas);
   --color-canvas-2: var(--canvas-2);
