@@ -145,6 +145,22 @@ export const en = {
 	'page.faq10q': 'What are common Pomodoro mistakes?',
 	'page.faq10a':
 		'The most common mistakes are skipping breaks or making them too short, working through the timer to finish a task, letting notifications interrupt a round, scrolling your phone during breaks, and tackling several tasks inside one pomodoro. Choosing a focus length that doesn’t match the task also trips people up. Fixing these habits is what makes the technique actually work.',
+
+	'page.linkAboutDesc': 'Our story, the mission, and the tomato behind the cuteness.',
+	'page.linkContactDesc': 'Questions or feedback? Say hello to the Cute Timer team.',
+	'page.linkPrivacyDesc': 'How we keep your data safe — spoiler: it stays in your browser.',
+	'page.linkTermsDesc': 'The fair and friendly rules for using the free timer.',
+
+	/* Footer */
+	'footer.home': 'Home',
+	'footer.about': 'About Us',
+	'footer.privacy': 'Privacy Policy',
+	'footer.terms': 'Terms & Conditions',
+	'footer.contact': 'Contact Us',
+	'footer.links': 'Site links',
+	'footer.linksAria': 'Footer links',
+	'footer.tagline': 'A free cute pomodoro timer for studying and deep focus — made with ♡.',
+	'footer.rights': 'All rights reserved.',
 } as const;
 
 export type TranslationKey = keyof typeof en;

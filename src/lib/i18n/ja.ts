@@ -137,6 +137,21 @@ const ja: Record<TranslationKey, string> = {
 	'page.faq10q': 'ポモドーロのよくある失敗は？',
 	'page.faq10a':
 		'最もよくある失敗は、ブレイクをスキップするか短くしすぎること、タスクを終えるためにタイマーを超えて作業すること、通知でラウンドを中断させること、ブレイク中にスマホをスクロールすること、ひとつのポモドーロ内で複数のタスクに手を出すことです。タスクに合わない集中時間を選ぶのもつまずきの原因になります。これらの習慣を直すことが、テクニックを実際に機能させる秘訣です。',
+
+	'page.linkAboutDesc': '私たちの歩み、ミッション、そして可愛さの裏側にいるトマトについて。',
+	'page.linkContactDesc': '質問やフィードバックはこちらから。Cute Timer チームにご連絡ください。',
+	'page.linkPrivacyDesc': 'データの守り方 — ネタバレ: すべてブラウザ内に留まります。',
+	'page.linkTermsDesc': '無料タイマーを使うための、公正でフレンドリーなルール。',
+
+	'footer.home': 'ホーム',
+	'footer.about': '私たちについて',
+	'footer.privacy': 'プライバシーポリシー',
+	'footer.terms': '利用規約',
+	'footer.contact': 'お問い合わせ',
+	'footer.links': 'サイトリンク',
+	'footer.linksAria': 'フッターリンク',
+	'footer.tagline': '勉強と集中のための無料のかわいいポモドーロタイマー — ♡ を込めて。',
+	'footer.rights': '無断転載を禁じます。',
 };
 
 export default ja;

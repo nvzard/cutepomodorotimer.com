@@ -147,6 +147,21 @@ const de: Record<TranslationKey, string> = {
 	'page.faq10q': 'Was sind häufige Pomodoro-Fehler?',
 	'page.faq10a':
 		'Die häufigsten Fehler sind: Pausen auszulassen oder zu kurz zu machen, durch den Timer zu arbeiten, um eine Aufgabe zu beenden, zuzulassen, dass Benachrichtigungen eine Runde unterbrechen, während der Pausen am Handy zu scrollen und mehrere Aufgaben in einem Pomodoro zu erledigen. Auch eine Fokusdauer zu wählen, die nicht zur Aufgabe passt, bringt Leute ins Straucheln. Diese Gewohnheiten zu beheben, ist es, was die Technik wirklich zum Funktionieren bringt.',
+
+	'page.linkAboutDesc': 'Unsere Geschichte, die Mission und die Tomate hinter all der Niedlichkeit.',
+	'page.linkContactDesc': 'Fragen oder Feedback? Sag dem Cute-Timer-Team Hallo.',
+	'page.linkPrivacyDesc': 'So bleiben deine Daten sicher — Spoiler: sie bleiben in deinem Browser.',
+	'page.linkTermsDesc': 'Die fairen und freundlichen Regeln für den kostenlosen Timer.',
+
+	'footer.home': 'Startseite',
+	'footer.about': 'Über uns',
+	'footer.privacy': 'Datenschutzerklärung',
+	'footer.terms': 'Nutzungsbedingungen',
+	'footer.contact': 'Kontakt',
+	'footer.links': 'Seitenlinks',
+	'footer.linksAria': 'Fußzeilen-Links',
+	'footer.tagline': 'Ein kostenloser süßer Pomodoro-Timer zum Lernen und für tiefe Konzentration — gemacht mit ♡.',
+	'footer.rights': 'Alle Rechte vorbehalten.',
 };
 
 export default de;

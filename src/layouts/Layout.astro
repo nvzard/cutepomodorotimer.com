@@ -5,14 +5,16 @@ import { Font } from 'astro:assets';
 interface Props {
 	title?: string;
 	description?: string;
+	canonical?: string;
 }
 
 const {
 	title = 'Cute Timer — Cute Pomodoro Timer Online for Studying',
 	description = 'A free cute timer online — an aesthetic pink pomodoro timer for studying with lo-fi music, a cute mascot, and 10, 15 & 30 minute countdowns. Start now.',
+	canonical = 'https://cutepomodorotimer.com',
 } = Astro.props;
 
-const canonical = 'https://cutepomodorotimer.com';
+const canonicalUrl = canonical;
 
 const keywords = [
 	'cute timer',
@@ -45,7 +47,7 @@ const schema = {
 	'@context': 'https://schema.org',
 	'@type': 'WebApplication',
 	name: 'Cute Timer',
-	url: canonical,
+	url: canonicalUrl,
 	description,
 	applicationCategory: 'UtilityApplication',
 	operatingSystem: 'Any',
@@ -75,12 +77,12 @@ const schema = {
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="apple-mobile-web-app-title" content="CuteTimer" />
 		<link rel="manifest" href="/site.webmanifest" />
-		<link rel="canonical" href={canonical} />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Cute Timer" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonical} />
+		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:image" content="/web-app-manifest-512x512.png" />
 		<meta property="og:image:width" content="512" />
 		<meta property="og:image:height" content="512" />

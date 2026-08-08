@@ -147,6 +147,21 @@ const fr: Record<TranslationKey, string> = {
 	'page.faq10q': 'Quelles sont les erreurs Pomodoro courantes ?',
 	'page.faq10a':
 		'Les erreurs les plus courantes sont de sauter les pauses ou de les rendre trop courtes, de continuer à travailler après la sonnerie pour finir une tâche, de laisser les notifications interrompre un round, de scroller sur son téléphone pendant les pauses, et de s’attaquer à plusieurs tâches dans un seul pomodoro. Choisir une durée de concentration qui ne correspond pas à la tâche piège aussi beaucoup de monde. Corriger ces habitudes, c’est ce qui fait vraiment fonctionner la technique.',
+
+	'page.linkAboutDesc': 'Notre histoire, la mission et la tomate derrière toute cette mignonnerie.',
+	'page.linkContactDesc': 'Des questions ou des retours ? Dites bonjour à l’équipe Cute Timer.',
+	'page.linkPrivacyDesc': 'Comment nous protégeons vos données — spoiler : elles restent dans votre navigateur.',
+	'page.linkTermsDesc': 'Les règles justes et amicales pour utiliser le minuteur gratuit.',
+
+	'footer.home': 'Accueil',
+	'footer.about': 'À propos',
+	'footer.privacy': 'Politique de confidentialité',
+	'footer.terms': 'Conditions d’utilisation',
+	'footer.contact': 'Contactez-nous',
+	'footer.links': 'Liens du site',
+	'footer.linksAria': 'Liens du pied de page',
+	'footer.tagline': 'Un mignon minuteur Pomodoro gratuit pour étudier et se concentrer — fait avec ♡.',
+	'footer.rights': 'Tous droits réservés.',
 };
 
 export default fr;

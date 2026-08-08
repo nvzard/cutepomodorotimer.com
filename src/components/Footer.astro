@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+import Mascot from './Mascot.astro';
+
+const links = [
+	{ href: '/', key: 'footer.home' },
+	{ href: '/about/', key: 'footer.about' },
+	{ href: '/privacy-policy/', key: 'footer.privacy' },
+	{ href: '/terms/', key: 'footer.terms' },
+	{ href: '/contact/', key: 'footer.contact' },
+] as const;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="relative z-10 border-t-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
+	<div class="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
+		<div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-between">
+			<div class="flex max-w-xs flex-col items-center gap-3 text-center sm:items-start sm:text-left">
+				<a href="/" class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
+					<span
+						class="grid h-9 w-9 place-items-center rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_55%,transparent)] bg-[var(--tomato-soft)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_35%,transparent)] transition-transform group-hover:-rotate-6 group-hover:scale-110"
+					>
+						<Mascot class="h-7 w-full" />
+					</span>
+					<span class="text-base font-bold tracking-tight text-ink">
+						<span data-i18n="brand.title">Cute Pomodoro</span> <span class="text-[var(--tomato)]">♡</span>
+					</span>
+				</a>
+				<p class="text-xs leading-relaxed text-mute" data-i18n="footer.tagline">
+					A free cute pomodoro timer for studying and deep focus — made with ♡.
+				</p>
+			</div>
+
+			<nav aria-label="Footer" data-i18n-aria="footer.linksAria">
+				<p class="eyebrow mb-3 text-center text-[var(--accent-ink)] sm:text-left">
+					<span data-i18n="footer.links">Site links</span> ♡
+				</p>
+				<ul class="flex flex-col items-center gap-2.5 sm:items-start">
+					{links.map(({ href, key }) => (
+						<li>
+							<a
+								href={href}
+								class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
+							>
+								<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>
+								<span data-i18n={key}>{key}</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
+		</div>
+
+		<div class="mt-8 flex flex-col items-center gap-2 border-t border-[color-mix(in_srgb,var(--ink)_10%,transparent)] pt-6 sm:flex-row sm:justify-between">
+			<p class="text-xs text-mute">
+				© {year} Cute Pomodoro Timer. <span data-i18n="footer.rights">All rights reserved.</span>
+			</p>
+			<p class="flex items-center gap-1.5 text-xs text-mute">
+				Made with <span class="text-[var(--tomato)]">♡</span>
+			</p>
+		</div>
+	</div>
+</footer>

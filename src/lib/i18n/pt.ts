@@ -137,6 +137,21 @@ const pt: Record<TranslationKey, string> = {
 	'page.faq10q': 'Quais são os erros comuns do Pomodoro?',
 	'page.faq10a':
 		"Os erros mais comuns são pular as pausas ou deixá-las curtas demais, trabalhar além do timer para terminar uma tarefa, deixar as notificações interromperem uma rodada, rolar o celular durante as pausas e enfrentar várias tarefas dentro de um único pomodoro. Escolher uma duração de foco que não combina com a tarefa também atrapalha. Corrigir esses hábitos é o que faz a técnica funcionar de verdade.",
+
+	'page.linkAboutDesc': 'Nossa história, a missão e o tomate por trás de toda essa fofura.',
+	'page.linkContactDesc': 'Dúvidas ou feedback? Diga olá ao time do Cute Timer.',
+	'page.linkPrivacyDesc': 'Como mantemos seus dados seguros — spoiler: eles ficam no seu navegador.',
+	'page.linkTermsDesc': 'As regras justas e amigáveis para usar o timer gratuito.',
+
+	'footer.home': 'Início',
+	'footer.about': 'Sobre nós',
+	'footer.privacy': 'Política de Privacidade',
+	'footer.terms': 'Termos e Condições',
+	'footer.contact': 'Fale conosco',
+	'footer.links': 'Links do site',
+	'footer.linksAria': 'Links do rodapé',
+	'footer.tagline': 'Um timer pomodoro fofo e gratuito para estudar e focar profundamente — feito com ♡.',
+	'footer.rights': 'Todos os direitos reservados.',
 };
 
 export default pt;
