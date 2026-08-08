@@ -30,7 +30,10 @@ const defaultSettings: Settings = { focus: 25, short: 5, long: 15, autoBreaks: t
 function loadJSON<T>(key: string, fallback: T): T {
 	try {
 		const raw = localStorage.getItem(key);
-		return raw ? { ...fallback, ...JSON.parse(raw) } : fallback;
+		if (!raw) return fallback;
+		const parsed = JSON.parse(raw);
+		if (Array.isArray(parsed)) return parsed as T;
+		return { ...fallback, ...parsed } as T;
 	} catch {
 		return fallback;
 	}
