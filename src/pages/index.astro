@@ -6,15 +6,105 @@ import Timer from '../components/Timer.astro';
 import TodoPanel from '../components/TodoPanel.astro';
 import SettingsPanel from '../components/SettingsPanel.astro';
 import Dock from '../components/Dock.astro';
+
+const faq = [
+	{
+		question: 'What is a Pomodoro timer?',
+		answer:
+			'A Pomodoro timer is a tool that applies the Pomodoro Technique, a time-management method where you work in short, focused bursts — classically 25 minutes — separated by short breaks. The name comes from Francesco Cirillo, who invented the technique in the late 1980s using a tomato-shaped kitchen timer (pomodoro means “tomato” in Italian).',
+	},
+	{
+		question: 'Is Pomodoro only 25 minutes?',
+		answer:
+			'No — 25 minutes is just the classic default. The technique works with any focus length that suits your task and attention span, such as 10, 15, 30, 40, 50 or 60 minutes, as long as each work block is paired with a proportional break. On the Cute Timer you can choose 10, 15 or 30-minute presets or set a fully custom countdown.',
+	},
+	{
+		question: 'Does Pomodoro work for ADHD?',
+		answer:
+			'Many people with ADHD find the Pomodoro Technique genuinely helpful because it breaks overwhelming tasks into small, short chunks with a clear ending and a built-in reward (the break). Shorter intervals, such as 10–15 minutes, are often easier to start and sustain. It isn’t a treatment, but as a structure it combines well with medication, routines and to-do lists.',
+	},
+	{
+		question: 'Is Pomodoro 50/10 or 25/5 better?',
+		answer:
+			'Neither is objectively better — it depends on the task and your focus stamina. 25/5 is ideal for beginners, short tasks and rapid task-switching, while 50/10 suits deep, long-form work like coding or writing once you’re warmed up. Try both: if you can stay focused for the whole 50 minutes without fatigue, keep 50/10; otherwise start with 25/5 and lengthen your blocks gradually.',
+	},
+	{
+		question: 'Is 60/15 pomodoro good?',
+		answer:
+			'Yes, 60/15 is a solid rhythm for people who can sustain long focus sessions, like experienced deep workers. It’s worth noting that intense concentration typically starts to decline after about 50 minutes, which is why 50/10 is the more common long-format choice. If 60 minutes of work feels productive and you take a real 15-minute break, 60/15 works perfectly.',
+	},
+	{
+		question: 'Is 40/10 Pomodoro good?',
+		answer:
+			'Absolutely — 40/10 is a popular sweet spot. It gives you a deeper work block than the classic 25 minutes while keeping breaks short enough to preserve momentum. Many students and developers find 40/10 balances productivity and fatigue better than either 25/5 or 50/10.',
+	},
+	{
+		question: 'Is Pomodoro scientifically proven?',
+		answer:
+			'The technique itself hasn’t been validated by large controlled trials, so it isn’t “proven” in the strict scientific sense. However, it rests on well-established research: frequent breaks reduce mental fatigue, breaking large tasks into smaller pieces lowers the barrier to starting, and planning ahead reduces procrastination. That’s why so many productivity experts recommend it.',
+	},
+	{
+		question: 'How does pomodoro timer work?',
+		answer:
+			'A Pomodoro timer runs a simple loop: pick a task, start a focus countdown (usually 25 minutes), work without interruptions until it rings, then take a short break (usually 5 minutes). After four completed rounds you take a longer break of 15–30 minutes. The ticking countdown creates urgency, and the breaks give your brain time to reset before the next sprint.',
+	},
+	{
+		question: 'How to use pomodoro timer?',
+		answer:
+			'Choose one task, set the focus timer and work on that single task until the timer rings. When it does, stop — even mid-thought — and take your short break. Track each finished round, and after four rounds take a longer break. Close distracting tabs and apps first, and jot down any stray thoughts so you can deal with them during your break.',
+	},
+	{
+		question: 'How to use pomodoro timer apps effectively?',
+		answer:
+			'Let the app do the clock-watching for you: pick a focus length, switch on automatic breaks, and enable chimes or notifications. Choose your task from a to-do list before starting, work on one thing per round, and resist the urge to “just finish” before the break. Use the break to actually rest — stand up, stretch, or step away from the screen.',
+	},
+	{
+		question: 'What are common Pomodoro mistakes?',
+		answer:
+			'The most common mistakes are skipping breaks or making them too short, working through the timer to finish a task, letting notifications interrupt a round, scrolling your phone during breaks, and tackling several tasks inside one pomodoro. Choosing a focus length that doesn’t match the task also trips people up. Fixing these habits is what makes the technique actually work.',
+	},
+];
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map(({ question, answer }) => ({
+		'@type': 'Question',
+		name: question,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: `<p>${answer}</p>`,
+		},
+	})),
+};
+
+const faqKeys = [
+	['page.faq0q', 'page.faq0a'],
+	['page.faq1q', 'page.faq1a'],
+	['page.faq2q', 'page.faq2a'],
+	['page.faq3q', 'page.faq3a'],
+	['page.faq4q', 'page.faq4a'],
+	['page.faq5q', 'page.faq5a'],
+	['page.faq6q', 'page.faq6a'],
+	['page.faq7q', 'page.faq7a'],
+	['page.faq8q', 'page.faq8a'],
+	['page.faq9q', 'page.faq9a'],
+	['page.faq10q', 'page.faq10a'],
+] as const;
 ---
 
 <Layout
 	title="Cute Timer — Cute Pomodoro Timer Online for Studying"
 	description="A free cute timer online — an aesthetic pink pomodoro timer for studying with lo-fi music, a cute mascot, and 10, 15 & 30 minute countdowns. Start now."
 >
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+	</Fragment>
+
 	<a
 		href="#main"
 		class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
+		data-i18n="page.skip"
 		>Skip to timer</a
 	>
 	<Background />
@@ -22,11 +112,14 @@ import Dock from '../components/Dock.astro';
 
 	<main id="main" class="relative">
 		<div class="flex min-h-screen flex-col items-center justify-center px-4">
-			<h1 class="sr-only">Cute Timer — Free Cute Pomodoro Timer Online for Studying & Focus</h1>
+			<h1 class="sr-only" data-i18n="page.h1">Cute Timer — Free Cute Pomodoro Timer Online for Studying & Focus</h1>
 			<Timer />
 			<p class="mt-10 hidden text-xs text-mute/80 md:block">
-				<span class="font-semibold">space</span> start &middot; <span class="font-semibold">r</span> reset &middot;
-				<span class="font-semibold">m</span> music &middot; <span class="font-semibold">d</span> <span data-theme-shortcut-label>dark mode</span>
+				<span class="font-semibold">space</span> <span data-i18n="page.hintStart">start</span>
+				&middot; <span class="font-semibold">r</span> <span data-i18n="page.hintReset">reset</span>
+				&middot; <span class="font-semibold">m</span> <span data-i18n="page.hintMusic">music</span>
+				&middot; <span class="font-semibold">d</span> <span data-theme-shortcut-label>dark mode</span>
+				&middot; <span class="font-semibold">f</span> <span data-i18n="page.hintFullscreen">fullscreen</span>
 				<span class="text-[var(--accent)]">♡</span>
 			</p>
 		</div>
@@ -34,13 +127,15 @@ import Dock from '../components/Dock.astro';
 		<!-- SEO content -->
 		<section class="mx-auto w-full max-w-3xl px-4 pb-28 sm:px-6">
 			<div class="glass space-y-8 px-6 py-8 sm:px-10 sm:py-10">
-				<p class="eyebrow text-[var(--accent-ink)]">About the Cute Timer ♡</p>
+				<p class="eyebrow text-[var(--accent-ink)]">
+					<span data-i18n="page.aboutEyebrow">About the Cute Timer</span> ♡
+				</p>
 
 				<section>
-					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec1Title">
 						What Is the Cute Timer?
 					</h2>
-					<p class="text-sm leading-relaxed text-body sm:text-base">
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec1Body">
 						Welcome to the Cute Timer — a free cute timer online that makes focusing feel friendly. If you've
 						been searching for a cute timer for studying that is just as adorable as it is useful, you've
 						found it. This cute timer website pairs a kawaii pink pomodoro timer with gentle lo-fi music, a
@@ -54,10 +149,10 @@ import Dock from '../components/Dock.astro';
 				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
 
 				<section>
-					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec2Title">
 						A Cute Timer for Studying That Keeps You in Flow
 					</h2>
-					<p class="text-sm leading-relaxed text-body sm:text-base">
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec2Body">
 						Students and remote workers reach for a cute timer for studying because it turns the classic
 						Pomodoro Technique into something you actually look forward to. A standard pomodoro timer splits
 						your work into focused sprints separated by short breaks — typically 25 minutes of focus, then a
@@ -72,10 +167,10 @@ import Dock from '../components/Dock.astro';
 				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
 
 				<section>
-					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec3Title">
 						One Cute Timer Website, Loads of Handy Presets
 					</h2>
-					<p class="text-sm leading-relaxed text-body sm:text-base">
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec3Body">
 						Not every task deserves a 25-minute block, so this cute timer app lets you pick the perfect
 						countdown for any job. Need a 10 minute cute timer for a quick stretch, a tidy-up, or a warm-up
 						before a big task? Done. Prefer a 15 minute cute timer for focused reading, flashcards, or an
@@ -90,10 +185,10 @@ import Dock from '../components/Dock.astro';
 				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
 
 				<section>
-					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec4Title">
 						More Than a Cute Timer App — A Full Focus Toolkit
 					</h2>
-					<p class="text-sm leading-relaxed text-body sm:text-base">
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec4Body">
 						Unlike a plain online pomodoro timer, this free pomodoro timer is a complete focus toolkit. Add
 						tasks to the to-do list and your current goal appears right beneath the countdown, so you never
 						lose sight of what matters. Switch between focus, short break, and long break whenever you like,
@@ -108,10 +203,10 @@ import Dock from '../components/Dock.astro';
 				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
 
 				<section>
-					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec5Title">
 						A Free Online Pomodoro Timer You'll Actually Want to Use
 					</h2>
-					<p class="text-sm leading-relaxed text-body sm:text-base">
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec5Body">
 						Best of all, this free pomodoro timer costs absolutely nothing. There is no sign-up, no ads, and
 						no app store — just open the page and press start. If you've been hunting for an aesthetic
 						pomodoro timer or a pomodoro cute timer that matches your vibe, bookmark this page and make it
@@ -120,6 +215,36 @@ import Dock from '../components/Dock.astro';
 						start, let the cutest timer on the web keep you company, and get things done — one lovely little
 						countdown at a time.
 					</p>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section aria-labelledby="faq-heading">
+					<p class="eyebrow text-[var(--accent-ink)]">
+						<span data-i18n="page.faqEyebrow">Pomodoro FAQ</span> ♡
+					</p>
+					<h2 id="faq-heading" class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.faqTitle">
+						Pomodoro Timer FAQ
+					</h2>
+					<div class="space-y-3">
+						{
+							faq.map(({ question, answer }, i) => (
+								<details class="group overflow-hidden rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)]">
+									<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_4%,transparent)] [&::-webkit-details-marker]:hidden">
+										<h3 class="text-base font-bold leading-snug text-ink sm:text-lg" data-i18n={faqKeys[i][0]}>{question}</h3>
+										<span
+											class="shrink-0 text-lg leading-none text-[var(--accent)] transition-transform duration-200 group-open:rotate-45"
+											aria-hidden="true"
+											>+</span
+										>
+									</summary>
+									<div class="px-5 pb-5">
+										<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n={faqKeys[i][1]}>{answer}</p>
+									</div>
+								</details>
+							))
+						}
+					</div>
 				</section>
 			</div>
 		</section>

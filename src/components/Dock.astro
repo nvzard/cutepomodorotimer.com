@@ -6,6 +6,7 @@ import Icon from './Icon.astro';
 	class="glass fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 items-center justify-between gap-2 rounded-full px-2.5 py-2 sm:px-3.5"
 	data-music
 	role="region"
+	data-i18n-aria="dock.regionAria"
 	aria-label="Task and lo-fi music"
 >
 	<audio data-audio="0" src="/lofi/coffee-shop.mp3" loop preload="none"></audio>
@@ -16,6 +17,7 @@ import Icon from './Icon.astro';
 		type="button"
 		data-todo-btn
 		class="icon-btn relative h-11 w-11 shrink-0"
+		data-i18n-aria="dock.todoAria"
 		aria-label="Open task list"
 		aria-expanded="false"
 	>
@@ -47,7 +49,7 @@ import Icon from './Icon.astro';
 	>
 		<span data-eq class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
 		<span data-track-label class="truncate">coffee shop</span>
-		<span class="sr-only">switch lo-fi track</span>
+		<span class="sr-only" data-i18n="dock.switchTrack">switch lo-fi track</span>
 		<Icon name="repeat" size={14} class="shrink-0" />
 	</button>
 
@@ -59,9 +61,10 @@ import Icon from './Icon.astro';
 			max="100"
 			value="60"
 			class="slider w-14 sm:w-24"
+			data-i18n-aria="dock.volumeAria"
 			aria-label="Music volume"
 		/>
-		<button type="button" data-mute-btn class="icon-btn h-9 w-9" aria-label="Mute music" aria-pressed="false">
+		<button type="button" data-mute-btn class="icon-btn h-9 w-9" data-i18n-aria="dock.muteAria" aria-label="Mute music" aria-pressed="false">
 			<span data-volume-icon><Icon name="volume-2" size={18} /></span>
 		</button>
 	</div>

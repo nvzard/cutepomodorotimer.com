@@ -1,0 +1,152 @@
+import type { TranslationKey } from './en';
+
+const fr: Record<TranslationKey, string> = {
+	/* Brand / TopBar */
+	'brand.title': 'Cute Pomodoro',
+	'brand.homeAria': 'Accueil de Cute Pomodoro Timer',
+	'topbar.langAria': 'Changer de langue',
+	'topbar.themeAria': 'Activer le mode sombre',
+	'topbar.settingsAria': 'Ouvrir les paramètres',
+	'topbar.enterFs': 'Passer en plein écran',
+	'topbar.exitFs': 'Quitter le plein écran',
+
+	/* Language switcher */
+	'lang.menuAria': 'Choisir la langue',
+	'lang.current': 'Langue',
+
+	/* Timer */
+	'timer.cycleAria': 'Progression du cycle Pomodoro',
+	'timer.modeAria': 'Mode du minuteur',
+	'timer.focus': 'Concentration',
+	'timer.short': 'Pause courte',
+	'timer.long': 'Pause longue',
+	'timer.resetAria': 'Réinitialiser le minuteur',
+	'timer.skipAria': 'Passer à la phase suivante',
+	'phase.focus': 'C’est l’heure de se concentrer !',
+	'phase.short': 'L’heure du goûter',
+	'phase.long': 'L’heure de la sieste ♡',
+	'btn.start': 'Démarrer',
+	'btn.pause': 'Pause',
+	'btn.resume': 'Reprendre',
+	'todo.tapAdd': 'Touche pour ajouter une tâche ♡',
+
+	/* Settings */
+	'settings.dialogAria': 'Paramètres du minuteur',
+	'settings.title': 'Paramètres',
+	'settings.closeAria': 'Fermer les paramètres',
+	'settings.durations': 'Durées',
+	'settings.focus': 'Concentration',
+	'settings.short': 'Pause courte',
+	'settings.long': 'Pause longue',
+	'settings.minusFocus': 'Diminuer les minutes de concentration',
+	'settings.plusFocus': 'Augmenter les minutes de concentration',
+	'settings.minusShort': 'Diminuer les minutes de pause courte',
+	'settings.plusShort': 'Augmenter les minutes de pause courte',
+	'settings.minusLong': 'Diminuer les minutes de pause longue',
+	'settings.plusLong': 'Augmenter les minutes de pause longue',
+	'settings.autoBreaks': 'Démarrer les pauses automatiquement',
+	'settings.chime': 'Carillon à la fin',
+	'settings.notify': 'Notifications du navigateur',
+
+	/* Todo */
+	'todo.panelAria': 'Liste de tâches',
+	'todo.title': 'Mes tâches',
+	'todo.closeAria': 'Fermer la liste de tâches',
+	'todo.inputPlaceholder': 'Sur quoi veux-tu te concentrer…',
+	'todo.inputAria': 'Nouvelle tâche',
+	'todo.add': 'Ajouter',
+	'todo.empty': 'Pas encore de tâches — ajoute une petite chose sur laquelle te concentrer ♡',
+	'todo.markDone': 'Marquer comme terminée',
+	'todo.markNotDone': 'Marquer comme non terminée',
+	'todo.deleteAria': 'Supprimer la tâche',
+
+	/* Dock */
+	'dock.regionAria': 'Tâches et musique lo-fi',
+	'dock.todoAria': 'Ouvrir la liste de tâches',
+	'dock.playMusic': 'Jouer la musique lo-fi',
+	'dock.pauseMusic': 'Mettre en pause la musique lo-fi',
+	'dock.track0': 'café',
+	'dock.track1': 'beats lofi',
+	'dock.switchTrack': 'changer de piste lo-fi',
+	'dock.volumeAria': 'Volume de la musique',
+	'dock.muteAria': 'Couper la musique',
+
+	/* Titles */
+	'title.focus': 'Concentration',
+	'title.short': 'Pause courte',
+	'title.long': 'Pause longue',
+	'title.app': 'Cute Timer',
+	'title.seo': 'Cute Timer — Minuteur Pomodoro en ligne pour étudier',
+
+	/* Notifications */
+	'notify.focusComplete': 'Concentration terminée',
+	'notify.snackMessage': 'Youpi ! L’heure de la pause goûter ♡',
+	'notify.napMessage': 'Youpi ! L’heure de la pause sieste ♡',
+	'notify.breakOver': 'Pause terminée',
+	'notify.breakMessage': 'Deuxième round ? Tu assures ! ♡',
+
+	/* Shortcut labels */
+	'shortcut.light': 'mode clair',
+	'shortcut.dark': 'mode sombre',
+
+	/* Page */
+	'page.skip': 'Aller au minuteur',
+	'page.h1': 'Cute Timer — Minuteur Pomodoro gratuit en ligne pour étudier et se concentrer',
+	'page.hintStart': 'démarrer',
+	'page.hintReset': 'réinitialiser',
+	'page.hintMusic': 'musique',
+	'page.hintFullscreen': 'plein écran',
+	'page.aboutEyebrow': 'À propos du Cute Timer',
+	'page.sec1Title': 'Qu’est-ce que le Cute Timer ?',
+	'page.sec1Body':
+		'Bienvenue sur le Cute Timer — un joli minuteur gratuit en ligne qui rend la concentration conviviale. Si tu cherchais un joli minuteur pour étudier, aussi adorable qu’utile, tu l’as trouvé. Ce site de minuteur mignon associe un minuteur pomodoro rose kawaii à une douce musique lo-fi, une mascotte tomate qui rougit et un design pastel de rêve. Que tu veuilles un minuteur assez mignon pour le garder ouvert toute la journée, un joli minuteur rose pour tes sessions de bureau, ou un minuteur pomodoro esthétique qui transforme le travail en profondeur en petit rituel, ce compte à rebours adorable fait tout — directement dans ton navigateur, sans inscription et sans téléchargement.',
+	'page.sec2Title': 'Un joli minuteur pour étudier qui te garde dans le flow',
+	'page.sec2Body':
+		'Les étudiants et les télétravailleurs adoptent un joli minuteur pour étudier parce qu’il transforme la technique Pomodoro classique en quelque chose que tu attends avec impatience. Un minuteur pomodoro standard découpe ton travail en sprints de concentration séparés par de courtes pauses — généralement 25 minutes de concentration, puis cinq minutes de pause. Après quatre rounds, tu gagnes une pause sieste plus longue pour recharger les batteries. Le joli minuteur pomodoro suit chaque round terminé avec de petits points-cœurs, pour que ta progression soit visible d’un coup d’œil. Pendant que tu travailles, les beats lo-fi intégrés, le petit copain tomate qui cligne des yeux et les carillons doux te tiennent compagnie sans briser ta concentration. C’est le minuteur pomodoro esthétique qui rend le travail en profondeur douillet plutôt qu’éreintant.',
+	'page.sec3Title': 'Un seul site de minuteur mignon, plein de préréglages pratiques',
+	'page.sec3Body':
+		'Toutes les tâches ne méritent pas un bloc de 25 minutes, alors cette app de minuteur mignon te laisse choisir le compte à rebours parfait pour chaque besoin. Besoin d’un joli minuteur de 10 minutes pour un petit étirement, un rangement ou un échauffement avant une grosse tâche ? C’est fait. Tu préfères un joli minuteur de 15 minutes pour une lecture ciblée, des flashcards ou un sprint d’examen ? Une seule touche. La plupart des gens choisissent un joli minuteur de 30 minutes pour les sessions de travail en profondeur, et tu peux régler un joli minuteur de 30 minutes avec des pauses qui démarrent automatiquement pour garder le rythme. Chaque option se synchronise avec ton minuteur mignon pour tes routines d’étude, pour que ta journée s’écoule en douceur d’une tâche à l’autre. C’est ce genre d’apps de minuteur mignon qui rend enfin la gestion du temps ludique.',
+	'page.sec4Title': 'Plus qu’une app de minuteur mignon — une boîte à outils de concentration complète',
+	'page.sec4Body':
+		'Contrairement à un simple minuteur pomodoro en ligne, ce minuteur pomodoro gratuit est une boîte à outils de concentration complète. Ajoute des tâches à la liste de tâches et ton objectif actuel apparaît juste sous le compte à rebours, pour ne jamais perdre de vue l’essentiel. Bascule entre concentration, pause courte et pause longue quand tu veux, ou laisse les pauses automatiques prendre le relais. Active le carillon, autorise les notifications du navigateur, et laisse le joli minuteur rose veiller sur toi pendant que tu travailles. L’esthétique mignonne du minuteur traverse tout — l’anneau pastel, les étincelles scintillantes et les cœurs flottants — en mode clair comme en mode sombre. Comme il vit dans le navigateur, un joli minuteur d’étude fonctionne aussi bien sur ordinateur portable, tablette que téléphone. C’est un site de minuteur mignon, une app de minuteur mignon et une app de minuteur pomodoro, le tout en un.',
+	'page.sec5Title': 'Un minuteur pomodoro gratuit en ligne que tu auras vraiment envie d’utiliser',
+	'page.sec5Body':
+		'Et le meilleur pour la fin : ce minuteur pomodoro gratuit ne coûte absolument rien. Pas d’inscription, pas de publicité, pas d’app store — il suffit d’ouvrir la page et d’appuyer sur démarrer. Si tu cherchais un minuteur pomodoro esthétique ou un joli minuteur pomodoro qui correspond à ton style, mets cette page en favori et fais-en ton compagnon de concentration quotidien. Que tu aies besoin d’un joli minuteur de 10 minutes, d’un joli minuteur de 15 minutes ou d’un joli minuteur de 30 minutes pour un gros projet, il y a toujours un joli minuteur prêt quand tu l’es. Appuie sur démarrer, laisse le plus mignon des minuteurs du web te tenir compagnie, et fais avancer les choses — un adorable petit compte à rebours à la fois.',
+	'page.faqEyebrow': 'FAQ Pomodoro',
+	'page.faqTitle': 'FAQ du minuteur Pomodoro',
+	'page.faq0q': 'Qu’est-ce qu’un minuteur Pomodoro ?',
+	'page.faq0a':
+		'Un minuteur Pomodoro est un outil qui applique la technique Pomodoro, une méthode de gestion du temps où tu travailles par courtes périodes intenses — classiquement 25 minutes — séparées par de courtes pauses. Le nom vient de Francesco Cirillo, qui a inventé la technique à la fin des années 1980 en utilisant un minuteur de cuisine en forme de tomate (pomodoro signifie « tomate » en italien).',
+	'page.faq1q': 'Le Pomodoro se limite-t-il à 25 minutes ?',
+	'page.faq1a':
+		'Non — 25 minutes n’est que la valeur classique par défaut. La technique fonctionne avec n’importe quelle durée de concentration qui convient à ta tâche et à ta capacité d’attention, comme 10, 15, 30, 40, 50 ou 60 minutes, à condition que chaque bloc de travail soit associé à une pause proportionnelle. Sur le Cute Timer, tu peux choisir des préréglages de 10, 15 ou 30 minutes ou régler un compte à rebours entièrement personnalisé.',
+	'page.faq2q': 'Le Pomodoro fonctionne-t-il pour le TDAH ?',
+	'page.faq2a':
+		'Beaucoup de personnes avec un TDAH trouvent la technique Pomodoro réellement utile parce qu’elle découpe les tâches accablantes en petits morceaux courts, avec une fin claire et une récompense intégrée (la pause). Des intervalles plus courts, comme 10 à 15 minutes, sont souvent plus faciles à démarrer et à tenir. Ce n’est pas un traitement, mais en tant que structure, il se combine bien avec les médicaments, les routines et les listes de tâches.',
+	'page.faq3q': 'Le Pomodoro 50/10 ou 25/5, lequel est le meilleur ?',
+	'page.faq3a':
+		'Aucun n’est objectivement meilleur — cela dépend de la tâche et de ton endurance de concentration. Le 25/5 est idéal pour les débutants, les tâches courtes et les changements rapides de tâche, tandis que le 50/10 convient au travail profond et long, comme coder ou écrire, une fois que tu es échauffé. Essaie les deux : si tu peux rester concentré pendant les 50 minutes sans fatigue, garde le 50/10 ; sinon, commence par du 25/5 et allonge tes blocs progressivement.',
+	'page.faq4q': 'Le pomodoro 60/15 est-il bon ?',
+	'page.faq4a':
+		'Oui, le 60/15 est un bon rythme pour les personnes qui peuvent tenir de longues sessions de concentration, comme les travailleurs en profondeur expérimentés. Il faut noter que la concentration intense commence généralement à décliner après environ 50 minutes, c’est pourquoi le 50/10 est le choix de format long le plus courant. Si 60 minutes de travail te semblent productives et que tu prends une vraie pause de 15 minutes, le 60/15 fonctionne parfaitement.',
+	'page.faq5q': 'Le Pomodoro 40/10 est-il bon ?',
+	'page.faq5a':
+		'Absolument — le 40/10 est un compromis très apprécié. Il offre un bloc de travail plus profond que les 25 minutes classiques tout en gardant des pauses assez courtes pour préserver l’élan. Beaucoup d’étudiants et de développeurs trouvent que le 40/10 équilibre mieux productivité et fatigue que le 25/5 ou le 50/10.',
+	'page.faq6q': 'Le Pomodoro est-il scientifiquement prouvé ?',
+	'page.faq6a':
+		'La technique elle-même n’a pas été validée par de grands essais contrôlés, elle n’est donc pas « prouvée » au sens scientifique strict. Elle repose toutefois sur des recherches bien établies : les pauses fréquentes réduisent la fatigue mentale, découper les grandes tâches en petites parties abaisse la barrière du démarrage, et planifier à l’avance réduit la procrastination. C’est pourquoi tant d’experts en productivité la recommandent.',
+	'page.faq7q': 'Comment fonctionne un minuteur pomodoro ?',
+	'page.faq7a':
+		'Un minuteur Pomodoro exécute une simple boucle : choisis une tâche, démarre un compte à rebours de concentration (généralement 25 minutes), travaille sans interruption jusqu’à ce qu’il sonne, puis prends une courte pause (généralement 5 minutes). Après quatre rounds terminés, tu prends une pause plus longue de 15 à 30 minutes. Le tic-tac du compte à rebours crée un sentiment d’urgence, et les pauses donnent à ton cerveau le temps de se ressourcer avant le sprint suivant.',
+	'page.faq8q': 'Comment utiliser un minuteur pomodoro ?',
+	'page.faq8a':
+		'Choisis une tâche, règle le minuteur de concentration et travaille sur cette seule tâche jusqu’à ce que le minuteur sonne. Quand il sonne, arrête-toi — même au milieu d’une réflexion — et prends ta pause courte. Suis chaque round terminé, et après quatre rounds, prends une pause plus longue. Ferme d’abord les onglets et les apps distrayants, et note les pensées parasites pour t’en occuper pendant ta pause.',
+	'page.faq9q': 'Comment utiliser efficacement les apps de minuteur pomodoro ?',
+	'page.faq9a':
+		'Laisse l’app surveiller l’horloge pour toi : choisis une durée de concentration, active les pauses automatiques et active les carillons ou les notifications. Choisis ta tâche dans une liste de tâches avant de commencer, travaille sur une seule chose par round, et résiste à l’envie d’« juste finir » avant la pause. Profite de la pause pour vraiment te reposer — lève-toi, étire-toi ou éloigne-toi de l’écran.',
+	'page.faq10q': 'Quelles sont les erreurs Pomodoro courantes ?',
+	'page.faq10a':
+		'Les erreurs les plus courantes sont de sauter les pauses ou de les rendre trop courtes, de continuer à travailler après la sonnerie pour finir une tâche, de laisser les notifications interrompre un round, de scroller sur son téléphone pendant les pauses, et de s’attaquer à plusieurs tâches dans un seul pomodoro. Choisir une durée de concentration qui ne correspond pas à la tâche piège aussi beaucoup de monde. Corriger ces habitudes, c’est ce qui fait vraiment fonctionner la technique.',
+};
+
+export default fr;

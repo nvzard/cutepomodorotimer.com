@@ -18,11 +18,13 @@ interface Todo {
 const $ = <T extends Element = HTMLElement>(sel: string): T => document.querySelector(sel) as T;
 const $$ = <T extends Element>(sel: string): T[] => Array.from(document.querySelectorAll(sel));
 
+import { t, getLang, applyTranslations, setLang, isLang, type LangCode } from './i18n';
+
 const SETTINGS_KEY = 'pomo:settings';
 const TODOS_KEY = 'pomo:todos';
 const MUSIC_KEY = 'pomo:music';
 
-const TRACK_NAMES = ['coffee shop', 'lofi beats'];
+const TRACK_KEYS = ['dock.track0', 'dock.track1'];
 const RING_CIRC = 842;
 
 const defaultSettings: Settings = { focus: 25, short: 5, long: 15, autoBreaks: true, sound: true, notify: false };
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* ------------------------------------------------------------------ */
 	let settings: Settings = loadJSON(SETTINGS_KEY, defaultSettings);
 	let todos: Todo[] = loadJSON(TODOS_KEY, []);
+	let lang: LangCode = getLang();
 
 	let phase: Phase = 'focus';
 	let running = false;
@@ -106,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const todoPanelCount = $('[data-todo-panel-count]');
 
 	const themeToggle = $('[data-theme-toggle]');
+	const fullscreenBtn = $('[data-fullscreen-btn]');
 	const settingsBtn = $('[data-settings-btn]');
 	const settingsPanel = $('[data-settings-panel]');
 	const settingsClose = $('[data-settings-close]');
@@ -113,6 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const stepMinus = $$<HTMLButtonElement>('[data-step-minus]');
 	const stepPlus = $$<HTMLButtonElement>('[data-step-plus]');
 	const toggles = $$<HTMLButtonElement>('[data-toggle]');
+
+	const langBtn = $('[data-lang-btn]');
+	const langPanel = $('[data-lang-panel]');
+	const langOptions = $$<HTMLButtonElement>('[data-lang-option]');
+	const langCode = $('[data-lang-code]');
 
 	const dock = $('[data-music]');
 	const musicPlayBtn = $('[data-music-play]');
@@ -193,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const meta = document.querySelector('meta[name="theme-color"]');
 		if (meta) meta.setAttribute('content', isDark ? '#231926' : '#fff3f8');
 		const label = document.querySelector('[data-theme-shortcut-label]');
-		if (label) label.textContent = isDark ? 'light mode' : 'dark mode';
+		if (label) label.textContent = isDark ? t(lang, 'shortcut.light') : t(lang, 'shortcut.dark');
 	}
 
 	themeToggle.addEventListener('click', () => {
@@ -206,24 +215,56 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	/* ------------------------------------------------------------------ */
+	/* Fullscreen                                                          */
+	/* ------------------------------------------------------------------ */
+	type FullscreenElement = HTMLElement & { webkitRequestFullscreen?: () => void };
+	type FullscreenDocument = Document & { webkitFullscreenElement?: Element | null; webkitExitFullscreen?: () => void };
+
+	const fsDoc = document as FullscreenDocument;
+
+	function isFullscreen(): boolean {
+		return Boolean(fsDoc.fullscreenElement || fsDoc.webkitFullscreenElement);
+	}
+
+	function updateFullscreenUI() {
+		const fs = isFullscreen();
+		fullscreenBtn.setAttribute('aria-pressed', String(fs));
+		fullscreenBtn.setAttribute('aria-label', fs ? t(lang, 'topbar.exitFs') : t(lang, 'topbar.enterFs'));
+	}
+
+	fullscreenBtn.addEventListener('click', () => {
+		if (isFullscreen()) {
+			if (document.exitFullscreen) document.exitFullscreen();
+			else fsDoc.webkitExitFullscreen?.();
+		} else {
+			const el = document.documentElement as FullscreenElement;
+			if (el.requestFullscreen) el.requestFullscreen();
+			else el.webkitRequestFullscreen?.();
+		}
+	});
+
+	document.addEventListener('fullscreenchange', updateFullscreenUI);
+	document.addEventListener('webkitfullscreenchange', updateFullscreenUI);
+
+	/* ------------------------------------------------------------------ */
 	/* Todos                                                               */
 	/* ------------------------------------------------------------------ */
 	function incompleteCount(): number {
-		return todos.filter((t) => !t.done).length;
+		return todos.filter((todo) => !todo.done).length;
 	}
 
 	function renderTodos() {
 		const items = todos
 			.map(
-				(t) => `
-			<li class="group flex items-center gap-3 rounded-xl px-2.5 py-2 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_6%,transparent)]" data-id="${t.id}">
+				(todo) => `
+			<li class="group flex items-center gap-3 rounded-xl px-2.5 py-2 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_6%,transparent)]" data-id="${todo.id}">
 				<button type="button" data-act="toggle" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-all ${
-					t.done
+					todo.done
 						? 'border-[var(--tomato-deep)] bg-[var(--tomato-deep)] text-white'
 						: 'border-[color-mix(in_srgb,var(--mute)_55%,transparent)] text-transparent hover:border-[var(--tomato)]'
-				}" aria-label="${t.done ? 'Mark as not done' : 'Mark as done'}">${checkSvg}</button>
-				<span class="min-w-0 flex-1 break-words text-sm ${t.done ? 'text-mute line-through' : 'text-ink'}">${esc(t.text)}</span>
-				<button type="button" data-act="del" class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-mute opacity-0 transition-opacity hover:bg-[color-mix(in_srgb,var(--ink)_8%,transparent)] hover:text-ink group-hover:opacity-100" aria-label="Delete task">${xSvg}</button>
+				}" aria-label="${todo.done ? t(lang, 'todo.markNotDone') : t(lang, 'todo.markDone')}">${checkSvg}</button>
+				<span class="min-w-0 flex-1 break-words text-sm ${todo.done ? 'text-mute line-through' : 'text-ink'}">${esc(todo.text)}</span>
+				<button type="button" data-act="del" class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-mute opacity-0 transition-opacity hover:bg-[color-mix(in_srgb,var(--ink)_8%,transparent)] hover:text-ink group-hover:opacity-100" aria-label="${t(lang, 'todo.deleteAria')}">${xSvg}</button>
 			</li>`,
 			)
 			.join('');
@@ -244,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function updateAnchor() {
 		const active = todos.find((t) => !t.done) ?? todos[todos.length - 1];
-		taskText.textContent = active ? active.text : 'Tap to add a task ♡';
+		taskText.textContent = active ? active.text : t(lang, 'todo.tapAdd');
 	}
 
 	function saveTodos() {
@@ -292,7 +333,52 @@ document.addEventListener('DOMContentLoaded', () => {
 	function closePanels() {
 		openPanel(todoPanel, false, todoBtn);
 		openPanel(settingsPanel, false, settingsBtn);
+		langPanel.classList.add('hidden');
+		langBtn.setAttribute('aria-expanded', 'false');
 	}
+
+	/* Language switcher */
+	function updateLangOptions() {
+		langOptions.forEach((opt) => {
+			opt.setAttribute('aria-checked', String(opt.dataset.langOption === lang));
+		});
+		langCode.textContent = lang.toUpperCase();
+	}
+
+	langBtn.addEventListener('click', () => {
+		const open = langPanel.classList.contains('hidden');
+		openPanel(settingsPanel, false, settingsBtn);
+		openPanel(todoPanel, false, todoBtn);
+		langPanel.classList.toggle('hidden', !open);
+		langBtn.setAttribute('aria-expanded', String(open));
+	});
+
+	langOptions.forEach((opt) => {
+		opt.addEventListener('click', () => {
+			const code = opt.dataset.langOption;
+			if (code && isLang(code)) {
+				lang = code;
+				setLang(code);
+			}
+			langPanel.classList.add('hidden');
+			langBtn.setAttribute('aria-expanded', 'false');
+		});
+	});
+
+	document.addEventListener('langchange', (e) => {
+		const code = (e as CustomEvent).detail;
+		if (isLang(code)) lang = code;
+		updateLangOptions();
+		renderTodos();
+		updateAnchor();
+		updateThemeMeta();
+		updateTitle();
+		updateStartBtn();
+		phaseLabel.textContent = phaseLabelText();
+		trackLabel.textContent = t(lang, TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
+		setPlaying(playing);
+		updateFullscreenUI();
+	});
 
 	todoBtn.addEventListener('click', () => {
 		const open = todoPanel.classList.contains('hidden');
@@ -314,6 +400,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!todoPanel.contains(target) && !todoBtn.contains(target) && !taskAnchor.contains(target))
 			openPanel(todoPanel, false, todoBtn);
 		if (!settingsPanel.contains(target) && !settingsBtn.contains(target)) openPanel(settingsPanel, false, settingsBtn);
+		if (!langPanel.contains(target) && !langBtn.contains(target)) {
+			langPanel.classList.add('hidden');
+			langBtn.setAttribute('aria-expanded', 'false');
+		}
 	});
 
 	taskAnchor.addEventListener('click', () => {
@@ -342,13 +432,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function updateTitle() {
-		const label = phase === 'focus' ? 'Focus' : phase === 'short' ? 'Short Break' : 'Long Break';
-		document.title = running ? `${timeEl.textContent} · ${label} — Cute Timer` : 'Cute Timer — Cute Pomodoro Timer Online for Studying';
+		const label = t(lang, phase === 'focus' ? 'title.focus' : phase === 'short' ? 'title.short' : 'title.long');
+		document.title = running
+			? `${timeEl.textContent} · ${label} — ${t(lang, 'title.app')}`
+			: t(lang, 'title.seo');
 	}
 
 	function updateStartBtn() {
 		startBtn.setAttribute('data-running', String(running));
-		startLabel.textContent = running ? 'Pause' : remaining === totalSec ? 'Start' : 'Resume';
+		startLabel.textContent = running
+			? t(lang, 'btn.pause')
+			: remaining === totalSec
+				? t(lang, 'btn.start')
+				: t(lang, 'btn.resume');
 		startIcon.innerHTML = running ? pauseSvg(20) : playSvg(20);
 	}
 
@@ -366,6 +462,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	function phaseLabelText(): string {
+		return t(lang, phase === 'focus' ? 'phase.focus' : phase === 'short' ? 'phase.short' : 'phase.long');
+	}
+
 	function setPhase(p: Phase) {
 		phase = p;
 		running = false;
@@ -373,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		totalSec = phaseDuration();
 		remaining = totalSec;
 		body.setAttribute('data-phase', p === 'focus' ? 'focus' : 'break');
-		phaseLabel.textContent = p === 'focus' ? 'Focus time!' : p === 'short' ? 'Snack time' : 'Nap time ♡';
+		phaseLabel.textContent = phaseLabelText();
 		updateTime();
 		updateRing();
 		updateStartBtn();
@@ -448,7 +548,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (phase === 'focus') {
 			completedFocuses += 1;
 			const next: Phase = completedFocuses % 4 === 0 ? 'long' : 'short';
-			notify('Focus complete', next === 'long' ? 'Yay! Time for a nap break ♡' : 'Yay! Time for a snack break ♡');
+			notify(
+				t(lang, 'notify.focusComplete'),
+				next === 'long' ? t(lang, 'notify.napMessage') : t(lang, 'notify.snackMessage'),
+			);
 			setPhase(next);
 			if (settings.autoBreaks) {
 				setTimeout(() => {
@@ -456,7 +559,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}, 500);
 			}
 		} else {
-			notify('Break over', 'Round two? You got this! ♡');
+			notify(t(lang, 'notify.breakOver'), t(lang, 'notify.breakMessage'));
 			setPhase('focus');
 		}
 	}
@@ -526,7 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	track = musicPrefs.track;
 	volume = musicPrefs.volume;
 	muted = musicPrefs.muted;
-	trackLabel.textContent = TRACK_NAMES[track];
+	trackLabel.textContent = t(lang, TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
 	volumeInput.value = String(Math.round(volume * 100));
 
 	const fades = new Map<HTMLAudioElement, number>();
@@ -551,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		playing = p;
 		musicPlayIcon.innerHTML = p ? pauseSvg(18) : playSvg(18);
 		musicPlayBtn.setAttribute('aria-pressed', String(p));
-		musicPlayBtn.setAttribute('aria-label', p ? 'Pause lo-fi music' : 'Play lo-fi music');
+		musicPlayBtn.setAttribute('aria-label', p ? t(lang, 'dock.pauseMusic') : t(lang, 'dock.playMusic'));
 		dock.setAttribute('data-playing', String(p));
 	}
 
@@ -591,8 +694,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	trackBtn.addEventListener('click', () => {
-		track = (track + 1) % TRACK_NAMES.length;
-		trackLabel.textContent = TRACK_NAMES[track];
+		track = (track + 1) % TRACK_KEYS.length;
+		trackLabel.textContent = t(lang, TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
 		saveJSON(MUSIC_KEY, { track, volume, muted });
 		if (playing) playTrack(track);
 	});
@@ -632,6 +735,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			musicPlayBtn.click();
 		} else if ((e.key === 'd' || e.key === 'D') && !typing) {
 			themeToggle.click();
+		} else if ((e.key === 'f' || e.key === 'F') && !typing) {
+			fullscreenBtn.click();
 		} else if (e.key === 'Escape') {
 			closePanels();
 		}
@@ -640,9 +745,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* ------------------------------------------------------------------ */
 	/* Init                                                                */
 	/* ------------------------------------------------------------------ */
+	applyTranslations(lang);
+	updateLangOptions();
 	applySettingsUI();
 	renderTodos();
 	updateThemeMeta();
+	updateFullscreenUI();
 	setPhase('focus');
 	applyVolume();
 });

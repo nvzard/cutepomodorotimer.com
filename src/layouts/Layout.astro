@@ -95,6 +95,8 @@ const schema = {
 			set:html={JSON.stringify(schema)}
 		></script>
 
+		<slot name="head" />
+
 		<Font cssVariable="--font-baloo" preload />
 
 		<script is:inline>
@@ -107,6 +109,14 @@ const schema = {
 					stored ||
 					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 				document.documentElement.classList.toggle('dark', theme === 'dark');
+
+				var lang = null;
+				try {
+					lang = localStorage.getItem('pomo:lang');
+				} catch (e) {}
+				if (!lang) lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+				var known = ['en', 'es', 'de', 'fr', 'hi', 'ja', 'pt'];
+				if (known.indexOf(lang) !== -1) document.documentElement.lang = lang;
 			})();
 		</script>
 	</head>

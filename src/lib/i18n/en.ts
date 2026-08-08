@@ -1,0 +1,150 @@
+export const en = {
+	/* Brand / TopBar */
+	'brand.title': 'Cute Pomodoro',
+	'brand.homeAria': 'Cute Pomodoro Timer home',
+	'topbar.langAria': 'Change language',
+	'topbar.themeAria': 'Toggle dark mode',
+	'topbar.settingsAria': 'Open settings',
+	'topbar.enterFs': 'Enter fullscreen',
+	'topbar.exitFs': 'Exit fullscreen',
+
+	/* Language switcher */
+	'lang.menuAria': 'Choose language',
+	'lang.current': 'Language',
+
+	/* Timer */
+	'timer.cycleAria': 'Pomodoro cycle progress',
+	'timer.modeAria': 'Timer mode',
+	'timer.focus': 'Focus',
+	'timer.short': 'Short break',
+	'timer.long': 'Long break',
+	'timer.resetAria': 'Reset timer',
+	'timer.skipAria': 'Skip to next phase',
+	'phase.focus': 'Focus time!',
+	'phase.short': 'Snack time',
+	'phase.long': 'Nap time ♡',
+	'btn.start': 'Start',
+	'btn.pause': 'Pause',
+	'btn.resume': 'Resume',
+	'todo.tapAdd': 'Tap to add a task ♡',
+
+	/* Settings */
+	'settings.dialogAria': 'Timer settings',
+	'settings.title': 'Settings',
+	'settings.closeAria': 'Close settings',
+	'settings.durations': 'Durations',
+	'settings.focus': 'Focus',
+	'settings.short': 'Short break',
+	'settings.long': 'Long break',
+	'settings.minusFocus': 'Decrease focus minutes',
+	'settings.plusFocus': 'Increase focus minutes',
+	'settings.minusShort': 'Decrease short break minutes',
+	'settings.plusShort': 'Increase short break minutes',
+	'settings.minusLong': 'Decrease long break minutes',
+	'settings.plusLong': 'Increase long break minutes',
+	'settings.autoBreaks': 'Auto-start breaks',
+	'settings.chime': 'Chime when done',
+	'settings.notify': 'Browser notifications',
+
+	/* Todo */
+	'todo.panelAria': 'Task list',
+	'todo.title': 'My tasks',
+	'todo.closeAria': 'Close task list',
+	'todo.inputPlaceholder': 'What are you focusing on…',
+	'todo.inputAria': 'New task',
+	'todo.add': 'Add',
+	'todo.empty': 'No tasks yet — add one tiny thing to focus on ♡',
+	'todo.markDone': 'Mark as done',
+	'todo.markNotDone': 'Mark as not done',
+	'todo.deleteAria': 'Delete task',
+
+	/* Dock */
+	'dock.regionAria': 'Task and lo-fi music',
+	'dock.todoAria': 'Open task list',
+	'dock.playMusic': 'Play lo-fi music',
+	'dock.pauseMusic': 'Pause lo-fi music',
+	'dock.track0': 'coffee shop',
+	'dock.track1': 'lofi beats',
+	'dock.switchTrack': 'switch lo-fi track',
+	'dock.volumeAria': 'Music volume',
+	'dock.muteAria': 'Mute music',
+
+	/* Titles */
+	'title.focus': 'Focus',
+	'title.short': 'Short Break',
+	'title.long': 'Long Break',
+	'title.app': 'Cute Timer',
+	'title.seo': 'Cute Timer — Cute Pomodoro Timer Online for Studying',
+
+	/* Notifications */
+	'notify.focusComplete': 'Focus complete',
+	'notify.snackMessage': 'Yay! Time for a snack break ♡',
+	'notify.napMessage': 'Yay! Time for a nap break ♡',
+	'notify.breakOver': 'Break over',
+	'notify.breakMessage': 'Round two? You got this! ♡',
+
+	/* Shortcut labels */
+	'shortcut.light': 'light mode',
+	'shortcut.dark': 'dark mode',
+
+	/* Page */
+	'page.skip': 'Skip to timer',
+	'page.h1': 'Cute Timer — Free Cute Pomodoro Timer Online for Studying & Focus',
+	'page.hintStart': 'start',
+	'page.hintReset': 'reset',
+	'page.hintMusic': 'music',
+	'page.hintFullscreen': 'fullscreen',
+	'page.aboutEyebrow': 'About the Cute Timer',
+	'page.sec1Title': 'What Is the Cute Timer?',
+	'page.sec1Body':
+		"Welcome to the Cute Timer — a free cute timer online that makes focusing feel friendly. If you've been searching for a cute timer for studying that is just as adorable as it is useful, you've found it. This cute timer website pairs a kawaii pink pomodoro timer with gentle lo-fi music, a blushing tomato mascot, and a dreamy pastel design. Whether you want a timer cute enough to keep open all day, a pink cute timer for your desk sessions, or an aesthetic pomodoro timer that turns deep work into a little ritual, this cute timer countdown does it all — right in your browser, with no sign-up and no downloads.",
+	'page.sec2Title': 'A Cute Timer for Studying That Keeps You in Flow',
+	'page.sec2Body':
+		"Students and remote workers reach for a cute timer for studying because it turns the classic Pomodoro Technique into something you actually look forward to. A standard pomodoro timer splits your work into focused sprints separated by short breaks — typically 25 minutes of focus, then a five-minute break. After four rounds, you earn a longer nap break to recharge. The cute pomodoro timer tracks every completed round with little heart dots, so your progress is visible at a glance. While you work, the built-in lo-fi beats, blinking tomato friend, and soft chimes keep you company without breaking your concentration. It is the aesthetic pomodoro timer that makes deep work feel cozy rather than grueling.",
+	'page.sec3Title': 'One Cute Timer Website, Loads of Handy Presets',
+	'page.sec3Body':
+		"Not every task deserves a 25-minute block, so this cute timer app lets you pick the perfect countdown for any job. Need a 10 minute cute timer for a quick stretch, a tidy-up, or a warm-up before a big task? Done. Prefer a 15 minute cute timer for focused reading, flashcards, or an exam sprint? One tap. Most people reach for a 30 minute cute timer for deep-work sessions, and you can set a cute timer 30 minutes long with auto-starting breaks to keep the rhythm going. Every option syncs to your cute timer clock for study routines, so your whole day flows smoothly from one task to the next. It is cute timer apps like this that finally make time management feel playful.",
+	'page.sec4Title': 'More Than a Cute Timer App — A Full Focus Toolkit',
+	'page.sec4Body':
+		"Unlike a plain online pomodoro timer, this free pomodoro timer is a complete focus toolkit. Add tasks to the to-do list and your current goal appears right beneath the countdown, so you never lose sight of what matters. Switch between focus, short break, and long break whenever you like, or let auto-breaks take over. Turn on the chime, enable browser notifications, and let the pink cute timer watch over you while you work. The cute timer aesthetic carries through everything — the pastel ring, twinkling sparkles, and floating hearts — in both light and dark mode. Because it lives in the browser, a cute timer for study works on laptops, tablets, and phones alike. It is a cute timer website, a cute timer app, and a pomodoro timer app all in one.",
+	'page.sec5Title': "A Free Online Pomodoro Timer You'll Actually Want to Use",
+	'page.sec5Body':
+		"Best of all, this free pomodoro timer costs absolutely nothing. There is no sign-up, no ads, and no app store — just open the page and press start. If you've been hunting for an aesthetic pomodoro timer or a pomodoro cute timer that matches your vibe, bookmark this page and make it your daily focus companion. Whether you need a 10 minute cute timer, a 15 minute cute timer, or a 30 minute cute timer for a big project, there is always a cute timer ready when you are. Press start, let the cutest timer on the web keep you company, and get things done — one lovely little countdown at a time.",
+	'page.faqEyebrow': 'Pomodoro FAQ',
+	'page.faqTitle': 'Pomodoro Timer FAQ',
+	'page.faq0q': 'What is a Pomodoro timer?',
+	'page.faq0a':
+		'A Pomodoro timer is a tool that applies the Pomodoro Technique, a time-management method where you work in short, focused bursts — classically 25 minutes — separated by short breaks. The name comes from Francesco Cirillo, who invented the technique in the late 1980s using a tomato-shaped kitchen timer (pomodoro means "tomato" in Italian).',
+	'page.faq1q': 'Is Pomodoro only 25 minutes?',
+	'page.faq1a':
+		'No — 25 minutes is just the classic default. The technique works with any focus length that suits your task and attention span, such as 10, 15, 30, 40, 50 or 60 minutes, as long as each work block is paired with a proportional break. On the Cute Timer you can choose 10, 15 or 30-minute presets or set a fully custom countdown.',
+	'page.faq2q': 'Does Pomodoro work for ADHD?',
+	'page.faq2a':
+		'Many people with ADHD find the Pomodoro Technique genuinely helpful because it breaks overwhelming tasks into small, short chunks with a clear ending and a built-in reward (the break). Shorter intervals, such as 10–15 minutes, are often easier to start and sustain. It isn’t a treatment, but as a structure it combines well with medication, routines and to-do lists.',
+	'page.faq3q': 'Is Pomodoro 50/10 or 25/5 better?',
+	'page.faq3a':
+		'Neither is objectively better — it depends on the task and your focus stamina. 25/5 is ideal for beginners, short tasks and rapid task-switching, while 50/10 suits deep, long-form work like coding or writing once you’re warmed up. Try both: if you can stay focused for the whole 50 minutes without fatigue, keep 50/10; otherwise start with 25/5 and lengthen your blocks gradually.',
+	'page.faq4q': 'Is 60/15 pomodoro good?',
+	'page.faq4a':
+		'Yes, 60/15 is a solid rhythm for people who can sustain long focus sessions, like experienced deep workers. It’s worth noting that intense concentration typically starts to decline after about 50 minutes, which is why 50/10 is the more common long-format choice. If 60 minutes of work feels productive and you take a real 15-minute break, 60/15 works perfectly.',
+	'page.faq5q': 'Is 40/10 Pomodoro good?',
+	'page.faq5a':
+		'Absolutely — 40/10 is a popular sweet spot. It gives you a deeper work block than the classic 25 minutes while keeping breaks short enough to preserve momentum. Many students and developers find 40/10 balances productivity and fatigue better than either 25/5 or 50/10.',
+	'page.faq6q': 'Is Pomodoro scientifically proven?',
+	'page.faq6a':
+		"The technique itself hasn’t been validated by large controlled trials, so it isn’t “proven” in the strict scientific sense. However, it rests on well-established research: frequent breaks reduce mental fatigue, breaking large tasks into smaller pieces lowers the barrier to starting, and planning ahead reduces procrastination. That’s why so many productivity experts recommend it.",
+	'page.faq7q': 'How does pomodoro timer work?',
+	'page.faq7a':
+		'A Pomodoro timer runs a simple loop: pick a task, start a focus countdown (usually 25 minutes), work without interruptions until it rings, then take a short break (usually 5 minutes). After four completed rounds you take a longer break of 15–30 minutes. The ticking countdown creates urgency, and the breaks give your brain time to reset before the next sprint.',
+	'page.faq8q': 'How to use pomodoro timer?',
+	'page.faq8a':
+		'Choose one task, set the focus timer and work on that single task until the timer rings. When it does, stop — even mid-thought — and take your short break. Track each finished round, and after four rounds take a longer break. Close distracting tabs and apps first, and jot down any stray thoughts so you can deal with them during your break.',
+	'page.faq9q': 'How to use pomodoro timer apps effectively?',
+	'page.faq9a':
+		"Let the app do the clock-watching for you: pick a focus length, switch on automatic breaks, and enable chimes or notifications. Choose your task from a to-do list before starting, work on one thing per round, and resist the urge to “just finish” before the break. Use the break to actually rest — stand up, stretch, or step away from the screen.",
+	'page.faq10q': 'What are common Pomodoro mistakes?',
+	'page.faq10a':
+		'The most common mistakes are skipping breaks or making them too short, working through the timer to finish a task, letting notifications interrupt a round, scrolling your phone during breaks, and tackling several tasks inside one pomodoro. Choosing a focus length that doesn’t match the task also trips people up. Fixing these habits is what makes the technique actually work.',
+} as const;
+
+export type TranslationKey = keyof typeof en;

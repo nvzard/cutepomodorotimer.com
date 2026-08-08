@@ -13,7 +13,7 @@ import Mascot from './Mascot.astro';
 	</div>
 
 	<!-- Cycle dots -->
-	<div class="flex items-center gap-1.5" data-cycle-dots role="group" aria-label="Pomodoro cycle progress">
+	<div class="flex items-center gap-1.5" data-cycle-dots role="group" data-i18n-aria="timer.cycleAria" aria-label="Pomodoro cycle progress">
 		<span class="dot" data-dot></span>
 		<span class="dot" data-dot></span>
 		<span class="dot" data-dot></span>
@@ -82,24 +82,24 @@ import Mascot from './Mascot.astro';
 	</div>
 
 	<!-- Mode pills -->
-	<div class="glass flex gap-1 rounded-full p-1.5" data-mode-pills role="group" aria-label="Timer mode">
+	<div class="glass flex gap-1 rounded-full p-1.5" data-mode-pills role="group" data-i18n-aria="timer.modeAria" aria-label="Timer mode">
 		<button type="button" data-mode-pill="focus" class="mode-pill" aria-pressed="true">
 			<Icon name="leaf" size={14} />
-			Focus
+			<span data-i18n="timer.focus">Focus</span>
 		</button>
 		<button type="button" data-mode-pill="short" class="mode-pill" aria-pressed="false">
 			<Icon name="coffee" size={14} />
-			Short break
+			<span data-i18n="timer.short">Short break</span>
 		</button>
 		<button type="button" data-mode-pill="long" class="mode-pill" aria-pressed="false">
 			<Icon name="moon" size={14} />
-			Long break
+			<span data-i18n="timer.long">Long break</span>
 		</button>
 	</div>
 
 	<!-- Actions -->
 	<div class="flex items-center gap-4">
-		<button type="button" data-reset-btn class="icon-btn glass" aria-label="Reset timer">
+		<button type="button" data-reset-btn class="icon-btn glass" data-i18n-aria="timer.resetAria" aria-label="Reset timer">
 			<Icon name="reset" size={20} />
 		</button>
 		<button
@@ -110,7 +110,7 @@ import Mascot from './Mascot.astro';
 			<span data-start-icon class="flex"><Icon name="play" size={20} /></span>
 			<span data-start-label>Start</span>
 		</button>
-		<button type="button" data-skip-btn class="icon-btn glass" aria-label="Skip to next phase">
+		<button type="button" data-skip-btn class="icon-btn glass" data-i18n-aria="timer.skipAria" aria-label="Skip to next phase">
 			<Icon name="skip" size={20} />
 		</button>
 	</div>

@@ -6,14 +6,15 @@ import Icon from './Icon.astro';
 	data-todo-panel
 	class="glass fixed bottom-24 left-1/2 z-40 hidden max-h-[calc(100dvh-8rem)] w-[min(26rem,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto overscroll-contain rounded-3xl p-5 animate-pop"
 	role="dialog"
+	data-i18n-aria="todo.panelAria"
 	aria-label="Task list"
 >
 	<div class="mb-4 flex items-center justify-between">
 		<h2 class="flex items-center gap-1.5 text-base font-bold">
 			<span class="text-[var(--tomato)]"><Icon name="heart" size={16} /></span>
-			My tasks <span data-todo-panel-count class="font-semibold text-mute"></span>
+			<span data-i18n="todo.title">My tasks</span> <span data-todo-panel-count class="font-semibold text-mute"></span>
 		</h2>
-		<button type="button" data-todo-close class="icon-btn h-8 w-8" aria-label="Close task list">
+		<button type="button" data-todo-close class="icon-btn h-8 w-8" data-i18n-aria="todo.closeAria" aria-label="Close task list">
 			<Icon name="x" size={16} />
 		</button>
 	</div>
@@ -21,9 +22,12 @@ import Icon from './Icon.astro';
 	<form data-todo-form class="mb-4 flex gap-2">
 		<input
 			type="text"
+			name="task"
 			data-todo-input
+			data-i18n-placeholder="todo.inputPlaceholder"
 			placeholder="What are you focusing on…"
 			autocomplete="off"
+			data-i18n-aria="todo.inputAria"
 			aria-label="New task"
 			class="h-11 min-w-0 flex-1 rounded-full border border-line bg-surface px-4 text-sm text-ink placeholder:text-mute focus:border-[var(--tomato)] focus:outline-none"
 		/>
@@ -31,13 +35,13 @@ import Icon from './Icon.astro';
 			type="submit"
 			class="pill-btn h-11 shrink-0 border-2 border-[color-mix(in_srgb,var(--tomato)_45%,transparent)] bg-[var(--tomato-soft)] px-5 text-sm font-bold text-[var(--ink)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_28%,transparent)]"
 		>
-			Add
+			<span data-i18n="todo.add">Add</span>
 		</button>
 	</form>
 
 	<ul data-todo-list class="max-h-64 space-y-1 overflow-y-auto overscroll-contain pr-1"></ul>
 
-	<p data-todo-empty class="py-6 text-center text-sm text-mute">
+	<p data-todo-empty class="py-6 text-center text-sm text-mute" data-i18n="todo.empty">
 		No tasks yet — add one tiny thing to focus on ♡
 	</p>
 </div>

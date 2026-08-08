@@ -1,26 +1,70 @@
 ---
 import Icon from './Icon.astro';
 import Mascot from './Mascot.astro';
+import { LANGUAGES } from '../lib/i18n';
 ---
 
 <header class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] sm:px-6">
-	<a href="/" class="group flex items-center gap-2.5" aria-label="Cute Pomodoro Timer home">
+	<a href="/" class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
 		<span
 			class="grid h-11 w-11 place-items-center rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_55%,transparent)] bg-[var(--tomato-soft)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_35%,transparent)] transition-transform group-hover:-rotate-6 group-hover:scale-110"
 		>
 			<Mascot class="h-9 w-full" />
 		</span>
 		<span class="text-base font-bold tracking-tight">
-			Cute Pomodoro <span class="text-[var(--tomato)]">♡</span>
+			<span data-i18n="brand.title">Cute Pomodoro</span> <span class="text-[var(--tomato)]">♡</span>
 		</span>
 	</a>
 
 	<div class="flex items-center gap-1.5">
-		<button type="button" data-theme-toggle class="icon-btn" aria-label="Toggle dark mode">
+		<button type="button" data-fullscreen-btn class="icon-btn" aria-label="Enter fullscreen" aria-pressed="false">
+			<span data-fs-icon-expand><Icon name="expand" size={19} /></span>
+			<span data-fs-icon-shrink class="hidden"><Icon name="shrink" size={19} /></span>
+		</button>
+		<button type="button" data-theme-toggle class="icon-btn" data-i18n-aria="topbar.themeAria" aria-label="Toggle dark mode">
 			<span data-theme-icon-sun><Icon name="sun" size={19} /></span>
 			<span data-theme-icon-moon><Icon name="moon" size={19} /></span>
 		</button>
-		<button type="button" data-settings-btn class="icon-btn" aria-label="Open settings" aria-expanded="false">
+
+		<div class="relative">
+			<button
+				type="button"
+				data-lang-btn
+				class="icon-btn lang-btn"
+				data-i18n-aria="topbar.langAria"
+				aria-label="Change language"
+				aria-haspopup="menu"
+				aria-expanded="false"
+			>
+				<Icon name="globe" size={17} />
+				<span data-lang-code class="lang-code">EN</span>
+			</button>
+			<div
+				data-lang-panel
+				class="glass absolute right-0 top-full z-50 mt-2 hidden w-44 rounded-2xl p-1.5 animate-pop"
+				role="menu"
+				data-i18n-aria="lang.menuAria"
+				aria-label="Choose language"
+			>
+				{LANGUAGES.map((l) => (
+					<button
+						type="button"
+						data-lang-option={l.code}
+						class="lang-option"
+						role="menuitemradio"
+						aria-checked={l.code === 'en'}
+					>
+						<span class="lang-flag" aria-hidden="true">{l.flag}</span>
+						<span>{l.name}</span>
+						<span data-lang-check class="lang-check" aria-hidden="true">
+							<Icon name="check" size={13} strokeWidth={3} />
+						</span>
+					</button>
+				))}
+			</div>
+		</div>
+
+		<button type="button" data-settings-btn class="icon-btn" data-i18n-aria="topbar.settingsAria" aria-label="Open settings" aria-expanded="false">
 			<Icon name="gear" size={19} />
 		</button>
 	</div>
@@ -32,5 +76,56 @@ import Mascot from './Mascot.astro';
 	}
 	html.dark [data-theme-icon-moon] {
 		display: none;
+	}
+	html:fullscreen [data-fs-icon-shrink],
+	html:-webkit-full-screen [data-fs-icon-shrink] {
+		display: inline-flex;
+	}
+	html:fullscreen [data-fs-icon-expand],
+	html:-webkit-full-screen [data-fs-icon-expand] {
+		display: none;
+	}
+
+	.lang-option {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+		border-radius: 0.75rem;
+		padding: 0.45rem 0.6rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--body);
+		transition: background-color 0.15s ease, color 0.15s ease;
+	}
+	.lang-option:hover {
+		background: color-mix(in srgb, var(--ink) 7%, transparent);
+		color: var(--ink);
+	}
+	.lang-option[aria-checked='true'] {
+		background: var(--accent-soft);
+		color: var(--accent-ink);
+	}
+	.lang-flag {
+		font-size: 1rem;
+		line-height: 1;
+	}
+	.lang-code {
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		line-height: 1;
+	}
+	.lang-btn {
+		width: auto;
+		gap: 0.3rem;
+		padding: 0 0.65rem;
+	}
+	.lang-check {
+		margin-left: auto;
+		display: none;
+	}
+	.lang-option[aria-checked='true'] .lang-check {
+		display: inline-flex;
 	}
 </style>
