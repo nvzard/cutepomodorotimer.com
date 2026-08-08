@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 126">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
   <defs>
-    <linearGradient id="fb-body" x1="30" y1="24" x2="110" y2="116" gradientUnits="userSpaceOnUse">
+    <linearGradient id="fb-body" x1="40" y1="40" x2="120" y2="150" gradientUnits="userSpaceOnUse">
       <stop stop-color="#ff9dbb"/>
       <stop offset="1" stop-color="#f85e8e"/>
     </linearGradient>
   </defs>
-  <path d="M70 26 C60 18 44 15 32 18 C44 26 58 30 70 28 Z" fill="#7bd88f"/>
-  <path d="M70 26 C80 18 96 15 108 18 C96 26 82 30 70 28 Z" fill="#7bd88f"/>
-  <path d="M70 30 C70 21 70 14 70 9 C73 12 76 15 76 19 C74 24 72 27 70 30 Z" fill="#6cc37f"/>
-  <circle cx="70" cy="74" r="46" fill="url(#fb-body)" stroke="#e84a78" stroke-width="3.5"/>
-  <ellipse cx="52" cy="54" rx="16" ry="10" fill="#fff" opacity="0.4" transform="rotate(-24 52 54)"/>
-  <ellipse cx="43" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95"/>
-  <ellipse cx="97" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95"/>
-  <g stroke="#7a2440" stroke-width="4.2" stroke-linecap="round" fill="none">
-    <path d="M44 67 q8 -9 16 0"/>
-    <path d="M80 67 q8 -9 16 0"/>
+  <path d="M80 42 C68 33 50 30 36 34 C50 44 66 48 80 46 Z" fill="#7bd88f"/>
+  <path d="M80 42 C92 33 110 30 124 34 C110 44 94 48 80 46 Z" fill="#7bd88f"/>
+  <path d="M80 46 C80 36 80 28 80 20 C84 24 88 28 88 33 C85 39 82 43 80 46 Z" fill="#6cc37f"/>
+  <circle cx="80" cy="96" r="58" fill="url(#fb-body)" stroke="#e84a78" stroke-width="4"/>
+  <ellipse cx="58" cy="72" rx="20" ry="13" fill="#fff" opacity="0.4" transform="rotate(-24 58 72)"/>
+  <ellipse cx="48" cy="110" rx="10" ry="5.6" fill="#ffb3c7" opacity="0.95"/>
+  <ellipse cx="112" cy="110" rx="10" ry="5.6" fill="#ffb3c7" opacity="0.95"/>
+  <g stroke="#7a2440" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M48 88 q10 -11 20 0"/>
+    <path d="M92 88 q10 -11 20 0"/>
   </g>
-  <path d="M50 84 Q70 102 90 84 Q70 92 50 84 Z" fill="#7a2440"/>
+  <path d="M55 112 Q80 132 105 112 Q80 120 55 112 Z" fill="#7a2440"/>
 </svg>
