@@ -19,7 +19,7 @@ import Dock from '../components/Dock.astro';
 
 	<main
 		id="main"
-		class="relative flex min-h-screen flex-col items-center justify-center px-4 pb-[calc(9rem+env(safe-area-inset-bottom))] pt-[calc(6rem+env(safe-area-inset-top))]"
+		class="relative flex min-h-screen flex-col items-center justify-center px-4"
 	>
 		<h1 class="sr-only">Cute Pomodoro Timer</h1>
 		<Timer />
@@ -38,3 +38,24 @@ import Dock from '../components/Dock.astro';
 		import '../lib/app.ts';
 	</script>
 </Layout>
+
+<style>
+	/* Responsive padding so the timer always fits between the fixed top bar
+	   and bottom dock — compact on phones, roomier on taller/desktop screens. */
+	#main {
+		padding-top: calc(4.5rem + env(safe-area-inset-top));
+		padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
+	}
+	@media (min-width: 768px) {
+		#main {
+			padding-top: calc(6rem + env(safe-area-inset-top));
+			padding-bottom: calc(9rem + env(safe-area-inset-bottom));
+		}
+	}
+	@media (max-height: 720px) {
+		#main {
+			padding-top: calc(4rem + env(safe-area-inset-top));
+			padding-bottom: calc(6rem + env(safe-area-inset-bottom));
+		}
+	}
+</style>

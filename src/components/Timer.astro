@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import Mascot from './Mascot.astro';
 ---
 
-<section class="flex w-full flex-col items-center gap-5 animate-fade-in" data-timer>
+<section class="flex w-full flex-col items-center animate-fade-in" data-timer>
 	<!-- Phase eyebrow -->
 	<div class="glass flex items-center gap-2 rounded-full px-4 py-1.5">
 		<span data-phase-icon="focus" class="text-[var(--accent)]"><Icon name="leaf" size={14} /></span>
@@ -21,7 +21,7 @@ import Mascot from './Mascot.astro';
 	</div>
 
 	<!-- Ring + mascot + digits -->
-	<div class="relative flex items-center justify-center">
+	<div class="timer-ring relative flex items-center justify-center [container-type:inline-size]">
 		<div class="sparkle sparkle-sun" style="top:-3%;left:-7%"><Icon name="sparkle" size={20} /></div>
 		<div class="sparkle sparkle-rose" style="top:6%;right:-8%;--d:0.7s"><Icon name="heart" size={16} /></div>
 		<div class="sparkle" style="bottom:-2%;left:-5%;--d:1.2s"><Icon name="sparkle" size={15} /></div>
@@ -34,7 +34,7 @@ import Mascot from './Mascot.astro';
 
 		<svg
 			viewBox="0 0 300 300"
-			class="h-[min(74vw,30rem,max(calc(100dvh_-_31rem),12rem))] w-[min(74vw,30rem,max(calc(100dvh_-_31rem),12rem))] -rotate-90"
+			class="h-full w-full -rotate-90"
 			aria-hidden="true"
 		>
 			<defs>
@@ -67,7 +67,7 @@ import Mascot from './Mascot.astro';
 		<div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
 			<span
 				data-time
-				class="text-[clamp(3.2rem,15vw,7.5rem)] font-extrabold leading-none tracking-tight tabular-nums drop-shadow-[0_4px_0_color-mix(in_srgb,var(--ink)_14%,transparent)]"
+				class="text-[clamp(2.4rem,25cqw,7.5rem)] font-extrabold leading-none tracking-tight tabular-nums drop-shadow-[0_4px_0_color-mix(in_srgb,var(--ink)_14%,transparent)]"
 				aria-live="off"
 				>25:00</span
 			>
@@ -117,6 +117,33 @@ import Mascot from './Mascot.astro';
 </section>
 
 <style>
+	[data-timer] {
+		gap: 1rem;
+	}
+	@media (min-width: 768px) {
+		[data-timer] {
+			gap: 1.25rem;
+		}
+	}
+	@media (max-height: 720px) {
+		[data-timer] {
+			gap: 0.75rem;
+		}
+	}
+
+	/* Ring shrinks to always fit between the fixed top bar and bottom dock.
+	   The countdown text scales off the ring via cqw container units. */
+	.timer-ring {
+		--ring: min(74vw, 30rem, max(calc(100dvh - 31rem), 12rem));
+		width: var(--ring);
+		height: var(--ring);
+	}
+	@media (max-height: 720px) {
+		.timer-ring {
+			--ring: min(78vw, 30rem, max(calc(100dvh - 26rem), 9rem));
+		}
+	}
+
 	.mode-pill {
 		display: inline-flex;
 		align-items: center;
