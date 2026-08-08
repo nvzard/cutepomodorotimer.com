@@ -22,7 +22,7 @@ import Icon from './Icon.astro';
 		<Icon name="list" size={20} />
 		<span
 			data-todo-count
-			class="absolute right-0.5 top-0.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-[var(--tomato)] px-1 text-[10px] font-bold leading-none text-white"
+			class="absolute right-0.5 top-0.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--tomato-deep)_60%,#4b1430)] px-1 text-[10px] font-bold leading-none text-white"
 			>0</span
 		>
 	</button>
@@ -33,7 +33,7 @@ import Icon from './Icon.astro';
 	<button
 		type="button"
 		data-music-play
-		class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--tomato)] text-white shadow-lg shadow-tomato/20 transition-transform active:scale-95"
+		class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition-transform"
 		aria-label="Play lo-fi music"
 		aria-pressed="false"
 	>
@@ -44,10 +44,10 @@ import Icon from './Icon.astro';
 		type="button"
 		data-track-btn
 		class="flex min-w-0 items-center gap-2 rounded-full px-1 py-1 text-sm font-semibold text-body transition-colors hover:text-ink"
-		aria-label="Switch lo-fi track"
 	>
 		<span data-eq class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
 		<span data-track-label class="truncate">coffee shop</span>
+		<span class="sr-only">switch lo-fi track</span>
 		<Icon name="repeat" size={14} class="shrink-0" />
 	</button>
 
@@ -68,6 +68,26 @@ import Icon from './Icon.astro';
 </div>
 
 <style>
+	[data-music-play] {
+		background: var(--tomato-deep);
+		border: 2.5px solid color-mix(in srgb, var(--tomato-deep) 68%, #000);
+		box-shadow:
+			0 4px 0 color-mix(in srgb, var(--tomato-deep) 68%, #000),
+			0 12px 20px -10px color-mix(in srgb, var(--tomato) 70%, transparent);
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			background-color 0.2s ease;
+	}
+	[data-music-play]:hover {
+		transform: translateY(-2px);
+		background: color-mix(in srgb, var(--tomato-deep) 92%, var(--ink));
+	}
+	[data-music-play]:active {
+		transform: translateY(3px);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--tomato-deep) 68%, #000);
+	}
+
 	.eq {
 		display: inline-flex;
 		align-items: flex-end;

@@ -5,11 +5,13 @@ import Icon from './Icon.astro';
 <header class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] sm:px-6">
 	<a href="/" class="group flex items-center gap-2.5" aria-label="Cute Pomodoro Timer home">
 		<span
-			class="grid h-9 w-9 place-items-center rounded-full bg-[var(--tomato-soft)] text-[var(--tomato)] transition-transform group-hover:scale-105"
+			class="grid h-9 w-9 place-items-center rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_55%,transparent)] bg-[var(--tomato-soft)] text-[var(--tomato)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_35%,transparent)] transition-transform group-hover:-rotate-6 group-hover:scale-110"
 		>
 			<Icon name="tomato-small" size={22} />
 		</span>
-		<span class="text-base font-bold tracking-tight">Cute Pomodoro</span>
+		<span class="text-base font-bold tracking-tight">
+			Cute Pomodoro <span class="text-[var(--tomato)]">♡</span>
+		</span>
 	</a>
 
 	<div class="flex items-center gap-1.5">

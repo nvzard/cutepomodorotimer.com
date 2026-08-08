@@ -9,8 +9,9 @@ import Icon from './Icon.astro';
 	aria-label="Task list"
 >
 	<div class="mb-4 flex items-center justify-between">
-		<h2 class="text-base font-bold">
-			Tasks <span data-todo-panel-count class="font-semibold text-mute"></span>
+		<h2 class="flex items-center gap-1.5 text-base font-bold">
+			<span class="text-[var(--tomato)]"><Icon name="heart" size={16} /></span>
+			My tasks <span data-todo-panel-count class="font-semibold text-mute"></span>
 		</h2>
 		<button type="button" data-todo-close class="icon-btn h-8 w-8" aria-label="Close task list">
 			<Icon name="x" size={16} />
@@ -28,7 +29,7 @@ import Icon from './Icon.astro';
 		/>
 		<button
 			type="submit"
-			class="pill-btn h-11 shrink-0 bg-[var(--tomato)] px-5 text-sm font-bold text-white"
+			class="pill-btn h-11 shrink-0 border-2 border-[color-mix(in_srgb,var(--tomato)_45%,transparent)] bg-[var(--tomato-soft)] px-5 text-sm font-bold text-[var(--ink)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_28%,transparent)]"
 		>
 			Add
 		</button>
@@ -37,6 +38,6 @@ import Icon from './Icon.astro';
 	<ul data-todo-list class="max-h-64 space-y-1 overflow-y-auto overscroll-contain pr-1"></ul>
 
 	<p data-todo-empty class="py-6 text-center text-sm text-mute">
-		No tasks yet — add one small thing you can finish.
+		No tasks yet — add one tiny thing to focus on ♡
 	</p>
 </div>

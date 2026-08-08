@@ -1,25 +1,37 @@
 ---
 import Icon from './Icon.astro';
+import Mascot from './Mascot.astro';
 ---
 
-<section class="flex w-full flex-col items-center gap-6 animate-fade-in" data-timer>
+<section class="flex w-full flex-col items-center gap-5 animate-fade-in" data-timer>
 	<!-- Phase eyebrow -->
 	<div class="glass flex items-center gap-2 rounded-full px-4 py-1.5">
 		<span data-phase-icon="focus" class="text-[var(--accent)]"><Icon name="leaf" size={14} /></span>
 		<span data-phase-icon="break" class="hidden text-[var(--accent)]"><Icon name="coffee" size={14} /></span>
-		<span class="eyebrow text-[var(--accent-ink)]" data-phase-label aria-live="polite">Focus</span>
+		<span class="eyebrow text-[var(--accent-ink)]" data-phase-label aria-live="polite">Focus time!</span>
+		<span class="text-[var(--accent)]"><Icon name="sparkle" size={12} /></span>
 	</div>
 
 	<!-- Cycle dots -->
-	<div class="flex items-center gap-2" data-cycle-dots aria-label="Pomodoro cycle progress">
+	<div class="flex items-center gap-1.5" data-cycle-dots role="group" aria-label="Pomodoro cycle progress">
 		<span class="dot" data-dot></span>
 		<span class="dot" data-dot></span>
 		<span class="dot" data-dot></span>
 		<span class="dot" data-dot></span>
 	</div>
 
-	<!-- Ring + digits -->
+	<!-- Ring + mascot + digits -->
 	<div class="relative flex items-center justify-center">
+		<div class="sparkle sparkle-sun" style="top:-3%;left:-7%"><Icon name="sparkle" size={20} /></div>
+		<div class="sparkle sparkle-rose" style="top:6%;right:-8%;--d:0.7s"><Icon name="heart" size={16} /></div>
+		<div class="sparkle" style="bottom:-2%;left:-5%;--d:1.2s"><Icon name="sparkle" size={15} /></div>
+		<div class="sparkle sparkle-sun" style="bottom:12%;right:-6%;--d:1.8s"><Icon name="sparkle" size={12} /></div>
+		<div class="sparkle sparkle-mint" style="top:-9%;right:-2%;--d:2.3s"><Icon name="sparkle" size={14} /></div>
+
+		<div class="absolute left-1/2 top-[0.5%] z-10 w-[18%] -translate-x-1/2 -translate-y-[42%]">
+			<Mascot />
+		</div>
+
 		<svg
 			viewBox="0 0 300 300"
 			class="h-[min(74vw,30rem)] w-[min(74vw,30rem)] -rotate-90"
@@ -37,7 +49,7 @@ import Icon from './Icon.astro';
 				r="134"
 				fill="none"
 				stroke="color-mix(in srgb, var(--ink) 10%, transparent)"
-				stroke-width="9"
+				stroke-width="10"
 			/>
 			<circle
 				data-ring
@@ -46,7 +58,7 @@ import Icon from './Icon.astro';
 				r="134"
 				fill="none"
 				stroke="url(#ring-grad)"
-				stroke-width="9"
+				stroke-width="10"
 				stroke-linecap="round"
 				stroke-dasharray="842"
 				stroke-dashoffset="0"
@@ -55,7 +67,7 @@ import Icon from './Icon.astro';
 		<div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
 			<span
 				data-time
-				class="text-[clamp(3.2rem,15vw,7.5rem)] font-bold leading-none tracking-tight tabular-nums"
+				class="text-[clamp(3.2rem,15vw,7.5rem)] font-extrabold leading-none tracking-tight tabular-nums drop-shadow-[0_4px_0_color-mix(in_srgb,var(--ink)_14%,transparent)]"
 				aria-live="off"
 				>25:00</span
 			>
@@ -64,16 +76,25 @@ import Icon from './Icon.astro';
 				data-task-anchor
 				class="group flex max-w-[min(80%,22rem)] items-center gap-1.5 px-6 text-center text-sm text-mute transition-colors hover:text-body"
 			>
-				<span data-task-text class="line-clamp-2">Add a task to stay anchored</span>
+				<span data-task-text class="line-clamp-2">Tap to add a task ♡</span>
 			</button>
 		</div>
 	</div>
 
 	<!-- Mode pills -->
-	<div class="glass flex gap-1 rounded-full p-1" data-mode-pills role="group" aria-label="Timer mode">
-		<button type="button" data-mode-pill="focus" class="mode-pill" aria-pressed="true">Focus</button>
-		<button type="button" data-mode-pill="short" class="mode-pill" aria-pressed="false">Short break</button>
-		<button type="button" data-mode-pill="long" class="mode-pill" aria-pressed="false">Long break</button>
+	<div class="glass flex gap-1 rounded-full p-1.5" data-mode-pills role="group" aria-label="Timer mode">
+		<button type="button" data-mode-pill="focus" class="mode-pill" aria-pressed="true">
+			<Icon name="leaf" size={14} />
+			Focus
+		</button>
+		<button type="button" data-mode-pill="short" class="mode-pill" aria-pressed="false">
+			<Icon name="coffee" size={14} />
+			Short break
+		</button>
+		<button type="button" data-mode-pill="long" class="mode-pill" aria-pressed="false">
+			<Icon name="moon" size={14} />
+			Long break
+		</button>
 	</div>
 
 	<!-- Actions -->
@@ -84,7 +105,7 @@ import Icon from './Icon.astro';
 		<button
 			type="button"
 			data-start-btn
-			class="pill-btn px-10 py-4 text-lg font-bold text-white"
+			class="pill-btn px-11 py-4 text-xl font-extrabold text-white"
 		>
 			<span data-start-icon class="flex"><Icon name="play" size={20} /></span>
 			<span data-start-label>Start</span>
@@ -97,38 +118,56 @@ import Icon from './Icon.astro';
 
 <style>
 	.mode-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
 		border-radius: 9999px;
-		padding: 0.42rem 0.95rem;
+		padding: 0.45rem 1rem;
 		font-size: 0.8rem;
-		font-weight: 600;
+		font-weight: 700;
 		color: var(--body);
+		border: 2px solid transparent;
 		transition:
 			background-color 0.2s ease,
-			color 0.2s ease;
+			color 0.2s ease,
+			transform 0.15s ease,
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
 	}
 	.mode-pill:hover {
 		color: var(--ink);
+		transform: translateY(-1px);
 	}
 	.mode-pill[aria-pressed='true'] {
 		background: var(--accent-soft);
 		color: var(--accent-ink);
+		border-color: color-mix(in srgb, var(--accent-ink) 35%, transparent);
+		box-shadow: 0 3px 0 color-mix(in srgb, var(--accent-ink) 22%, transparent);
 	}
 
 	.dot {
-		width: 8px;
-		height: 8px;
-		border-radius: 9999px;
-		background: color-mix(in srgb, var(--accent) 24%, transparent);
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 15px;
+		height: 15px;
+		font-size: 12px;
+		line-height: 1;
+	}
+	.dot::before {
+		content: '♥';
+		color: color-mix(in srgb, var(--accent) 25%, transparent);
 		transition:
-			background-color 0.3s ease,
+			color 0.3s ease,
 			transform 0.3s ease;
 	}
-	.dot[data-done='true'] {
-		background: var(--accent);
+	.dot[data-done='true']::before {
+		color: var(--accent);
 	}
-	.dot[data-current='true'] {
+	.dot[data-current='true']::before {
+		color: var(--accent);
 		animation: var(--animate-breathe);
-		background: var(--accent);
 	}
 
 	[data-ring] {
@@ -137,15 +176,34 @@ import Icon from './Icon.astro';
 
 	[data-start-btn] {
 		background: var(--tomato-deep);
-		box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--tomato) 60%, transparent);
+		border: 2.5px solid color-mix(in srgb, var(--tomato-deep) 68%, #000);
+		color: #fff;
+		box-shadow:
+			0 6px 0 color-mix(in srgb, var(--tomato-deep) 68%, #000),
+			0 22px 34px -16px color-mix(in srgb, var(--tomato) 75%, transparent);
+		text-shadow: 0 1px 0 rgb(0 0 0 / 0.16);
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			background-color 0.2s ease,
+			color 0.2s ease;
 	}
 	[data-start-btn]:hover {
-		background: color-mix(in srgb, var(--tomato-deep) 90%, var(--ink));
+		background: color-mix(in srgb, var(--tomato-deep) 92%, var(--ink));
+		transform: translateY(-2px);
+	}
+	[data-start-btn]:active {
+		transform: translateY(4px);
+		box-shadow:
+			0 2px 0 color-mix(in srgb, var(--tomato-deep) 68%, #000),
+			0 10px 18px -10px color-mix(in srgb, var(--tomato) 60%, transparent);
 	}
 	[data-start-btn][data-running='true'] {
 		background: var(--accent-soft);
+		border-color: color-mix(in srgb, var(--accent-ink) 45%, transparent);
 		color: var(--accent-ink);
-		box-shadow: none;
+		box-shadow: 0 6px 0 color-mix(in srgb, var(--accent-ink) 35%, transparent);
+		text-shadow: none;
 	}
 
 	body[data-phase='break'] [data-phase-icon='focus'] {
@@ -154,5 +212,4 @@ import Icon from './Icon.astro';
 	body[data-phase='break'] [data-phase-icon='break'] {
 		display: inline-flex;
 	}
-
 </style>

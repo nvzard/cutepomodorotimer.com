@@ -1,0 +1,73 @@
+---
+---
+
+<div class="mascot" aria-hidden="true">
+	<svg viewBox="0 0 140 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<linearGradient id="mascot-body" x1="30" y1="24" x2="110" y2="116" gradientUnits="userSpaceOnUse">
+				<stop stop-color="#ff9dbb" />
+				<stop offset="1" stop-color="#f85e8e" />
+			</linearGradient>
+		</defs>
+
+		<!-- leaves + stem -->
+		<g>
+			<path d="M70 26 C60 18 44 15 32 18 C44 26 58 30 70 28 Z" fill="#7bd88f" />
+			<path d="M70 26 C80 18 96 15 108 18 C96 26 82 30 70 28 Z" fill="#7bd88f" />
+			<path
+				d="M70 30 C70 21 70 14 70 9 C73 12 76 15 76 19 C74 24 72 27 70 30 Z"
+				fill="#6cc37f"
+			/>
+		</g>
+
+		<!-- body -->
+		<circle cx="70" cy="74" r="46" fill="url(#mascot-body)" stroke="#e84a78" stroke-width="3.5" />
+		<!-- glossy highlight -->
+		<ellipse cx="52" cy="54" rx="16" ry="10" fill="#fff" opacity="0.4" transform="rotate(-24 52 54)" />
+
+		<!-- blush -->
+		<ellipse cx="43" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95" />
+		<ellipse cx="97" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95" />
+
+		<!-- eyes — focus (determined squint) -->
+		<g class="mascot-face-focus" stroke="#7a2440" stroke-width="4.2" stroke-linecap="round">
+			<path d="M44 67 q8 9 16 0" />
+			<path d="M80 67 q8 9 16 0" />
+		</g>
+		<!-- eyes — break (happy closed) -->
+		<g class="mascot-face-break" stroke="#7a2440" stroke-width="4.2" stroke-linecap="round">
+			<path d="M44 67 q8 -9 16 0" />
+			<path d="M80 67 q8 -9 16 0" />
+		</g>
+
+		<!-- mouth — focus (determined "w") -->
+		<path
+			class="mascot-face-focus"
+			d="M57 88 q6 7 12 0 q6 7 12 0"
+			stroke="#7a2440"
+			stroke-width="4.2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			fill="none"
+		/>
+		<!-- mouth — break (open smile) -->
+		<path class="mascot-face-break" d="M50 84 Q70 102 90 84 Q70 92 50 84 Z" fill="#7a2440" />
+	</svg>
+</div>
+
+<style>
+	.mascot {
+		animation: var(--animate-mascot-bob);
+		transform-origin: 50% 92%;
+		filter: drop-shadow(0 10px 14px rgb(232 74 120 / 0.28));
+	}
+	.mascot-face-break {
+		display: none;
+	}
+	body[data-phase='break'] .mascot-face-focus {
+		display: none;
+	}
+	body[data-phase='break'] .mascot-face-break {
+		display: block;
+	}
+</style>

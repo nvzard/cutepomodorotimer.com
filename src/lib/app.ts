@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function updateThemeMeta() {
 		const isDark = document.documentElement.classList.contains('dark');
 		const meta = document.querySelector('meta[name="theme-color"]');
-		if (meta) meta.setAttribute('content', isDark ? '#17171b' : '#f7f2ea');
+		if (meta) meta.setAttribute('content', isDark ? '#231926' : '#fff3f8');
 	}
 
 	themeToggle.addEventListener('click', () => {
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			<li class="group flex items-center gap-3 rounded-xl px-2.5 py-2 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_6%,transparent)]" data-id="${t.id}">
 				<button type="button" data-act="toggle" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-all ${
 					t.done
-						? 'border-[var(--tomato)] bg-[var(--tomato)] text-white'
+						? 'border-[var(--tomato-deep)] bg-[var(--tomato-deep)] text-white'
 						: 'border-[color-mix(in_srgb,var(--mute)_55%,transparent)] text-transparent hover:border-[var(--tomato)]'
 				}" aria-label="${t.done ? 'Mark as not done' : 'Mark as done'}">${checkSvg}</button>
 				<span class="min-w-0 flex-1 break-words text-sm ${t.done ? 'text-mute line-through' : 'text-ink'}">${esc(t.text)}</span>
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function updateAnchor() {
 		const active = todos.find((t) => !t.done) ?? todos[todos.length - 1];
-		taskText.textContent = active ? active.text : 'Add a task to stay anchored';
+		taskText.textContent = active ? active.text : 'Tap to add a task ♡';
 	}
 
 	function saveTodos() {
@@ -368,8 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		stopTicker();
 		totalSec = phaseDuration();
 		remaining = totalSec;
-		body.setAttribute('data-phase', p);
-		phaseLabel.textContent = p === 'focus' ? 'Focus' : p === 'short' ? 'Short break' : 'Long break';
+		body.setAttribute('data-phase', p === 'focus' ? 'focus' : 'break');
+		phaseLabel.textContent = p === 'focus' ? 'Focus time!' : p === 'short' ? 'Snack time' : 'Nap time ♡';
 		updateTime();
 		updateRing();
 		updateStartBtn();
@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (phase === 'focus') {
 			completedFocuses += 1;
 			const next: Phase = completedFocuses % 4 === 0 ? 'long' : 'short';
-			notify('Focus complete', next === 'long' ? 'Great work — time for a long break.' : 'Nice work — time for a short break.');
+			notify('Focus complete', next === 'long' ? 'Yay! Time for a nap break ♡' : 'Yay! Time for a snack break ♡');
 			setPhase(next);
 			if (settings.autoBreaks) {
 				setTimeout(() => {
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}, 500);
 			}
 		} else {
-			notify('Break over', 'Ready for another focus session?');
+			notify('Break over', 'Round two? You got this! ♡');
 			setPhase('focus');
 		}
 	}

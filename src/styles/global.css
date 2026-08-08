@@ -34,6 +34,8 @@
   --color-tomato-soft: var(--tomato-soft);
   --color-sky: var(--sky);
   --color-sky-soft: var(--sky-soft);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
 
   --color-ring: var(--ring);
 
@@ -47,98 +49,106 @@
   --animate-pop: pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.35) both;
   --animate-breathe: breathe 5s ease-in-out infinite;
   --animate-spin-slow: spin 6s linear infinite;
+  --animate-twinkle: twinkle 2.6s ease-in-out infinite;
+  --animate-mascot-bob: mascot-bob 3.4s ease-in-out infinite;
+  --animate-heart-float: heart-float 9s ease-in-out infinite;
+  --animate-wiggle: wiggle 2.4s ease-in-out infinite;
 }
 
-/* Light — warm cream */
+/* Light — bubblegum candy */
 :root {
-  --canvas: #f7f2ea;
-  --canvas-2: #efe7da;
-  --surface: #fffdf7;
-  --surface-2: #f3ecdf;
-  --ink: #453d34;
-  --body: #6f6355;
-  --mute: #736555;
-  --line: #e6dccb;
+  --canvas: #fff3f8;
+  --canvas-2: #ffe9f1;
+  --surface: #fffdfe;
+  --surface-2: #fff0f6;
+  --ink: #4b3450;
+  --body: #a07b9c;
+  --mute: #c3a1be;
+  --line: #f9dce9;
 
-  --sage: #87a078;
-  --sage-soft: #e6ecde;
-  --blush: #c9887b;
-  --blush-soft: #f2e2dc;
-  --peach: #d99a63;
-  --peach-soft: #f6e8d6;
-  --tomato: #cf6f60;
-  --tomato-deep: #b65340;
-  --tomato-soft: #f4ddd8;
-  --sky: #7fa3c4;
-  --sky-soft: #e2eaf2;
+  --sage: #53c48f;
+  --sage-soft: #d9f4e5;
+  --blush: #c79ce8;
+  --blush-soft: #efe2fb;
+  --peach: #ffab7a;
+  --peach-soft: #ffe7d4;
+  --tomato: #ff7ba6;
+  --tomato-deep: #f25a8c;
+  --tomato-soft: #ffe0ea;
+  --sky: #8fc8f2;
+  --sky-soft: #e1f0fd;
+  --sun: #ffcf5e;
+  --sun-soft: #fff1cf;
 
-  --ring: #cf8d7c;
+  --ring: #ff7ba6;
 }
 
-/* Dark — warm charcoal */
+/* Dark — candy night */
 .dark {
-  --canvas: #17171b;
-  --canvas-2: #1d1e24;
-  --surface: #222329;
-  --surface-2: #2a2c33;
-  --ink: #e8e2d7;
-  --body: #b4ab9d;
-  --mute: #8d8476;
-  --line: #2e313a;
+  --canvas: #231926;
+  --canvas-2: #2a1f2e;
+  --surface: #322636;
+  --surface-2: #3b2e40;
+  --ink: #ffe6f0;
+  --body: #d1b2c9;
+  --mute: #9c80a0;
+  --line: #453346;
 
-  --sage: #9cb48e;
-  --sage-soft: #2a3027;
-  --blush: #c99082;
-  --blush-soft: #382b29;
-  --peach: #dda26b;
-  --peach-soft: #392c1f;
-  --tomato: #dd8a79;
-  --tomato-deep: #c96b5a;
-  --tomato-soft: #3d2726;
-  --sky: #85a5c6;
-  --sky-soft: #272d38;
+  --sage: #6fe0b0;
+  --sage-soft: #203d31;
+  --blush: #cf9df0;
+  --blush-soft: #3a2b48;
+  --peach: #ffc08d;
+  --peach-soft: #432d1c;
+  --tomato: #ff8fb4;
+  --tomato-deep: #ef4f83;
+  --tomato-soft: #462433;
+  --sky: #9fcaf5;
+  --sky-soft: #28314a;
+  --sun: #ffd875;
+  --sun-soft: #3d341a;
 
-  --ring: #dd8a79;
+  --ring: #ff8fb4;
 }
 
 /* ------------------------------------------------------------------ */
 /* Live scene — palette shifts with session phase + theme              */
 /* ------------------------------------------------------------------ */
 body[data-phase='focus'] {
-  --scene-a: #f2cf9f;
-  --scene-b: #d9e4ef;
-  --scene-c: #dbe6cd;
-  --scene-d: #f5e5cd;
-  --scene-base: #f7f2ea;
+  --scene-a: #ffd3e3;
+  --scene-b: #ffe3cb;
+  --scene-c: #ffd9ee;
+  --scene-d: #ffc9dd;
+  --scene-base: #fff3f8;
   --accent: var(--tomato);
-  --accent-ink: #a0473a;
+  --accent-ink: #d63f74;
   --accent-soft: var(--tomato-soft);
 }
 body[data-phase='break'] {
-  --scene-a: #cde1d1;
-  --scene-b: #d2dcef;
-  --scene-c: #e5dff0;
-  --scene-d: #e6ecd9;
-  --scene-base: #f6f2ec;
+  --scene-a: #c6eed8;
+  --scene-b: #d3e6fb;
+  --scene-c: #e6dcf8;
+  --scene-d: #e7efc8;
+  --scene-base: #fbf7f6;
   --accent: var(--sage);
-  --accent-ink: #556b3c;
+  --accent-ink: #2f9a6e;
   --accent-soft: var(--sage-soft);
 }
 .dark body[data-phase='focus'] {
-  --scene-a: #4b362b;
-  --scene-b: #2b2f3d;
-  --scene-c: #343130;
-  --scene-d: #3c2b28;
-  --scene-base: #17171b;
-  --accent-ink: #e09584;
+  --scene-a: #3f1f31;
+  --scene-b: #38242e;
+  --scene-c: #452a3c;
+  --scene-d: #331b28;
+  --scene-base: #231926;
+  --accent-ink: #ffb0c8;
 }
 .dark body[data-phase='break'] {
-  --scene-a: #263c38;
-  --scene-b: #232b40;
-  --scene-c: #2c2740;
-  --scene-d: #20262c;
-  --scene-base: #17171b;
-  --accent-ink: #a9c19b;
+  --scene-a: #1e3a2e;
+  --scene-b: #212b44;
+  --scene-c: #332a48;
+  --scene-d: #202e24;
+  --scene-base: #231926;
+  --accent-ink: #9fe3c4;
 }
 
 /* ------------------------------------------------------------------ */
@@ -199,40 +209,20 @@ body[data-phase='break'] {
 /* Small stable components                                             */
 /* ------------------------------------------------------------------ */
 @layer components {
-  .icon-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 9999px;
-    color: var(--body);
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease,
-      transform 0.15s ease;
-  }
-  .icon-btn:hover {
-    background: color-mix(in srgb, var(--ink) 9%, transparent);
-    color: var(--ink);
-  }
-  .icon-btn:active {
-    transform: scale(0.94);
-  }
-
   .glass {
-    background: color-mix(in srgb, var(--surface) 78%, transparent);
-    backdrop-filter: blur(16px) saturate(1.15);
-    -webkit-backdrop-filter: blur(16px) saturate(1.15);
-    border: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid color-mix(in srgb, var(--ink) 10%, transparent);
+    border-radius: 1.75rem;
     box-shadow:
-      0 1px 1px rgb(0 0 0 / 0.04),
-      0 12px 34px -16px rgb(0 0 0 / 0.22);
+      0 5px 0 -1px color-mix(in srgb, var(--ink) 8%, transparent),
+      0 18px 40px -22px rgb(0 0 0 / 0.28);
   }
 
   .eyebrow {
     font-size: 0.6875rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
@@ -254,10 +244,110 @@ body[data-phase='break'] {
     transform: scale(0.97);
   }
 
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 2px solid color-mix(in srgb, var(--ink) 10%, transparent);
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
+    color: var(--body);
+    box-shadow: 0 3px 0 color-mix(in srgb, var(--ink) 7%, transparent);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .icon-btn:hover {
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+  .icon-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 7%, transparent);
+  }
+
+  /* Chunky squishy sticker button */
+  .sticker-btn {
+    position: relative;
+    border-radius: 9999px;
+    border: 2.5px solid var(--btn-edge, color-mix(in srgb, var(--ink) 14%, transparent));
+    background: var(--btn-bg, var(--surface));
+    color: var(--btn-ink, var(--ink));
+    box-shadow: 0 6px 0 var(--btn-edge, color-mix(in srgb, var(--ink) 14%, transparent));
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .sticker-btn:hover {
+    transform: translateY(-2px);
+  }
+  .sticker-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 var(--btn-edge, color-mix(in srgb, var(--ink) 14%, transparent));
+  }
+
+  /* Twinkling deco sparkles / hearts */
+  .sparkle {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+    color: var(--accent);
+    animation: var(--animate-twinkle);
+    animation-delay: var(--d, 0s);
+    filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.12));
+  }
+  .sparkle-rose {
+    color: var(--tomato);
+  }
+  .sparkle-sun {
+    color: var(--sun);
+  }
+  .sparkle-mint {
+    color: var(--sage);
+  }
+
+  /* Floating cute deco for the background */
+  .bg-deco {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: var(--o, 0.5);
+    animation:
+      float var(--dur, 9s) ease-in-out infinite,
+      twinkle var(--tw, 2.8s) ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+  .bg-deco-heart {
+    color: var(--tomato);
+  }
+  .bg-deco-heart-soft {
+    color: var(--blush);
+  }
+  .bg-deco-sparkle {
+    color: var(--sun);
+  }
+  .bg-deco-star {
+    color: var(--peach);
+  }
+
   .slider {
     -webkit-appearance: none;
     appearance: none;
-    height: 5px;
+    height: 7px;
     border-radius: 9999px;
     background: color-mix(in srgb, var(--ink) 14%, transparent);
     cursor: pointer;
@@ -265,19 +355,19 @@ body[data-phase='break'] {
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     border-radius: 9999px;
-    background: var(--tomato);
-    border: 2px solid var(--surface);
-    box-shadow: 0 1px 4px rgb(0 0 0 / 0.2);
+    background: var(--tomato-deep);
+    border: 2.5px solid var(--surface);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 0.18);
   }
   .slider::-moz-range-thumb {
     width: 13px;
     height: 13px;
     border-radius: 9999px;
-    background: var(--tomato);
-    border: 2px solid var(--surface);
+    background: var(--tomato-deep);
+    border: 2.5px solid var(--surface);
   }
 }
 
@@ -353,6 +443,44 @@ body[data-phase='break'] {
   }
   50% {
     transform: scale(1.02);
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(18deg);
+  }
+}
+@keyframes mascot-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(2deg);
+  }
+}
+@keyframes heart-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(8deg);
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
   }
 }
 
