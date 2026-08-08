@@ -1,8 +1,13 @@
 ---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
 ---
 
-<div class="mascot" aria-hidden="true">
-	<svg viewBox="0 0 140 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class={`mascot ${className}`.trim()} aria-hidden="true">
+	<svg viewBox="0 0 140 126" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-full w-full">
 		<defs>
 			<linearGradient id="mascot-body" x1="30" y1="24" x2="110" y2="116" gradientUnits="userSpaceOnUse">
 				<stop stop-color="#ff9dbb" />

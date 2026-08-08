@@ -1,17 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 126">
   <defs>
-    <linearGradient id="t" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ff9dbb"/>
+    <linearGradient id="fb-body" x1="30" y1="24" x2="110" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff9dbb"/>
       <stop offset="1" stop-color="#f85e8e"/>
     </linearGradient>
   </defs>
-  <path d="M32 14 C26 9 16 7.5 10 10 C15 16 22 19 32 17 Z" fill="#7bd88f"/>
-  <path d="M32 14 C38 9 48 7.5 54 10 C49 16 42 19 32 17 Z" fill="#7bd88f"/>
-  <path d="M32 18 C32 10 32 6 32 3 C34 5 35.5 7.5 35.5 10 C34 13 33 16 32 18 Z" fill="#6cc37f"/>
-  <circle cx="32" cy="38" r="21" fill="url(#t)" stroke="#e84a78" stroke-width="2.5"/>
-  <ellipse cx="25" cy="30" rx="7" ry="4.5" fill="#fff" opacity="0.4" transform="rotate(-24 25 30)"/>
-  <ellipse cx="21.5" cy="43.5" rx="4" ry="2.5" fill="#ffb3c7"/>
-  <ellipse cx="42.5" cy="43.5" rx="4" ry="2.5" fill="#ffb3c7"/>
-  <path d="M20 35 q4 4.5 8 0 M36 35 q4 4.5 8 0" stroke="#7a2440" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-  <path d="M26.5 47.5 q5 6 10 0 q5 6 10 0" stroke="#7a2440" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+  <path d="M70 26 C60 18 44 15 32 18 C44 26 58 30 70 28 Z" fill="#7bd88f"/>
+  <path d="M70 26 C80 18 96 15 108 18 C96 26 82 30 70 28 Z" fill="#7bd88f"/>
+  <path d="M70 30 C70 21 70 14 70 9 C73 12 76 15 76 19 C74 24 72 27 70 30 Z" fill="#6cc37f"/>
+  <circle cx="70" cy="74" r="46" fill="url(#fb-body)" stroke="#e84a78" stroke-width="3.5"/>
+  <ellipse cx="52" cy="54" rx="16" ry="10" fill="#fff" opacity="0.4" transform="rotate(-24 52 54)"/>
+  <ellipse cx="43" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95"/>
+  <ellipse cx="97" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95"/>
+  <g stroke="#7a2440" stroke-width="4.2" stroke-linecap="round" fill="none">
+    <path d="M44 67 q8 -9 16 0"/>
+    <path d="M80 67 q8 -9 16 0"/>
+  </g>
+  <path d="M50 84 Q70 102 90 84 Q70 92 50 84 Z" fill="#7a2440"/>
 </svg>
