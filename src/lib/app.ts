@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function updateTitle() {
 		const label = phase === 'focus' ? 'Focus' : phase === 'short' ? 'Short Break' : 'Long Break';
-		document.title = running ? `${timeEl.textContent} · ${label} — Cute Pomodoro` : 'Cute Pomodoro Timer';
+		document.title = running ? `${timeEl.textContent} · ${label} — Cute Timer` : 'Cute Timer — Cute Pomodoro Timer Online for Studying';
 	}
 
 	function updateStartBtn() {
