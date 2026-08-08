@@ -1,0 +1,158 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section class="flex w-full flex-col items-center gap-6 animate-fade-in" data-timer>
+	<!-- Phase eyebrow -->
+	<div class="glass flex items-center gap-2 rounded-full px-4 py-1.5">
+		<span data-phase-icon="focus" class="text-[var(--accent)]"><Icon name="leaf" size={14} /></span>
+		<span data-phase-icon="break" class="hidden text-[var(--accent)]"><Icon name="coffee" size={14} /></span>
+		<span class="eyebrow text-[var(--accent-ink)]" data-phase-label aria-live="polite">Focus</span>
+	</div>
+
+	<!-- Cycle dots -->
+	<div class="flex items-center gap-2" data-cycle-dots aria-label="Pomodoro cycle progress">
+		<span class="dot" data-dot></span>
+		<span class="dot" data-dot></span>
+		<span class="dot" data-dot></span>
+		<span class="dot" data-dot></span>
+	</div>
+
+	<!-- Ring + digits -->
+	<div class="relative flex items-center justify-center">
+		<svg
+			viewBox="0 0 300 300"
+			class="h-[min(74vw,30rem)] w-[min(74vw,30rem)] -rotate-90"
+			aria-hidden="true"
+		>
+			<defs>
+				<linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="var(--tomato)" />
+					<stop offset="100%" stop-color="var(--peach)" />
+				</linearGradient>
+			</defs>
+			<circle
+				cx="150"
+				cy="150"
+				r="134"
+				fill="none"
+				stroke="color-mix(in srgb, var(--ink) 10%, transparent)"
+				stroke-width="9"
+			/>
+			<circle
+				data-ring
+				cx="150"
+				cy="150"
+				r="134"
+				fill="none"
+				stroke="url(#ring-grad)"
+				stroke-width="9"
+				stroke-linecap="round"
+				stroke-dasharray="842"
+				stroke-dashoffset="0"
+			/>
+		</svg>
+		<div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+			<span
+				data-time
+				class="text-[clamp(3.2rem,15vw,7.5rem)] font-bold leading-none tracking-tight tabular-nums"
+				aria-live="off"
+				>25:00</span
+			>
+			<button
+				type="button"
+				data-task-anchor
+				class="group flex max-w-[min(80%,22rem)] items-center gap-1.5 px-6 text-center text-sm text-mute transition-colors hover:text-body"
+			>
+				<span data-task-text class="line-clamp-2">Add a task to stay anchored</span>
+			</button>
+		</div>
+	</div>
+
+	<!-- Mode pills -->
+	<div class="glass flex gap-1 rounded-full p-1" data-mode-pills role="group" aria-label="Timer mode">
+		<button type="button" data-mode-pill="focus" class="mode-pill" aria-pressed="true">Focus</button>
+		<button type="button" data-mode-pill="short" class="mode-pill" aria-pressed="false">Short break</button>
+		<button type="button" data-mode-pill="long" class="mode-pill" aria-pressed="false">Long break</button>
+	</div>
+
+	<!-- Actions -->
+	<div class="flex items-center gap-4">
+		<button type="button" data-reset-btn class="icon-btn glass" aria-label="Reset timer">
+			<Icon name="reset" size={20} />
+		</button>
+		<button
+			type="button"
+			data-start-btn
+			class="pill-btn px-10 py-4 text-lg font-bold text-white"
+		>
+			<span data-start-icon class="flex"><Icon name="play" size={20} /></span>
+			<span data-start-label>Start</span>
+		</button>
+		<button type="button" data-skip-btn class="icon-btn glass" aria-label="Skip to next phase">
+			<Icon name="skip" size={20} />
+		</button>
+	</div>
+</section>
+
+<style>
+	.mode-pill {
+		border-radius: 9999px;
+		padding: 0.42rem 0.95rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: var(--body);
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
+	}
+	.mode-pill:hover {
+		color: var(--ink);
+	}
+	.mode-pill[aria-pressed='true'] {
+		background: var(--accent-soft);
+		color: var(--accent-ink);
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 9999px;
+		background: color-mix(in srgb, var(--accent) 24%, transparent);
+		transition:
+			background-color 0.3s ease,
+			transform 0.3s ease;
+	}
+	.dot[data-done='true'] {
+		background: var(--accent);
+	}
+	.dot[data-current='true'] {
+		animation: var(--animate-breathe);
+		background: var(--accent);
+	}
+
+	[data-ring] {
+		transition: stroke-dashoffset 0.5s linear;
+	}
+
+	[data-start-btn] {
+		background: var(--tomato-deep);
+		box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--tomato) 60%, transparent);
+	}
+	[data-start-btn]:hover {
+		background: color-mix(in srgb, var(--tomato-deep) 90%, var(--ink));
+	}
+	[data-start-btn][data-running='true'] {
+		background: var(--accent-soft);
+		color: var(--accent-ink);
+		box-shadow: none;
+	}
+
+	body[data-phase='break'] [data-phase-icon='focus'] {
+		display: none;
+	}
+	body[data-phase='break'] [data-phase-icon='break'] {
+		display: inline-flex;
+	}
+
+</style>

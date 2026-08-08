@@ -1,11 +1,39 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Background from '../components/Background.astro';
+import TopBar from '../components/TopBar.astro';
+import Timer from '../components/Timer.astro';
+import TodoPanel from '../components/TodoPanel.astro';
+import SettingsPanel from '../components/SettingsPanel.astro';
+import Dock from '../components/Dock.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<a
+		href="#main"
+		class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
+		>Skip to timer</a
+	>
+	<Background />
+	<TopBar />
+
+	<main
+		id="main"
+		class="relative flex min-h-screen flex-col items-center justify-center px-4 pb-[calc(9rem+env(safe-area-inset-bottom))] pt-[calc(6rem+env(safe-area-inset-top))]"
+	>
+		<h1 class="sr-only">Cute Pomodoro Timer</h1>
+		<Timer />
+		<p class="mt-10 hidden text-xs text-mute/80 sm:block">
+			<span class="font-semibold">space</span> start &middot; <span class="font-semibold">r</span> reset &middot;
+			<span class="font-semibold">m</span> music
+		</p>
+	</main>
+
+	<TodoPanel />
+	<SettingsPanel />
+	<Dock />
+
+	<script>
+		import '../lib/app.ts';
+	</script>
 </Layout>

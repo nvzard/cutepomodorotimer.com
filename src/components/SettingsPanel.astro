@@ -1,0 +1,148 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div
+	data-settings-panel
+	class="glass fixed right-4 top-16 z-40 hidden w-[min(21rem,calc(100vw-2rem))] rounded-3xl p-5 animate-pop"
+	role="dialog"
+	aria-label="Timer settings"
+>
+	<div class="mb-4 flex items-center justify-between">
+		<h2 class="text-base font-bold">Settings</h2>
+		<button type="button" data-settings-close class="icon-btn h-8 w-8" aria-label="Close settings">
+			<Icon name="x" size={16} />
+		</button>
+	</div>
+
+	<div class="space-y-4">
+		<div class="space-y-3">
+			<p class="eyebrow text-mute">Durations</p>
+
+			<div class="flex items-center justify-between">
+				<label for="dur-focus" class="text-sm font-medium">Focus</label>
+				<div class="flex items-center gap-1.5">
+					<button type="button" data-step-minus="focus" class="icon-btn h-8 w-8" aria-label="Decrease focus minutes">
+						<Icon name="minus" size={14} />
+					</button>
+					<input
+						id="dur-focus"
+						name="dur-focus"
+						type="number"
+						inputmode="numeric"
+						autocomplete="off"
+						spellcheck="false"
+						data-dur="focus"
+						min="1"
+						max="180"
+						class="h-9 w-14 rounded-full border border-line bg-surface-2 text-center text-sm font-semibold tabular-nums focus:border-[var(--tomato)] focus:outline-none"
+					/>
+					<button type="button" data-step-plus="focus" class="icon-btn h-8 w-8" aria-label="Increase focus minutes">
+						<Icon name="plus" size={14} />
+					</button>
+				</div>
+			</div>
+
+			<div class="flex items-center justify-between">
+				<label for="dur-short" class="text-sm font-medium">Short break</label>
+				<div class="flex items-center gap-1.5">
+					<button type="button" data-step-minus="short" class="icon-btn h-8 w-8" aria-label="Decrease short break minutes">
+						<Icon name="minus" size={14} />
+					</button>
+					<input
+						id="dur-short"
+						name="dur-short"
+						type="number"
+						inputmode="numeric"
+						autocomplete="off"
+						spellcheck="false"
+						data-dur="short"
+						min="1"
+						max="60"
+						class="h-9 w-14 rounded-full border border-line bg-surface-2 text-center text-sm font-semibold tabular-nums focus:border-[var(--tomato)] focus:outline-none"
+					/>
+					<button type="button" data-step-plus="short" class="icon-btn h-8 w-8" aria-label="Increase short break minutes">
+						<Icon name="plus" size={14} />
+					</button>
+				</div>
+			</div>
+
+			<div class="flex items-center justify-between">
+				<label for="dur-long" class="text-sm font-medium">Long break</label>
+				<div class="flex items-center gap-1.5">
+					<button type="button" data-step-minus="long" class="icon-btn h-8 w-8" aria-label="Decrease long break minutes">
+						<Icon name="minus" size={14} />
+					</button>
+					<input
+						id="dur-long"
+						name="dur-long"
+						type="number"
+						inputmode="numeric"
+						autocomplete="off"
+						spellcheck="false"
+						data-dur="long"
+						min="1"
+						max="90"
+						class="h-9 w-14 rounded-full border border-line bg-surface-2 text-center text-sm font-semibold tabular-nums focus:border-[var(--tomato)] focus:outline-none"
+					/>
+					<button type="button" data-step-plus="long" class="icon-btn h-8 w-8" aria-label="Increase long break minutes">
+						<Icon name="plus" size={14} />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+		<div class="space-y-3.5">
+			<div class="flex items-center justify-between">
+				<label for="t-auto" class="text-sm font-medium">Auto-start breaks</label>
+				<button type="button" data-toggle="autoBreaks" id="t-auto" class="switch" role="switch" aria-checked="true">
+					<span class="knob"></span>
+				</button>
+			</div>
+
+			<div class="flex items-center justify-between">
+				<label for="t-sound" class="text-sm font-medium">Chime when done</label>
+				<button type="button" data-toggle="sound" id="t-sound" class="switch" role="switch" aria-checked="true">
+					<span class="knob"></span>
+				</button>
+			</div>
+
+			<div class="flex items-center justify-between">
+				<label for="t-notify" class="text-sm font-medium">Browser notifications</label>
+				<button type="button" data-toggle="notify" id="t-notify" class="switch" role="switch" aria-checked="false">
+					<span class="knob"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.switch {
+		position: relative;
+		width: 42px;
+		height: 24px;
+		border-radius: 9999px;
+		background: color-mix(in srgb, var(--ink) 16%, transparent);
+		transition: background-color 0.2s ease;
+	}
+	.switch .knob {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+		width: 18px;
+		height: 18px;
+		border-radius: 9999px;
+		background: #fff;
+		box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+		transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+	}
+	.switch[aria-checked='true'] {
+		background: var(--tomato);
+	}
+	.switch[aria-checked='true'] .knob {
+		transform: translateX(18px);
+	}
+</style>

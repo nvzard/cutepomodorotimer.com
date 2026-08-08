@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div
+	data-todo-panel
+	class="glass fixed bottom-24 left-1/2 z-40 hidden w-[min(26rem,calc(100vw-2rem))] -translate-x-1/2 rounded-3xl p-5 animate-pop"
+	role="dialog"
+	aria-label="Task list"
+>
+	<div class="mb-4 flex items-center justify-between">
+		<h2 class="text-base font-bold">
+			Tasks <span data-todo-panel-count class="font-semibold text-mute"></span>
+		</h2>
+		<button type="button" data-todo-close class="icon-btn h-8 w-8" aria-label="Close task list">
+			<Icon name="x" size={16} />
+		</button>
+	</div>
+
+	<form data-todo-form class="mb-4 flex gap-2">
+		<input
+			type="text"
+			data-todo-input
+			placeholder="What are you focusing on…"
+			autocomplete="off"
+			aria-label="New task"
+			class="h-11 min-w-0 flex-1 rounded-full border border-line bg-surface px-4 text-sm text-ink placeholder:text-mute focus:border-[var(--tomato)] focus:outline-none"
+		/>
+		<button
+			type="submit"
+			class="pill-btn h-11 shrink-0 bg-[var(--tomato)] px-5 text-sm font-bold text-white"
+		>
+			Add
+		</button>
+	</form>
+
+	<ul data-todo-list class="max-h-64 space-y-1 overflow-y-auto overscroll-contain pr-1"></ul>
+
+	<p data-todo-empty class="py-6 text-center text-sm text-mute">
+		No tasks yet — add one small thing you can finish.
+	</p>
+</div>

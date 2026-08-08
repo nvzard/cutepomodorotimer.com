@@ -1,0 +1,53 @@
+---
+interface Props {
+	name: string;
+	size?: number;
+	strokeWidth?: number;
+	class?: string;
+}
+
+const { name, size = 20, strokeWidth = 1.8, class: className } = Astro.props;
+
+const filled = ['play', 'pause', 'tomato', 'tomato-small'].includes(name);
+
+const paths: Record<string, string> = {
+	play: '<polygon points="6 3 20 12 6 21 6 3"/>',
+	pause: '<rect x="6" y="4" width="4" height="16" rx="1.2"/><rect x="14" y="4" width="4" height="16" rx="1.2"/>',
+	reset: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+	skip: '<polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/>',
+	sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>',
+	moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+	music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+	'volume-2':
+		'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',
+	'volume-x':
+		'<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/>',
+	list: '<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>',
+	x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+	plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
+	minus: '<path d="M5 12h14"/>',
+	gear: '<line x1="21" y1="4" x2="14" y2="4"/><line x1="10" y1="4" x2="3" y2="4"/><line x1="21" y1="12" x2="12" y2="12"/><line x1="8" y1="12" x2="3" y2="12"/><line x1="21" y1="20" x2="16" y2="20"/><line x1="12" y1="20" x2="3" y2="20"/><line x1="14" y1="2" x2="14" y2="6"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="16" y1="18" x2="16" y2="22"/>',
+	check: '<path d="M20 6 9 17l-5-5"/>',
+	leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+	coffee:
+		'<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>',
+	chevron: '<path d="m6 9 6 6 6-6"/>',
+	tomato:
+		'<path d="M12 3c1.6 2.4 4.4 3.4 7.4 3.2-1.1 2.7-3.6 4.4-7.4 4.4S6.7 8.9 5.6 6.2c3 .2 5.8-.8 6.4-3.2Z"/><rect x="11.2" y="0.8" width="1.7" height="4.6" rx="0.85" transform="rotate(10 12 3)"/><circle cx="12" cy="14.5" r="7.5"/>',
+	'tomato-small': '<path d="M12 4.5c1 1.5 2.8 2.1 4.7 2C16 8.2 14.2 9.3 12 9.3S8 8.2 7.3 6.5c1.9.1 3.7-.5 4.7-2Z"/><circle cx="12" cy="14" r="6.5"/>',
+};
+---
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width={size}
+	height={size}
+	viewBox="0 0 24 24"
+	fill={filled ? 'currentColor' : 'none'}
+	stroke={filled ? 'none' : 'currentColor'}
+	stroke-width={strokeWidth}
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	class={className}
+	aria-hidden="true"
+	><Fragment set:html={paths[name] ?? ''} /></svg
+>

@@ -1,0 +1,114 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div
+	class="glass fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 items-center justify-between gap-2 rounded-full px-2.5 py-2 sm:px-3.5"
+	data-music
+	role="region"
+	aria-label="Task and lo-fi music"
+>
+	<audio data-audio="0" src="/lofi/coffee-shop.mp3" loop preload="none"></audio>
+	<audio data-audio="1" src="/lofi/chill-vlog-beats.mp3" loop preload="none"></audio>
+
+	<!-- Task list toggle -->
+	<button
+		type="button"
+		data-todo-btn
+		class="icon-btn relative h-11 w-11 shrink-0"
+		aria-label="Open task list"
+		aria-expanded="false"
+	>
+		<Icon name="list" size={20} />
+		<span
+			data-todo-count
+			class="absolute right-0.5 top-0.5 hidden h-4 min-w-4 items-center justify-center rounded-full bg-[var(--tomato)] px-1 text-[10px] font-bold leading-none text-white"
+			>0</span
+		>
+	</button>
+
+	<div class="h-6 w-px shrink-0 bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+	<!-- Music player -->
+	<button
+		type="button"
+		data-music-play
+		class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--tomato)] text-white shadow-lg shadow-tomato/20 transition-transform active:scale-95"
+		aria-label="Play lo-fi music"
+		aria-pressed="false"
+	>
+		<span data-music-play-icon class="flex translate-x-[1px]"><Icon name="play" size={18} /></span>
+	</button>
+
+	<button
+		type="button"
+		data-track-btn
+		class="flex min-w-0 items-center gap-2 rounded-full px-1 py-1 text-sm font-semibold text-body transition-colors hover:text-ink"
+		aria-label="Switch lo-fi track"
+	>
+		<span data-eq class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+		<span data-track-label class="truncate">coffee shop</span>
+		<Icon name="chevron" size={14} class="shrink-0" />
+	</button>
+
+	<div class="flex shrink-0 items-center gap-1.5">
+		<input
+			type="range"
+			data-volume
+			min="0"
+			max="100"
+			value="60"
+			class="slider w-14 sm:w-24"
+			aria-label="Music volume"
+		/>
+		<button type="button" data-mute-btn class="icon-btn h-9 w-9" aria-label="Mute music" aria-pressed="false">
+			<span data-volume-icon><Icon name="volume-2" size={18} /></span>
+		</button>
+	</div>
+</div>
+
+<style>
+	.eq {
+		display: inline-flex;
+		align-items: flex-end;
+		gap: 2px;
+		height: 14px;
+		width: 14px;
+		opacity: 0.35;
+		transition: opacity 0.3s ease;
+	}
+	.eq i {
+		width: 3px;
+		border-radius: 9999px;
+		background: var(--tomato);
+		height: 40%;
+	}
+	.eq i:nth-child(2) {
+		height: 75%;
+	}
+	.eq i:nth-child(3) {
+		height: 55%;
+	}
+	[data-playing='true'] .eq {
+		opacity: 1;
+	}
+	[data-playing='true'] .eq i {
+		animation: eq-bounce 1.1s ease-in-out infinite;
+	}
+	[data-playing='true'] .eq i:nth-child(2) {
+		animation-delay: 0.22s;
+	}
+	[data-playing='true'] .eq i:nth-child(3) {
+		animation-delay: 0.44s;
+	}
+
+	@keyframes eq-bounce {
+		0%,
+		100% {
+			height: 35%;
+		}
+		50% {
+			height: 100%;
+		}
+	}
+</style>

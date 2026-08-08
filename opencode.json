@@ -5,6 +5,14 @@
       "type": "remote",
       "url": "https://mcp.docs.astro.build/mcp",
       "enabled": true
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": [
+        "npx",
+        "chrome-devtools-mcp@latest"
+      ],
+      "enabled": true
     }
   }
 }
