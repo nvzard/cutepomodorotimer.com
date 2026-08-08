@@ -22,7 +22,7 @@ const SETTINGS_KEY = 'pomo:settings';
 const TODOS_KEY = 'pomo:todos';
 const MUSIC_KEY = 'pomo:music';
 
-const TRACK_NAMES = ['coffee shop', 'chill vlog'];
+const TRACK_NAMES = ['coffee shop', 'lofi beats'];
 const RING_CIRC = 842;
 
 const defaultSettings: Settings = { focus: 25, short: 5, long: 15, autoBreaks: true, sound: true, notify: false };

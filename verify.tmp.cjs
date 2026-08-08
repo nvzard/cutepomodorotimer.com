@@ -74,7 +74,7 @@ const check = (name, ok, extra = '') => {
 		check('music plays', paused === false, 'paused=' + paused);
 		check('music pressed', (await page.getAttribute('[data-music-play]', 'aria-pressed')) === 'true');
 		await page.click('[data-track-btn]');
-		check('track label', (await page.textContent('[data-track-label]')).includes('chill vlog'));
+		check('track label', (await page.textContent('[data-track-label]')).includes('lofi beats'));
 		const t1 = await page.evaluate(() => !document.querySelector('[data-audio="1"]').paused);
 		check('new track plays', t1 === true);
 		await page.fill('[data-volume]', '35');
