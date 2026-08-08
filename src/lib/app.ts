@@ -261,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	todoList.addEventListener('click', (e) => {
 		const btn = (e.target as HTMLElement).closest('[data-act]') as HTMLElement | null;
 		if (!btn) return;
+		e.stopPropagation();
 		const id = (btn.closest('li') as HTMLElement | null)?.dataset.id;
 		if (!id) return;
 		const todo = todos.find((t) => t.id === id);
