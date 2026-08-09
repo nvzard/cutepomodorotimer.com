@@ -264,7 +264,7 @@ const de: Record<TranslationKey, string> = {
 
 	/* Contact body */
 	'contact.intro':
-		'Fragen, Feature-Ideen, oder du willst Pommy der Tomate einfach sagen, dass sie einen tollen Job macht? Wir freuen uns wirklich über jede Nachricht. Fülle das Formular aus, und es öffnet deine E-Mail-App mit allem bereit zum Senden — ohne Konto, ohne Tracking, ohne Umstände.',
+		'Fragen, Feature-Ideen, oder du willst Pommy der Tomate einfach sagen, dass sie einen tollen Job macht? Wir freuen uns wirklich über jede Nachricht. Fülle das Formular aus und wir melden uns bei dir — ohne Konto, ohne Tracking, ohne Umstände.',
 	'contact.nameLabel': 'Dein Name',
 	'contact.namePlaceholder': 'Pommy die Tomate',
 	'contact.emailLabel': 'Deine E-Mail',
@@ -272,6 +272,9 @@ const de: Record<TranslationKey, string> = {
 	'contact.messageLabel': 'Deine Nachricht',
 	'contact.messagePlaceholder': 'Erzähl uns, was dich beschäftigt…',
 	'contact.submit': 'Nachricht senden ♡',
+	'contact.sending': 'Senden…',
+	'contact.success': 'Gesendet! Danke für deine Nachricht ♡',
+	'contact.error': 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
 	'contact.directTitle': 'Lieber direkt per E-Mail?',
 	'contact.directPrefix': 'Du kannst uns jederzeit schreiben an',
 	'contact.directSuffix': 'Wir lesen jede Nachricht und antworten, sobald Pommy uns eine Pause erlaubt.',

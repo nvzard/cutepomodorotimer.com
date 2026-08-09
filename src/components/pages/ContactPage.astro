@@ -79,6 +79,13 @@ const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 		>
 			{t(lang, "contact.submit" as TranslationKey)}
 		</button>
+
+		<p
+			id="contact-status"
+			role="status"
+			aria-live="polite"
+			class="hidden text-sm font-semibold"
+		></p>
 	</form>
 
 	<section
@@ -101,25 +108,49 @@ const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 	<script>
 		import { getLang, t, type TranslationKey } from "../../lib/i18n";
 
+		const FORM_RESPONSE_URL =
+			"https://docs.google.com/forms/d/e/1FAIpQLScBz377ChYydEUdr8oM3Vs4j_6E3HrX5XiE-uvKpyID7AajDQ/formResponse";
+
 		const form = document.getElementById(
 			"contact-form",
 		) as HTMLFormElement | null;
-		form?.addEventListener("submit", (e) => {
-			e.preventDefault();
+		const status = document.getElementById(
+			"contact-status",
+		) as HTMLParagraphElement | null;
+
+		async function sendFeedback() {
 			const lang = getLang();
 			const data = new FormData(form);
-			const name = String(data.get("name") ?? "").trim();
-			const email = String(data.get("email") ?? "").trim();
-			const message = String(data.get("message") ?? "").trim();
-			const subject = encodeURIComponent(
-				`${t(lang, "contact.subjectFrom" as TranslationKey)} ${
-					name || t(lang, "contact.subjectFallback" as TranslationKey)
-				}`,
-			);
-			const body = encodeURIComponent(
-				`${t(lang, "contact.bodyName" as TranslationKey)}: ${name}\n${t(lang, "contact.bodyEmail" as TranslationKey)}: ${email}\n\n${message}`,
-			);
-			window.location.href = `mailto:hello@cutepomodorotimer.com?subject=${subject}&body=${body}`;
+			const body = new URLSearchParams();
+			body.set("entry.977470021", String(data.get("name") ?? "").trim());
+			body.set("entry.851782350", String(data.get("email") ?? "").trim());
+			body.set("entry.2138918765", String(data.get("message") ?? "").trim());
+			body.set("fvv", "1");
+			body.set("pageHistory", "0");
+			body.set("submit", "Submit");
+			await fetch(FORM_RESPONSE_URL, {
+				method: "POST",
+				mode: "no-cors",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body,
+			});
+		}
+
+		form?.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			if (!status) return;
+			status.classList.remove("hidden", "text-ink", "text-[var(--tomato-deep)]");
+			status.classList.add("text-ink");
+			status.textContent = t(getLang(), "contact.sending" as TranslationKey);
+			try {
+				await sendFeedback();
+				status.classList.replace("text-ink", "text-[var(--tomato-deep)]");
+				status.textContent = t(getLang(), "contact.success" as TranslationKey);
+				form.reset();
+			} catch {
+				status.classList.replace("text-ink", "text-[var(--tomato-deep)]");
+				status.textContent = t(getLang(), "contact.error" as TranslationKey);
+			}
 		});
 	</script>
 </PageLayout>

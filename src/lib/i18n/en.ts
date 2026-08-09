@@ -265,7 +265,7 @@ export const en = {
 
 	/* Contact body */
 	'contact.intro':
-		'Questions, feature ideas, or just want to tell Pommy the tomato that she’s doing a great job? We’d genuinely love to hear from you. Fill out the form and it will open your email app with everything ready to send — no account, no tracking, no fuss.',
+		'Questions, feature ideas, or just want to tell Pommy the tomato that she’s doing a great job? We’d genuinely love to hear from you. Fill out the form and we’ll get back to you — no account, no tracking, no fuss.',
 	'contact.nameLabel': 'Your name',
 	'contact.namePlaceholder': 'Pommy the Tomato',
 	'contact.emailLabel': 'Your email',
@@ -273,6 +273,9 @@ export const en = {
 	'contact.messageLabel': 'Your message',
 	'contact.messagePlaceholder': 'Tell us what’s on your mind…',
 	'contact.submit': 'Send message ♡',
+	'contact.sending': 'Sending…',
+	'contact.success': 'Sent! Thank you for your message ♡',
+	'contact.error': 'Something went wrong. Please try again.',
 	'contact.directTitle': 'Prefer to email directly?',
 	'contact.directPrefix': 'You can always write to us at',
 	'contact.directSuffix': 'We read every message and reply as soon as Pommy lets us take a break.',
