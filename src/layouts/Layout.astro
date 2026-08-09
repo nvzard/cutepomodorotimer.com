@@ -100,6 +100,14 @@ const schema = {
 		<meta name="twitter:image" content="/web-app-manifest-512x512.png" />
 		<title>{title}</title>
 
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4MPV43Q6FM"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-4MPV43Q6FM');
+		</script>
+
 		<script
 			type="application/ld+json"
 			set:html={JSON.stringify(schema)}

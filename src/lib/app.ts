@@ -517,6 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			remaining = Math.ceil(rem);
 			updateTime();
 			updateRing();
+			updateTitle();
 		}
 	}
 
