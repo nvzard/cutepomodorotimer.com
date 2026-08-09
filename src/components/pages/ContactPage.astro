@@ -88,12 +88,13 @@ const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 			{t(lang, "contact.directTitle" as TranslationKey)}
 		</h2>
 		<p class="text-sm leading-relaxed text-body sm:text-base">
-			{t(lang, "contact.directPrefix" as TranslationKey)}&nbsp;
+			<span data-i18n="contact.directPrefix">{t(lang, "contact.directPrefix" as TranslationKey)}</span
+			>&nbsp;
 			<a
 				href="mailto:hello@cutepomodorotimer.com"
 				class="font-semibold text-[var(--accent-ink)] underline decoration-[color-mix(in_srgb,var(--accent)_50%,transparent)] underline-offset-2 transition-colors hover:text-ink"
 				>hello@cutepomodorotimer.com</a
-			>. {t(lang, "contact.directSuffix" as TranslationKey)}
+			>. <span data-i18n="contact.directSuffix">{t(lang, "contact.directSuffix" as TranslationKey)}</span>
 		</p>
 	</section>
 

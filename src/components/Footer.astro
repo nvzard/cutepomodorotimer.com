@@ -4,11 +4,11 @@ import Mascot from './Mascot.astro';
 import { DEFAULT_LANG, localizePath, type LangCode } from '../lib/i18n';
 
 const links = [
-	{ href: '/', key: 'footer.home' },
-	{ href: '/about/', key: 'footer.about' },
-	{ href: '/privacy-policy/', key: 'footer.privacy' },
-	{ href: '/terms/', key: 'footer.terms' },
-	{ href: '/contact/', key: 'footer.contact' },
+	{ href: '/', key: 'footer.home', external: false },
+	{ href: '/about/', key: 'footer.about', external: true },
+	{ href: '/privacy-policy/', key: 'footer.privacy', external: true },
+	{ href: '/terms/', key: 'footer.terms', external: true },
+	{ href: '/contact/', key: 'footer.contact', external: true },
 ] as const;
 
 const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
@@ -39,11 +39,13 @@ const year = new Date().getFullYear();
 					<span data-i18n="footer.links">Site links</span> ♡
 				</p>
 				<ul class="flex flex-col items-center gap-2.5 sm:items-start">
-					{links.map(({ href, key }) => (
+					{links.map(({ href, key, external }) => (
 						<li>
 							<a
 								data-i18n-href={href}
 								href={localizePath(lang, href)}
+								target={external ? '_blank' : undefined}
+								rel={external ? 'noopener' : undefined}
 								class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
 							>
 								<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>

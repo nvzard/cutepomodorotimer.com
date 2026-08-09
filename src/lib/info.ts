@@ -19,7 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	const langOptions = document.querySelectorAll<HTMLAnchorElement>('[data-lang-option]');
 	const langCode = document.querySelector<HTMLElement>('[data-lang-code]');
 
-	if (langCode) langCode.textContent = lang.toUpperCase();
+	function updateLangOptions() {
+		langOptions.forEach((opt) => {
+			opt.setAttribute('aria-checked', String(opt.dataset.langOption === lang));
+		});
+		if (langCode) langCode.textContent = lang.toUpperCase();
+	}
+
+	updateLangOptions();
 
 	themeToggle?.addEventListener('click', () => {
 		const isDark = document.documentElement.classList.contains('dark');
@@ -42,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (code && isLang(code)) {
 				lang = code;
 				setLang(code);
+				updateLangOptions();
 				history.pushState({}, '', localizePath(code, getBasePath(window.location.pathname)));
 			}
 			langPanel?.classList.add('hidden');
 			langBtn?.setAttribute('aria-expanded', 'false');
-			if (langCode) langCode.textContent = lang.toUpperCase();
 		});
 	});
 
@@ -55,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (urlLang !== lang) {
 			lang = urlLang;
 			setLang(urlLang);
-			if (langCode) langCode.textContent = lang.toUpperCase();
+			updateLangOptions();
 		}
 	});
 
