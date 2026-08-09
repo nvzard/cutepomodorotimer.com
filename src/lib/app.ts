@@ -222,6 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const fsDoc = document as FullscreenDocument;
 
+	const fullscreenSupported = 'fullscreenEnabled' in document && document.fullscreenEnabled;
+
 	function isFullscreen(): boolean {
 		return Boolean(fsDoc.fullscreenElement || fsDoc.webkitFullscreenElement);
 	}
@@ -232,19 +234,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		fullscreenBtn.setAttribute('aria-label', fs ? t(lang, 'topbar.exitFs') : t(lang, 'topbar.enterFs'));
 	}
 
-	fullscreenBtn.addEventListener('click', () => {
-		if (isFullscreen()) {
-			if (document.exitFullscreen) document.exitFullscreen();
-			else fsDoc.webkitExitFullscreen?.();
-		} else {
-			const el = document.documentElement as FullscreenElement;
-			if (el.requestFullscreen) el.requestFullscreen();
-			else el.webkitRequestFullscreen?.();
-		}
-	});
+	if (!fullscreenSupported) {
+		fullscreenBtn.classList.add('hidden');
+	} else {
+		fullscreenBtn.addEventListener('click', () => {
+			if (isFullscreen()) {
+				if (document.exitFullscreen) document.exitFullscreen();
+				else fsDoc.webkitExitFullscreen?.();
+			} else {
+				const el = document.documentElement as FullscreenElement;
+				if (el.requestFullscreen) el.requestFullscreen();
+				else el.webkitRequestFullscreen?.();
+			}
+		});
 
-	document.addEventListener('fullscreenchange', updateFullscreenUI);
-	document.addEventListener('webkitfullscreenchange', updateFullscreenUI);
+		document.addEventListener('fullscreenchange', updateFullscreenUI);
+		document.addEventListener('webkitfullscreenchange', updateFullscreenUI);
+	}
 
 	/* ------------------------------------------------------------------ */
 	/* Todos                                                               */
