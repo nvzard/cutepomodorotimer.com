@@ -111,10 +111,10 @@ const faqKeys = [
 	<TopBar />
 
 	<main id="main" class="relative">
-		<div class="flex min-h-screen flex-col items-center justify-center px-4">
+		<div class="flex min-h-dvh flex-col items-center justify-center px-4 pb-[calc(6.5rem+env(safe-area-inset-bottom))] pt-[calc(4.5rem+env(safe-area-inset-top))] [justify-content:safe_center] md:pb-[calc(9rem+env(safe-area-inset-bottom))] md:pt-[calc(6rem+env(safe-area-inset-top))] [@media(max-height:720px)]:pb-[calc(5.5rem+env(safe-area-inset-bottom))] [@media(max-height:720px)]:pt-[calc(3.5rem+env(safe-area-inset-top))] [@media(max-height:520px)]:pb-[calc(5rem+env(safe-area-inset-bottom))] [@media(max-height:520px)]:pt-[calc(2.5rem+env(safe-area-inset-top))]">
 			<h1 class="sr-only" data-i18n="page.h1">Cute Timer — Free Cute Pomodoro Timer Online for Studying & Focus</h1>
 			<Timer />
-			<p class="mt-10 hidden text-xs text-mute/80 md:block">
+			<p class="mt-10 hidden text-xs text-mute/80 md:block [@media(max-height:520px)]:hidden">
 				<span class="font-semibold">space</span> <span data-i18n="page.hintStart">start</span>
 				&middot; <span class="font-semibold">r</span> <span data-i18n="page.hintReset">reset</span>
 				&middot; <span class="font-semibold">m</span> <span data-i18n="page.hintMusic">music</span>
@@ -309,22 +309,8 @@ const faqKeys = [
 </Layout>
 
 <style>
-	/* Responsive padding so the timer always fits between the fixed top bar
-	   and bottom dock — compact on phones, roomier on taller/desktop screens. */
-	#main {
-		padding-top: calc(4.5rem + env(safe-area-inset-top));
-		padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
-	}
-	@media (min-width: 768px) {
-		#main {
-			padding-top: calc(6rem + env(safe-area-inset-top));
-			padding-bottom: calc(9rem + env(safe-area-inset-bottom));
-		}
-	}
-	@media (max-height: 720px) {
-		#main {
-			padding-top: calc(4rem + env(safe-area-inset-top));
-			padding-bottom: calc(6rem + env(safe-area-inset-bottom));
-		}
-	}
+	/* Top/bottom clearance for the fixed TopBar and Dock now lives on the
+	   timer's flex column itself (see class list above), so justify-center
+	   centers inside the truly visible area and never tucks content behind
+	   the dock. */
 </style>

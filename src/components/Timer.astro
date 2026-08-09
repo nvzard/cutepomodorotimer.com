@@ -127,7 +127,12 @@ import Mascot from './Mascot.astro';
 	}
 	@media (max-height: 720px) {
 		[data-timer] {
-			gap: 0.75rem;
+			gap: 0.6rem;
+		}
+	}
+	@media (max-height: 520px) {
+		[data-timer] {
+			gap: 0.4rem;
 		}
 	}
 
@@ -140,7 +145,12 @@ import Mascot from './Mascot.astro';
 	}
 	@media (max-height: 720px) {
 		.timer-ring {
-			--ring: min(78vw, 30rem, max(calc(100dvh - 26rem), 9rem));
+			--ring: min(78vw, 30rem, max(calc(100dvh - 25rem), 5rem));
+		}
+	}
+	@media (max-height: 520px) {
+		.timer-ring {
+			--ring: min(78vw, 30rem, max(calc(100dvh - 22rem), 3.5rem));
 		}
 	}
 
