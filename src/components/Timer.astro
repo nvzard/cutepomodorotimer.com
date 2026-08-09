@@ -171,6 +171,22 @@ import Mascot from './Mascot.astro';
 			border-color 0.2s ease,
 			box-shadow 0.2s ease;
 	}
+	@media (max-width: 640px) {
+		[data-mode-pills] {
+			padding: 0.28rem;
+			gap: 0.19rem;
+		}
+		[data-mode-pills] .mode-pill {
+			padding: 0.34rem 0.75rem;
+			font-size: 0.6rem;
+			gap: 0.3rem;
+			border-width: 1.5px;
+		}
+		:global([data-mode-pills] .mode-pill svg) {
+			width: 11px;
+			height: 11px;
+		}
+	}
 	.mode-pill:hover {
 		color: var(--ink);
 		transform: translateY(-1px);
