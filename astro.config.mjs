@@ -4,9 +4,12 @@ import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://cutepomodorotimer.com',
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'de', 'fr', 'hi', 'ja', 'pt'],
@@ -14,7 +17,9 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+
   devToolbar: { enabled: false },
+
   integrations: [
     sitemap({
       i18n: {
@@ -31,6 +36,7 @@ export default defineConfig({
       },
     }),
   ],
+
   fonts: [
     {
       name: 'Baloo 2',
@@ -41,7 +47,10 @@ export default defineConfig({
       subsets: ['latin'],
     },
   ],
+
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: cloudflare(),
 });
