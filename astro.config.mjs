@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -14,6 +15,22 @@ export default defineConfig({
     },
   },
   devToolbar: { enabled: false },
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          es: 'es',
+          de: 'de',
+          fr: 'fr',
+          hi: 'hi',
+          ja: 'ja',
+          pt: 'pt',
+        },
+      },
+    }),
+  ],
   fonts: [
     {
       name: 'Baloo 2',
