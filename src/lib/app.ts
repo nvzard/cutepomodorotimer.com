@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						: 'border-[color-mix(in_srgb,var(--mute)_55%,transparent)] text-transparent hover:border-[var(--tomato)]'
 				}" aria-label="${todo.done ? t(lang, 'todo.markNotDone') : t(lang, 'todo.markDone')}">${checkSvg}</button>
 				<span class="min-w-0 flex-1 break-words text-sm ${todo.done ? 'text-mute line-through' : 'text-ink'}">${esc(todo.text)}</span>
-				<button type="button" data-act="del" class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-mute opacity-0 transition-opacity hover:bg-[color-mix(in_srgb,var(--ink)_8%,transparent)] hover:text-ink group-hover:opacity-100" aria-label="${t(lang, 'todo.deleteAria')}">${xSvg}</button>
+				<button type="button" data-act="del" class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-mute transition-opacity hover:bg-[color-mix(in_srgb,var(--ink)_8%,transparent)] hover:text-ink [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100" aria-label="${t(lang, 'todo.deleteAria')}">${xSvg}</button>
 			</li>`,
 			)
 			.join('');
