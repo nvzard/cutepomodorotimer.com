@@ -1,0 +1,27 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Mascot from '../components/Mascot.astro';
+---
+
+<PageLayout
+	title="404 — Page Not Found | Cute Timer"
+	description="This cute little page has wandered off. Head back to the Cute Pomodoro Timer home to start a focus session."
+	canonical="https://cutepomodorotimer.com/404/"
+>
+	<div class="flex flex-col items-center text-center">
+		<div class="grid h-24 w-24 place-items-center">
+			<Mascot class="h-full w-full" />
+		</div>
+		<p class="eyebrow mt-6 text-[var(--accent-ink)]">Oopsie ♡</p>
+		<h1 class="mt-2 text-4xl font-extrabold leading-snug text-ink sm:text-5xl">404</h1>
+		<p class="mt-4 text-sm leading-relaxed text-body sm:text-base">
+			This page has wandered off for a little break. Let's get you back to focusing.
+		</p>
+		<a
+			href="/"
+			class="mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--tomato)] px-6 py-3 text-sm font-bold text-white shadow-[0_4px_0_color-mix(in_srgb,var(--tomato)_60%,#000)] transition-transform hover:-translate-y-0.5"
+		>
+			Back to the timer ♡
+		</a>
+	</div>
+</PageLayout>
