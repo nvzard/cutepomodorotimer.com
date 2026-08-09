@@ -152,6 +152,9 @@ const de: Record<TranslationKey, string> = {
 	'page.linkContactDesc': 'Fragen oder Feedback? Sag dem Cute-Timer-Team Hallo.',
 	'page.linkPrivacyDesc': 'So bleiben deine Daten sicher — Spoiler: sie bleiben in deinem Browser.',
 	'page.linkTermsDesc': 'Die fairen und freundlichen Regeln für den kostenlosen Timer.',
+	'page.linksTitle': 'Entdecke den Cute Timer',
+	'page.linksAria': 'Seitenlinks',
+	'page.skipContent': 'Zum Inhalt springen',
 
 	'footer.home': 'Startseite',
 	'footer.about': 'Über uns',

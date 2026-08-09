@@ -150,6 +150,9 @@ export const en = {
 	'page.linkContactDesc': 'Questions or feedback? Say hello to the Cute Timer team.',
 	'page.linkPrivacyDesc': 'How we keep your data safe — spoiler: it stays in your browser.',
 	'page.linkTermsDesc': 'The fair and friendly rules for using the free timer.',
+	'page.linksTitle': 'Explore the Cute Timer',
+	'page.linksAria': 'Site links',
+	'page.skipContent': 'Skip to content',
 
 	/* Footer */
 	'footer.home': 'Home',

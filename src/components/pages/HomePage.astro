@@ -162,10 +162,10 @@ const faqSchema = {
 					<p class="eyebrow text-[var(--accent-ink)]">
 						<span data-i18n="footer.links">{t(lang, 'footer.links')}</span> ♡
 					</p>
-					<h2 id="site-links-heading" class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
-						Explore the Cute Timer
+					<h2 id="site-links-heading" class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.linksTitle">
+						{t(lang, 'page.linksTitle')}
 					</h2>
-					<nav class="grid gap-3 sm:grid-cols-2" aria-label="Site links">
+					<nav class="grid gap-3 sm:grid-cols-2" aria-label="Site links" data-i18n-aria="page.linksAria">
 						<a
 							data-i18n-href="/about/"
 							href={localizePath(lang, '/about/')}

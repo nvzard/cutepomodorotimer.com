@@ -142,6 +142,9 @@ const es: Record<TranslationKey, string> = {
 	'page.linkContactDesc': '¿Preguntas o comentarios? Saluda al equipo de Cute Timer.',
 	'page.linkPrivacyDesc': 'Cómo mantenemos tus datos a salvo — spoiler: se quedan en tu navegador.',
 	'page.linkTermsDesc': 'Las reglas justas y amables para usar el temporizador gratuito.',
+	'page.linksTitle': 'Explora el Cute Timer',
+	'page.linksAria': 'Enlaces del sitio',
+	'page.skipContent': 'Saltar al contenido',
 
 	'footer.home': 'Inicio',
 	'footer.about': 'Sobre nosotros',

@@ -142,6 +142,9 @@ const ja: Record<TranslationKey, string> = {
 	'page.linkContactDesc': '質問やフィードバックはこちらから。Cute Timer チームにご連絡ください。',
 	'page.linkPrivacyDesc': 'データの守り方 — ネタバレ: すべてブラウザ内に留まります。',
 	'page.linkTermsDesc': '無料タイマーを使うための、公正でフレンドリーなルール。',
+	'page.linksTitle': 'Cute Timer を探索',
+	'page.linksAria': 'サイトリンク',
+	'page.skipContent': '本文へスキップ',
 
 	'footer.home': 'ホーム',
 	'footer.about': '私たちについて',

@@ -133,6 +133,9 @@ const hi: Record<TranslationKey, string> = {
 	'page.linkContactDesc': 'सवाल या सुझाव? क्यूट टाइमर टीम को नमस्ते कहें।',
 	'page.linkPrivacyDesc': 'हम आपका डेटा कैसे सुरक्षित रखते हैं — स्पॉइलर: यह आपके ब्राउज़र में ही रहता है।',
 	'page.linkTermsDesc': 'फ्री टाइमर के उपयोग के लिए निष्पक्ष और दोस्ताना नियम।',
+	'page.linksTitle': 'Cute Timer एक्सप्लोर करें',
+	'page.linksAria': 'साइट लिंक',
+	'page.skipContent': 'सामग्री पर जाएँ',
 
 	'footer.home': 'होम',
 	'footer.about': 'हमारे बारे में',

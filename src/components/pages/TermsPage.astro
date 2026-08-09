@@ -13,11 +13,11 @@ const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 		{t(lang, 'terms.title' as TranslationKey)}
 	</h1>
 	<p class="mt-4 text-sm leading-relaxed text-body sm:text-base">
-		{t(lang, 'page.lastUpdated' as TranslationKey)}{' '}
-		<span class="font-semibold text-ink">{t(lang, 'page.lastUpdatedDate' as TranslationKey)}</span>
-		. {t(lang, 'terms.introAfterDate' as TranslationKey)}{' '}
+		<span data-i18n="page.lastUpdated">{t(lang, 'page.lastUpdated' as TranslationKey)}</span>{' '}
+		<span class="font-semibold text-ink" data-i18n="page.lastUpdatedDate">{t(lang, 'page.lastUpdatedDate' as TranslationKey)}</span>
+		. <span data-i18n="terms.introAfterDate">{t(lang, 'terms.introAfterDate' as TranslationKey)}</span>{' '}
 		<span class="font-semibold text-ink">cutepomodorotimer.com</span>{' '}
-		{t(lang, 'terms.introSuffix' as TranslationKey)}
+		<span data-i18n="terms.introSuffix">{t(lang, 'terms.introSuffix' as TranslationKey)}</span>
 	</p>
 
 	<section class="mt-8">
@@ -79,7 +79,7 @@ const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 			{t(lang, 'terms.sec7Title' as TranslationKey)}
 		</h2>
 		<p class="text-sm leading-relaxed text-body sm:text-base">
-			{t(lang, 'terms.sec7Prefix' as TranslationKey)}{' '}
+			<span data-i18n="terms.sec7Prefix">{t(lang, 'terms.sec7Prefix' as TranslationKey)}</span>{' '}
 			<a
 				href="mailto:hello@cutepomodorotimer.com"
 				class="font-semibold text-[var(--accent-ink)] underline decoration-[color-mix(in_srgb,var(--accent)_50%,transparent)] underline-offset-2 transition-colors hover:text-ink"
