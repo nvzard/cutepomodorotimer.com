@@ -1,20 +1,24 @@
 ---
 import '../styles/global.css';
 import { Font } from 'astro:assets';
+import { LANGUAGES, DEFAULT_LANG, localizePath, getBasePath, type LangCode } from '../lib/i18n';
 
 interface Props {
 	title?: string;
 	description?: string;
-	canonical?: string;
 }
 
 const {
 	title = 'Cute Timer — Cute Pomodoro Timer Online for Studying',
 	description = 'A free cute timer online — an aesthetic pink pomodoro timer for studying with lo-fi music, a cute mascot, and 10, 15 & 30 minute countdowns. Start now.',
-	canonical = 'https://cutepomodorotimer.com',
 } = Astro.props;
 
-const canonicalUrl = canonical;
+const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
+
+const basePath = getBasePath(Astro.url.pathname);
+const siteOrigin = new URL('/', Astro.site).toString().replace(/\/$/, '');
+const absUrl = (l: LangCode, path: string) => `${siteOrigin}${localizePath(l, path)}`;
+const canonicalUrl = absUrl(lang, basePath);
 
 const keywords = [
 	'cute timer',
@@ -55,13 +59,13 @@ const schema = {
 	isAccessibleForFree: true,
 	offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 	keywords,
-	inLanguage: 'en',
+	inLanguage: lang,
 	audience: { '@type': 'Audience', audienceType: 'Students, remote workers, and anyone who loves a cute timer for studying' },
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -78,6 +82,10 @@ const schema = {
 		<meta name="apple-mobile-web-app-title" content="CuteTimer" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="canonical" href={canonicalUrl} />
+		{(LANGUAGES as readonly { code: LangCode }[]).map(({ code }) => (
+			<link rel="alternate" hreflang={code} href={absUrl(code, basePath)} />
+		))}
+		<link rel="alternate" hreflang="x-default" href={absUrl(DEFAULT_LANG, basePath)} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Cute Timer" />
 		<meta property="og:title" content={title} />
@@ -112,12 +120,15 @@ const schema = {
 					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 				document.documentElement.classList.toggle('dark', theme === 'dark');
 
-				var lang = null;
-				try {
-					lang = localStorage.getItem('pomo:lang');
-				} catch (e) {}
-				if (!lang) lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
 				var known = ['en', 'es', 'de', 'fr', 'hi', 'ja', 'pt'];
+				var urlLang = (window.location.pathname.replace(/^\//, '').split('/')[0] || '').toLowerCase();
+				var lang = known.indexOf(urlLang) !== -1 ? urlLang : null;
+				if (!lang) {
+					try {
+						lang = localStorage.getItem('pomo:lang');
+					} catch (e) {}
+				}
+				if (!lang) lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
 				if (known.indexOf(lang) !== -1) document.documentElement.lang = lang;
 			})();
 		</script>

@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Mascot from './Mascot.astro';
+import { DEFAULT_LANG, localizePath, type LangCode } from '../lib/i18n';
 
 const links = [
 	{ href: '/', key: 'footer.home' },
@@ -10,6 +11,7 @@ const links = [
 	{ href: '/contact/', key: 'footer.contact' },
 ] as const;
 
+const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 const year = new Date().getFullYear();
 ---
 
@@ -17,7 +19,7 @@ const year = new Date().getFullYear();
 	<div class="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
 		<div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-between">
 			<div class="flex max-w-xs flex-col items-center gap-3 text-center sm:items-start sm:text-left">
-				<a href="/" class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
+				<a data-i18n-href="/" href={localizePath(lang, '/')} class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
 					<span
 						class="grid h-9 w-9 place-items-center rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_55%,transparent)] bg-[var(--tomato-soft)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_35%,transparent)] transition-transform group-hover:-rotate-6 group-hover:scale-110"
 					>
@@ -40,7 +42,8 @@ const year = new Date().getFullYear();
 					{links.map(({ href, key }) => (
 						<li>
 							<a
-								href={href}
+								data-i18n-href={href}
+								href={localizePath(lang, href)}
 								class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
 							>
 								<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>

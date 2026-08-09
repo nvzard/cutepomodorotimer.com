@@ -3,17 +3,24 @@ import Layout from './Layout.astro';
 import Background from '../components/Background.astro';
 import InfoTopBar from '../components/InfoTopBar.astro';
 import Footer from '../components/Footer.astro';
+import { t, DEFAULT_LANG, type LangCode, type TranslationKey } from '../lib/i18n';
 
 interface Props {
-	title: string;
-	description: string;
-	canonical: string;
+	page?: 'about' | 'contact' | 'terms' | 'privacy';
+	title?: string;
+	description?: string;
 }
 
-const { title, description, canonical } = Astro.props;
+const { page, title, description } = Astro.props;
+const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
+
+const resolvedTitle = page ? t(lang, `${page}.metaTitle` as TranslationKey) : (title ?? 'Cute Timer');
+const resolvedDescription = page
+	? t(lang, `${page}.metaDesc` as TranslationKey)
+	: (description ?? '');
 ---
 
-<Layout title={title} description={description} canonical={canonical}>
+<Layout title={resolvedTitle} description={resolvedDescription}>
 	<a
 		href="#main"
 		class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"

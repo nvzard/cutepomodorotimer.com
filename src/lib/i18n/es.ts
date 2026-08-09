@@ -152,6 +152,120 @@ const es: Record<TranslationKey, string> = {
 	'footer.linksAria': 'Enlaces del pie de página',
 	'footer.tagline': 'Un temporizador pomodoro bonito y gratuito para estudiar y concentrarse — hecho con ♡.',
 	'footer.rights': 'Todos los derechos reservados.',
+
+	'meta.homeDesc':
+		'Un lindo temporizador gratis en línea — un temporizador pomodoro rosa estético para estudiar con música lo-fi, una mascota adorable y cuentas regresivas de 10, 15 y 30 minutos. Empieza ahora.',
+
+	'about.eyebrow': 'Sobre el Cute Timer ♡',
+	'about.title': 'Sobre nosotros',
+	'about.metaTitle': 'Sobre nosotros — Cute Timer | Temporizador Pomodoro cute para estudiar',
+	'about.metaDesc':
+		'Conoce Cute Timer, el temporizador pomodoro rosa estético y gratuito para estudiar y concentrarte. Nuestra historia, nuestra misión y el tomate detrás de la ternura.',
+	'contact.eyebrow': 'Di hola ♡',
+	'contact.title': 'Contacto',
+	'contact.metaTitle': 'Contacto — Cute Timer | Temporizador Pomodoro cute',
+	'contact.metaDesc':
+		'Ponte en contacto con el equipo de Cute Timer. Preguntas, comentarios o solo saludar a Pommy el tomate — nos encantaría saber de ti.',
+	'terms.eyebrow': 'Justo y amable ♡',
+	'terms.title': 'Términos y condiciones',
+	'terms.metaTitle': 'Términos y condiciones — Cute Timer | Temporizador Pomodoro cute',
+	'terms.metaDesc':
+		'Los términos y condiciones de uso de Cute Timer, el temporizador pomodoro bonito y gratuito para estudiar. Reglas simples y justas para una herramienta simple y gratuita.',
+	'privacy.eyebrow': 'Tu privacidad importa ♡',
+	'privacy.title': 'Política de privacidad',
+	'privacy.metaTitle': 'Política de privacidad — Cute Timer | Temporizador Pomodoro cute',
+	'privacy.metaDesc':
+		'Lee la política de privacidad de Cute Timer. No recopilamos datos personales — todo lo que configuras se queda en el almacenamiento local de tu navegador. Simple, privado y gratuito.',
+
+	/* Shared */
+	'page.lastUpdated': 'Última actualización:',
+	'page.lastUpdatedDate': '9 de agosto de 2026',
+
+	/* About body */
+	'about.intro':
+		'Cute Timer es un lindo temporizador gratuito en línea creado para estudiantes, trabajadores remotos y cualquiera que quiera concentración profunda sin sentir que lo están evaluando. Creemos que la productividad no debería ser fría ni castigadora — debería sentirse como un pequeño ritual acogedor que de verdad esperas con ganas.',
+	'about.sec1Title': 'Por qué lo creamos',
+	'about.sec1Body':
+		'Hay muchas aplicaciones de temporizador pomodoro por ahí, pero la mayoría parecen hojas de cálculo con un cronómetro. Queríamos un lindo temporizador pomodoro que combine la técnica Pomodoro clásica con colores pastel suaves, música lo-fi tranquila, una mascota tomate sonrojada y pequeños puntos de corazón que celebran cada ronda completada. Un temporizador que te alegre mantener abierto todo el día en tu escritorio.',
+	'about.sec2Title': 'Nuestra misión',
+	'about.sec2Body':
+		'Nuestra misión es simple: hacer que el trabajo enfocado se sienta amigable. Ya sea que necesites un lindo temporizador de 10 minutos para un orden rápido, un lindo temporizador de 15 minutos para tarjetas de estudio, o un lindo temporizador de 30 minutos para trabajo profundo, queremos que cada sesión termine con una pequeña sensación de logro — y un descanso que de verdad tomes.',
+	'about.sec3Title': 'El pequeño tomate',
+	'about.sec3Body':
+		'Nuestra mascota es un pequeño tomate sonrojado llamado Pommy. Pommy asiente mientras te enfocas, parpadea durante los descansos y celebra cuando completas tu ronda. Es un recordatorio suave de que el pomodoro original era solo un temporizador de cocina con forma de tomate — y que la concentración no tiene que ser seria todo el tiempo.',
+	'about.sec4Title': 'Nuestros valores',
+	'about.sec4Body':
+		'Gratis para siempre. Sin registro, sin anuncios, sin cuentas. Todo lo que configures — tus duraciones de temporizador, tu lista de tareas, tu preferencia de música — se guarda solo en tu propio navegador, para que tengas el control. Construimos a la vista, mantenemos la interfaz simple y siempre ponemos tu concentración primero.',
+
+	/* Privacy body */
+	'privacy.introAfterDate':
+		'Esta política de privacidad explica cómo Cute Timer («nosotros») maneja la información cuando usas nuestro sitio web en',
+	'privacy.sec1Title': 'La versión corta',
+	'privacy.sec1Body':
+		'No recopilamos, almacenamos ni compartimos ninguna información personal tuya. Sin cuentas, sin perfiles de seguimiento, sin datos vendidos a nadie — nunca. Cute Timer es una aplicación del lado del cliente: todo ocurre en tu navegador.',
+	'privacy.sec2Title': 'Solo almacenamiento local',
+	'privacy.sec2Body':
+		'Para que el temporizador se sienta personal, guardamos algunos ajustes en el almacenamiento local de tu navegador: las duraciones de temporizador que elegiste, la preferencia de descansos automáticos, los ajustes de sonido y notificaciones, tu lista de tareas, la pista lo-fi que te gustó, el volumen y tus preferencias de tema e idioma. Estos datos nunca salen de tu dispositivo y nunca se envían a nuestros servidores. Puedes borrarlos en cualquier momento limpiando los datos del sitio en tu navegador.',
+	'privacy.sec3Title': 'Analítica y cookies',
+	'privacy.sec3Body':
+		'Cute Timer no usa cookies de seguimiento, cookies publicitarias ni scripts de analítica de terceros. No tenemos ningún interés en seguirte por internet.',
+	'privacy.sec4Title': 'Servicios de terceros',
+	'privacy.sec4Body':
+		'Nuestras páginas cargan la fuente Baloo 2 desde Google Fonts y, cuando reproduces música, transmiten dos archivos de audio lo-fi desde nuestro propio alojamiento. Estos servicios pueden procesar tu dirección IP como parte del tráfico normal de internet. No controlamos sus prácticas de privacidad y te animamos a revisar sus políticas.',
+	'privacy.sec5Title': 'Notificaciones',
+	'privacy.sec5Body':
+		'Si activas las notificaciones del navegador, es tu navegador quien gestiona el permiso y la entrega localmente. Nunca recibimos tus datos de notificación.',
+	'privacy.sec6Title': 'Privacidad de los niños',
+	'privacy.sec6Body':
+		'Como no recopilamos ningún dato personal, Cute Timer es seguro para todos, incluidos los niños. Si crees que tu hijo nos ha compartido información personal a través de un mensaje de contacto, por favor escríbenos y la eliminaremos rápidamente.',
+	'privacy.sec7Title': 'Cambios a esta política',
+	'privacy.sec7Body':
+		'Podemos actualizar esta política de vez en cuando. Cuando lo hagamos, revisaremos la fecha de «última actualización» de arriba. Vuelve a esta página para ver la versión más reciente.',
+	'privacy.sec8Title': 'Contacto',
+	'privacy.sec8Prefix': '¿Preguntas sobre privacidad? Nos encantaría escucharte en',
+
+	/* Terms body */
+	'terms.introAfterDate': 'Al acceder o usar',
+	'terms.introSuffix':
+		'«Cute Timer», «el Servicio»), aceptas estos términos. Si no estás de acuerdo, por favor no uses el Servicio.',
+	'terms.sec1Title': '1. Uso del Servicio',
+	'terms.sec1Body':
+		'Cute Timer es una herramienta gratuita proporcionada para tu uso personal y no comercial. Puedes usarla para ejecutar temporizadores, gestionar una lista de tareas y escuchar nuestras pistas lo-fi mientras trabajas. Aceptas no hacer un mal uso del Servicio, no intentar interrumpirlo ni usarlo para ningún fin ilegal.',
+	'terms.sec2Title': '2. Sin cuentas, sin datos',
+	'terms.sec2Body':
+		'El Servicio funciona por completo en tu navegador. No creamos cuentas ni almacenamos tu lista de tareas o ajustes en nuestros servidores. Tus datos viven en el almacenamiento local de tu navegador y eres responsable de respaldarlos (o simplemente dejarlos ir) como mejor te parezca.',
+	'terms.sec3Title': '3. Propiedad intelectual',
+	'terms.sec3Body':
+		'El nombre Cute Timer, el logotipo, la mascota («Pommy»), las ilustraciones y todo el contenido de este sitio son nuestra propiedad o la de sus respectivos dueños. No puedes copiar, modificar, distribuir ni revender ninguna parte del Servicio o de su diseño sin permiso.',
+	'terms.sec4Title': '4. El Servicio se proporciona «tal cual»',
+	'terms.sec4Body':
+		'Cute Timer se proporciona de forma gratuita y «tal cual», sin garantías de ningún tipo, expresas o implícitas. No garantizamos que el Servicio sea ininterrumpido, sin errores o esté disponible en todo momento. Usas el Servicio bajo tu propio riesgo.',
+	'terms.sec5Title': '5. Limitación de responsabilidad',
+	'terms.sec5Body':
+		'En la máxima medida permitida por la ley, Cute Timer y sus creadores no serán responsables de daños indirectos, incidentales o consecuentes derivados de tu uso — o tu imposibilidad de usar — el Servicio. Esto incluye plazos incumplidos, productividad perdida o una siesta inesperada que duró demasiado.',
+	'terms.sec6Title': '6. Cambios a estos términos',
+	'terms.sec6Body':
+		'Podemos actualizar estos términos de vez en cuando. Continuar usando el Servicio después de que se publiquen cambios significa que aceptas los términos actualizados.',
+	'terms.sec7Title': '7. Contacto',
+	'terms.sec7Prefix': '¿Tienes una pregunta sobre estos términos? Escríbenos a',
+
+	/* Contact body */
+	'contact.intro':
+		'¿Preguntas, ideas de funciones, o solo quieres decirle a Pommy el tomate que está haciendo un gran trabajo? Nos encantaría saber de ti de verdad. Llena el formulario y abrirá tu aplicación de correo con todo listo para enviar — sin cuenta, sin seguimiento, sin complicaciones.',
+	'contact.nameLabel': 'Tu nombre',
+	'contact.namePlaceholder': 'Pommy el Tomate',
+	'contact.emailLabel': 'Tu correo electrónico',
+	'contact.emailPlaceholder': 'tu@ejemplo.com',
+	'contact.messageLabel': 'Tu mensaje',
+	'contact.messagePlaceholder': 'Cuéntanos qué tienes en mente…',
+	'contact.submit': 'Enviar mensaje ♡',
+	'contact.directTitle': '¿Prefieres escribirnos directamente?',
+	'contact.directPrefix': 'Siempre puedes escribirnos a',
+	'contact.directSuffix': 'Leemos cada mensaje y respondemos en cuanto Pommy nos deja tomar un descanso.',
+	'contact.subjectFrom': 'Mensaje de',
+	'contact.subjectFallback': 'un visitante amigable',
+	'contact.bodyName': 'Nombre',
+	'contact.bodyEmail': 'Correo electrónico',
 };
 
 export default es;

@@ -18,7 +18,7 @@ interface Todo {
 const $ = <T extends Element = HTMLElement>(sel: string): T => document.querySelector(sel) as T;
 const $$ = <T extends Element>(sel: string): T[] => Array.from(document.querySelectorAll(sel));
 
-import { t, getLang, applyTranslations, setLang, isLang, type LangCode } from './i18n';
+import { t, getLang, applyTranslations, setLang, isLang, getBasePath, getLangFromPath, localizePath, type LangCode } from './i18n';
 
 const SETTINGS_KEY = 'pomo:settings';
 const TODOS_KEY = 'pomo:todos';
@@ -354,15 +354,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	langOptions.forEach((opt) => {
-		opt.addEventListener('click', () => {
+		opt.addEventListener('click', (e) => {
+			e.preventDefault();
 			const code = opt.dataset.langOption;
 			if (code && isLang(code)) {
 				lang = code;
 				setLang(code);
+				history.pushState({}, '', localizePath(code, getBasePath(window.location.pathname)));
 			}
 			langPanel.classList.add('hidden');
 			langBtn.setAttribute('aria-expanded', 'false');
 		});
+	});
+
+	window.addEventListener('popstate', () => {
+		const urlLang = getLangFromPath(window.location.pathname);
+		if (urlLang !== lang) {
+			lang = urlLang;
+			setLang(urlLang);
+		}
 	});
 
 	document.addEventListener('langchange', (e) => {

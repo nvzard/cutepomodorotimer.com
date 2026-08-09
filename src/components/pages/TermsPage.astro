@@ -1,0 +1,90 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { t, DEFAULT_LANG, type LangCode, type TranslationKey } from '../../lib/i18n';
+
+const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
+---
+
+<PageLayout page="terms">
+	<p class="eyebrow text-[var(--accent-ink)]" data-i18n="terms.eyebrow">
+		{t(lang, 'terms.eyebrow' as TranslationKey)}
+	</p>
+	<h1 class="mt-2 text-3xl font-extrabold leading-snug text-ink sm:text-4xl" data-i18n="terms.title">
+		{t(lang, 'terms.title' as TranslationKey)}
+	</h1>
+	<p class="mt-4 text-sm leading-relaxed text-body sm:text-base">
+		{t(lang, 'page.lastUpdated' as TranslationKey)}{' '}
+		<span class="font-semibold text-ink">{t(lang, 'page.lastUpdatedDate' as TranslationKey)}</span>
+		. {t(lang, 'terms.introAfterDate' as TranslationKey)}{' '}
+		<span class="font-semibold text-ink">cutepomodorotimer.com</span>{' '}
+		{t(lang, 'terms.introSuffix' as TranslationKey)}
+	</p>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec1Title">
+			{t(lang, 'terms.sec1Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="terms.sec1Body">
+			{t(lang, 'terms.sec1Body' as TranslationKey)}
+		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec2Title">
+			{t(lang, 'terms.sec2Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="terms.sec2Body">
+			{t(lang, 'terms.sec2Body' as TranslationKey)}
+		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec3Title">
+			{t(lang, 'terms.sec3Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="terms.sec3Body">
+			{t(lang, 'terms.sec3Body' as TranslationKey)}
+		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec4Title">
+			{t(lang, 'terms.sec4Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="terms.sec4Body">
+			{t(lang, 'terms.sec4Body' as TranslationKey)}
+		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec5Title">
+			{t(lang, 'terms.sec5Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="terms.sec5Body">
+			{t(lang, 'terms.sec5Body' as TranslationKey)}
+		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec6Title">
+			{t(lang, 'terms.sec6Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="terms.sec6Body">
+			{t(lang, 'terms.sec6Body' as TranslationKey)}
+		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="terms.sec7Title">
+			{t(lang, 'terms.sec7Title' as TranslationKey)}
+		</h2>
+		<p class="text-sm leading-relaxed text-body sm:text-base">
+			{t(lang, 'terms.sec7Prefix' as TranslationKey)}{' '}
+			<a
+				href="mailto:hello@cutepomodorotimer.com"
+				class="font-semibold text-[var(--accent-ink)] underline decoration-[color-mix(in_srgb,var(--accent)_50%,transparent)] underline-offset-2 transition-colors hover:text-ink"
+				>hello@cutepomodorotimer.com</a
+			>.
+		</p>
+	</section>
+</PageLayout>

@@ -5,6 +5,14 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://cutepomodorotimer.com',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es', 'de', 'fr', 'hi', 'ja', 'pt'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   devToolbar: { enabled: false },
   fonts: [
     {

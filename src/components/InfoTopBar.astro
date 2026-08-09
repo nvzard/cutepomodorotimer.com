@@ -1,11 +1,14 @@
 ---
 import Icon from './Icon.astro';
 import Mascot from './Mascot.astro';
-import { LANGUAGES } from '../lib/i18n';
+import { LANGUAGES, DEFAULT_LANG, getBasePath, localizePath, type LangCode } from '../lib/i18n';
+
+const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
+const basePath = getBasePath(Astro.url.pathname);
 ---
 
 <header class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] sm:px-6">
-	<a href="/" class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
+	<a data-i18n-href="/" href={localizePath(lang, '/')} class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
 		<span
 			class="grid h-11 w-11 place-items-center rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_55%,transparent)] bg-[var(--tomato-soft)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_35%,transparent)] transition-transform group-hover:-rotate-6 group-hover:scale-110"
 		>
@@ -43,19 +46,19 @@ import { LANGUAGES } from '../lib/i18n';
 				aria-label="Choose language"
 			>
 				{LANGUAGES.map((l) => (
-					<button
-						type="button"
+					<a
 						data-lang-option={l.code}
+						href={localizePath(l.code, basePath)}
 						class="lang-option"
 						role="menuitemradio"
-						aria-checked={l.code === 'en'}
+						aria-checked={l.code === lang}
 					>
 						<span class="lang-flag" aria-hidden="true">{l.flag}</span>
 						<span>{l.name}</span>
 						<span data-lang-check class="lang-check" aria-hidden="true">
 							<Icon name="check" size={13} strokeWidth={3} />
 						</span>
-					</button>
+					</a>
 				))}
 			</div>
 		</div>
@@ -80,6 +83,8 @@ import { LANGUAGES } from '../lib/i18n';
 		font-size: 0.85rem;
 		font-weight: 600;
 		color: var(--body);
+		text-decoration: none;
+		cursor: pointer;
 		transition: background-color 0.15s ease, color 0.15s ease;
 	}
 	.lang-option:hover {

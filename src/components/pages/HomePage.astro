@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Background from '../../components/Background.astro';
+import TopBar from '../../components/TopBar.astro';
+import Timer from '../../components/Timer.astro';
+import TodoPanel from '../../components/TodoPanel.astro';
+import SettingsPanel from '../../components/SettingsPanel.astro';
+import Dock from '../../components/Dock.astro';
+import { t, DEFAULT_LANG, localizePath, type LangCode, type TranslationKey } from '../../lib/i18n';
+
+const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
+
+const faqKeys = [
+	['page.faq0q', 'page.faq0a'],
+	['page.faq1q', 'page.faq1a'],
+	['page.faq2q', 'page.faq2a'],
+	['page.faq3q', 'page.faq3a'],
+	['page.faq4q', 'page.faq4a'],
+	['page.faq5q', 'page.faq5a'],
+	['page.faq6q', 'page.faq6a'],
+	['page.faq7q', 'page.faq7a'],
+	['page.faq8q', 'page.faq8a'],
+	['page.faq9q', 'page.faq9a'],
+	['page.faq10q', 'page.faq10a'],
+] as const;
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqKeys.map(([q, a]) => ({
+		'@type': 'Question',
+		name: t(lang, q),
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: `<p>${t(lang, a)}</p>`,
+		},
+	})),
+};
+---
+
+<Layout title={t(lang, 'title.seo')} description={t(lang, 'meta.homeDesc')}>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+	</Fragment>
+
+	<a
+		href="#main"
+		class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
+		data-i18n="page.skip"
+		>{t(lang, 'page.skip')}</a
+	>
+	<Background />
+	<TopBar />
+
+	<main id="main" class="relative">
+		<div class="flex min-h-dvh flex-col items-center justify-center px-4 pb-[calc(6.5rem+env(safe-area-inset-bottom))] pt-[calc(4.5rem+env(safe-area-inset-top))] [justify-content:safe_center] md:pb-[calc(9rem+env(safe-area-inset-bottom))] md:pt-[calc(6rem+env(safe-area-inset-top))] [@media(max-height:720px)]:pb-[calc(5.5rem+env(safe-area-inset-bottom))] [@media(max-height:720px)]:pt-[calc(3.5rem+env(safe-area-inset-top))] [@media(max-height:520px)]:pb-[calc(5rem+env(safe-area-inset-bottom))] [@media(max-height:520px)]:pt-[calc(2.5rem+env(safe-area-inset-top))]">
+			<h1 class="sr-only" data-i18n="page.h1">{t(lang, 'page.h1')}</h1>
+			<Timer />
+			<p class="mt-10 hidden text-xs text-mute/80 md:block [@media(max-height:520px)]:hidden">
+				<span class="font-semibold">space</span> <span data-i18n="page.hintStart">{t(lang, 'page.hintStart')}</span>
+				&middot; <span class="font-semibold">r</span> <span data-i18n="page.hintReset">{t(lang, 'page.hintReset')}</span>
+				&middot; <span class="font-semibold">m</span> <span data-i18n="page.hintMusic">{t(lang, 'page.hintMusic')}</span>
+				&middot; <span class="font-semibold">d</span> <span data-theme-shortcut-label>dark mode</span>
+				&middot; <span class="font-semibold">f</span> <span data-i18n="page.hintFullscreen">{t(lang, 'page.hintFullscreen')}</span>
+				<span class="text-[var(--accent)]">♡</span>
+			</p>
+		</div>
+
+		<!-- SEO content -->
+		<section class="mx-auto w-full max-w-3xl px-4 pb-28 sm:px-6">
+			<div class="glass space-y-8 px-6 py-8 sm:px-10 sm:py-10">
+				<p class="eyebrow text-[var(--accent-ink)]">
+					<span data-i18n="page.aboutEyebrow">{t(lang, 'page.aboutEyebrow')}</span> ♡
+				</p>
+
+				<section>
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec1Title">
+						{t(lang, 'page.sec1Title')}
+					</h2>
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec1Body">
+						{t(lang, 'page.sec1Body')}
+					</p>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section>
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec2Title">
+						{t(lang, 'page.sec2Title')}
+					</h2>
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec2Body">
+						{t(lang, 'page.sec2Body')}
+					</p>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section>
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec3Title">
+						{t(lang, 'page.sec3Title')}
+					</h2>
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec3Body">
+						{t(lang, 'page.sec3Body')}
+					</p>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section>
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec4Title">
+						{t(lang, 'page.sec4Title')}
+					</h2>
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec4Body">
+						{t(lang, 'page.sec4Body')}
+					</p>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section>
+					<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.sec5Title">
+						{t(lang, 'page.sec5Title')}
+					</h2>
+					<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="page.sec5Body">
+						{t(lang, 'page.sec5Body')}
+					</p>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section aria-labelledby="faq-heading">
+					<p class="eyebrow text-[var(--accent-ink)]">
+						<span data-i18n="page.faqEyebrow">{t(lang, 'page.faqEyebrow')}</span> ♡
+					</p>
+					<h2 id="faq-heading" class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.faqTitle">
+						{t(lang, 'page.faqTitle')}
+					</h2>
+					<div class="space-y-3">
+						{
+							faqKeys.map(([q, a], i) => (
+								<details class="group overflow-hidden rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)]">
+									<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_4%,transparent)] [&::-webkit-details-marker]:hidden">
+										<h3 class="text-base font-bold leading-snug text-ink sm:text-lg" data-i18n={q}>{t(lang, q)}</h3>
+										<span
+											class="shrink-0 text-lg leading-none text-[var(--accent)] transition-transform duration-200 group-open:rotate-45"
+											aria-hidden="true"
+											>+</span
+										>
+									</summary>
+									<div class="px-5 pb-5">
+										<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n={a}>{t(lang, a)}</p>
+									</div>
+								</details>
+							))
+						}
+					</div>
+				</section>
+
+				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
+
+				<section aria-labelledby="site-links-heading">
+					<p class="eyebrow text-[var(--accent-ink)]">
+						<span data-i18n="footer.links">{t(lang, 'footer.links')}</span> ♡
+					</p>
+					<h2 id="site-links-heading" class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl">
+						Explore the Cute Timer
+					</h2>
+					<nav class="grid gap-3 sm:grid-cols-2" aria-label="Site links">
+						<a
+							data-i18n-href="/about/"
+							href={localizePath(lang, '/about/')}
+							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
+						>
+							<span class="block text-base font-bold text-ink" data-i18n="footer.about">{t(lang, 'footer.about')}</span>
+							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkAboutDesc">
+								{t(lang, 'page.linkAboutDesc')}
+							</span>
+						</a>
+						<a
+							data-i18n-href="/contact/"
+							href={localizePath(lang, '/contact/')}
+							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
+						>
+							<span class="block text-base font-bold text-ink" data-i18n="footer.contact">{t(lang, 'footer.contact')}</span>
+							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkContactDesc">
+								{t(lang, 'page.linkContactDesc')}
+							</span>
+						</a>
+						<a
+							data-i18n-href="/privacy-policy/"
+							href={localizePath(lang, '/privacy-policy/')}
+							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
+						>
+							<span class="block text-base font-bold text-ink" data-i18n="footer.privacy">{t(lang, 'footer.privacy')}</span>
+							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkPrivacyDesc">
+								{t(lang, 'page.linkPrivacyDesc')}
+							</span>
+						</a>
+						<a
+							data-i18n-href="/terms/"
+							href={localizePath(lang, '/terms/')}
+							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
+						>
+							<span class="block text-base font-bold text-ink" data-i18n="footer.terms">{t(lang, 'footer.terms')}</span>
+							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkTermsDesc">
+								{t(lang, 'page.linkTermsDesc')}
+							</span>
+						</a>
+					</nav>
+				</section>
+			</div>
+		</section>
+	</main>
+
+	<TodoPanel />
+	<SettingsPanel />
+	<Dock />
+
+	<script>
+		import '../../lib/app.ts';
+	</script>
+</Layout>
+
+<style>
+	/* Top/bottom clearance for the fixed TopBar and Dock now lives on the
+	   timer's flex column itself (see class list above), so justify-center
+	   centers inside the truly visible area and never tucks content behind
+	   the dock. */
+</style>

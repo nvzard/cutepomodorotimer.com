@@ -161,6 +161,122 @@ export const en = {
 	'footer.linksAria': 'Footer links',
 	'footer.tagline': 'A free cute pomodoro timer for studying and deep focus — made with ♡.',
 	'footer.rights': 'All rights reserved.',
+
+	/* Meta */
+	'meta.homeDesc':
+		'A free cute timer online — an aesthetic pink pomodoro timer for studying with lo-fi music, a cute mascot, and 10, 15 & 30 minute countdowns. Start now.',
+
+	/* Info pages */
+	'about.eyebrow': 'About the Cute Timer ♡',
+	'about.title': 'About Us',
+	'about.metaTitle': 'About Us — Cute Timer | Cute Pomodoro Timer for Studying',
+	'about.metaDesc':
+		'Learn about Cute Timer, the free aesthetic pink pomodoro timer for studying and deep focus. Our story, our mission, and the tomato behind the cuteness.',
+	'contact.eyebrow': 'Say hello ♡',
+	'contact.title': 'Contact Us',
+	'contact.metaTitle': 'Contact Us — Cute Timer | Cute Pomodoro Timer',
+	'contact.metaDesc':
+		"Get in touch with the Cute Timer team. Questions, feedback, or just to say hi to Pommy the tomato — we'd love to hear from you.",
+	'terms.eyebrow': 'Fair and friendly ♡',
+	'terms.title': 'Terms & Conditions',
+	'terms.metaTitle': 'Terms & Conditions — Cute Timer | Cute Pomodoro Timer',
+	'terms.metaDesc':
+		'The terms and conditions for using Cute Timer, the free cute pomodoro timer for studying. Simple, fair rules for a simple, free tool.',
+	'privacy.eyebrow': 'Your privacy matters ♡',
+	'privacy.title': 'Privacy Policy',
+	'privacy.metaTitle': 'Privacy Policy — Cute Timer | Cute Pomodoro Timer',
+	'privacy.metaDesc':
+		"Read the Cute Timer privacy policy. We don't collect personal data — everything you set stays in your own browser's local storage. Simple, private, and free.",
+
+	/* Shared */
+	'page.lastUpdated': 'Last updated:',
+	'page.lastUpdatedDate': 'August 9, 2026',
+
+	/* About body */
+	'about.intro':
+		"Cute Timer is a free cute timer online built for students, remote workers, and anyone who wants deep focus without feeling like they're being graded. We believe productivity shouldn't be cold or punishing — it should feel like a cozy little ritual you actually look forward to.",
+	'about.sec1Title': 'Why we built it',
+	'about.sec1Body':
+		"There are plenty of pomodoro timer apps out there, but most of them look like spreadsheets with a stopwatch. We wanted a cute pomodoro timer that pairs the classic Pomodoro Technique with soft pastel colors, gentle lo-fi music, a blushing tomato mascot, and little heart dots that celebrate every completed round. A timer you'd be happy to keep open all day on your desk.",
+	'about.sec2Title': 'Our mission',
+	'about.sec2Body':
+		'Our mission is simple: make focused work feel friendly. Whether you need a 10 minute cute timer for a quick tidy-up, a 15 minute cute timer for flashcards, or a 30 minute cute timer for deep work, we want every session to end with a small sense of accomplishment — and a break you actually take.',
+	'about.sec3Title': 'The little tomato',
+	'about.sec3Body':
+		'Our mascot is a tiny blushing tomato named Pommy. Pommy nods along while you focus, blinks during breaks, and celebrates when your round is complete. It’s a gentle reminder that the original pomodoro was just a tomato-shaped kitchen timer — and that focus doesn’t have to be serious all the time.',
+	'about.sec4Title': 'Our values',
+	'about.sec4Body':
+		'Free forever. No sign-up, no ads, no accounts. Everything you set — your timer lengths, your to-do list, your music preference — is stored only in your own browser, so you stay in control. We build in the open, keep the interface simple, and always put your focus first.',
+
+	/* Privacy body */
+	'privacy.introAfterDate':
+		'This privacy policy explains how Cute Timer ("we", "us") handles information when you use our website at',
+	'privacy.sec1Title': 'The short version',
+	'privacy.sec1Body':
+		'We do not collect, store, or share any personal information about you. No accounts, no tracking profiles, no data sold to anyone — ever. Cute Timer is a client-side app: everything happens in your browser.',
+	'privacy.sec2Title': 'Local storage only',
+	'privacy.sec2Body':
+		"To make the timer feel personal, we store a few settings in your browser's local storage: your chosen timer durations, auto-break preference, sound and notification settings, your to-do list, the lo-fi track you liked, volume, and your theme and language preferences. This data never leaves your device and is never sent to our servers. You can clear it at any time by clearing your browser's site data.",
+	'privacy.sec3Title': 'Analytics and cookies',
+	'privacy.sec3Body':
+		'Cute Timer does not use tracking cookies, advertising cookies, or third-party analytics scripts. We have no interest in following you around the internet.',
+	'privacy.sec4Title': 'Third-party services',
+	'privacy.sec4Body':
+		'Our pages load the Baloo 2 font from Google Fonts and, when you play music, stream two lo-fi audio files from our own hosting. These services may process your IP address as part of normal internet traffic. We do not control their privacy practices and encourage you to review their policies.',
+	'privacy.sec5Title': 'Notifications',
+	'privacy.sec5Body':
+		'If you enable browser notifications, your browser handles the permission and delivery locally. We never receive your notification data.',
+	'privacy.sec6Title': "Children's privacy",
+	'privacy.sec6Body':
+		'Because we collect no personal data at all, Cute Timer is safe for everyone, including children. If you believe your child has shared personal information with us through a contact message, please reach out and we’ll delete it promptly.',
+	'privacy.sec7Title': 'Changes to this policy',
+	'privacy.sec7Body':
+		'We may update this policy from time to time. When we do, we’ll revise the "last updated" date above. Please check back here for the latest version.',
+	'privacy.sec8Title': 'Contact',
+	'privacy.sec8Prefix': 'Questions about privacy? We’d love to hear from you at',
+
+	/* Terms body */
+	'terms.introAfterDate': 'By accessing or using',
+	'terms.introSuffix':
+		'("Cute Timer", "the Service"), you agree to these terms. If you don’t agree, please don’t use the Service.',
+	'terms.sec1Title': '1. Use of the Service',
+	'terms.sec1Body':
+		'Cute Timer is a free tool provided for your personal, non-commercial use. You may use it to run timers, manage a to-do list, and listen to our lo-fi tracks while you work. You agree not to misuse the Service, attempt to disrupt it, or use it for any unlawful purpose.',
+	'terms.sec2Title': '2. No accounts, no data',
+	'terms.sec2Body':
+		"The Service runs entirely in your browser. We don't create accounts and we don't store your to-do list or settings on our servers. Your data lives in your browser's local storage and you're responsible for backing it up (or simply letting it go) as you see fit.",
+	'terms.sec3Title': '3. Intellectual property',
+	'terms.sec3Body':
+		'The Cute Timer name, logo, mascot ("Pommy"), artwork, and all content on this site are our property or the property of their respective owners. You may not copy, modify, distribute, or re-sell any part of the Service or its design without permission.',
+	'terms.sec4Title': '4. The Service is provided "as is"',
+	'terms.sec4Body':
+		'Cute Timer is provided free of charge and "as is", without warranties of any kind, express or implied. We don’t guarantee that the Service will be uninterrupted, error-free, or available at all times. You use the Service at your own risk.',
+	'terms.sec5Title': '5. Limitation of liability',
+	'terms.sec5Body':
+		'To the maximum extent permitted by law, Cute Timer and its creators won’t be liable for any indirect, incidental, or consequential damages arising from your use of — or inability to use — the Service. This includes missed deadlines, lost productivity, or a stray nap that lasted too long.',
+	'terms.sec6Title': '6. Changes to these terms',
+	'terms.sec6Body':
+		'We may update these terms from time to time. Continued use of the Service after changes are posted means you accept the updated terms.',
+	'terms.sec7Title': '7. Contact',
+	'terms.sec7Prefix': 'Have a question about these terms? Reach out at',
+
+	/* Contact body */
+	'contact.intro':
+		'Questions, feature ideas, or just want to tell Pommy the tomato that she’s doing a great job? We’d genuinely love to hear from you. Fill out the form and it will open your email app with everything ready to send — no account, no tracking, no fuss.',
+	'contact.nameLabel': 'Your name',
+	'contact.namePlaceholder': 'Pommy the Tomato',
+	'contact.emailLabel': 'Your email',
+	'contact.emailPlaceholder': 'you@example.com',
+	'contact.messageLabel': 'Your message',
+	'contact.messagePlaceholder': 'Tell us what’s on your mind…',
+	'contact.submit': 'Send message ♡',
+	'contact.directTitle': 'Prefer to email directly?',
+	'contact.directPrefix': 'You can always write to us at',
+	'contact.directSuffix': 'We read every message and reply as soon as Pommy lets us take a break.',
+	'contact.subjectFrom': 'Message from',
+	'contact.subjectFallback': 'a friendly visitor',
+	'contact.bodyName': 'Name',
+	'contact.bodyEmail': 'Email',
 } as const;
 
 export type TranslationKey = keyof typeof en;
