@@ -11,6 +11,8 @@ const links = [
 	{ href: '/contact/', key: 'footer.contact', external: true },
 ] as const;
 
+const GITHUB_URL = 'https://github.com/nvzard/cutepomodorotimer.com';
+
 const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 const year = new Date().getFullYear();
 ---
@@ -53,6 +55,17 @@ const year = new Date().getFullYear();
 							</a>
 						</li>
 					))}
+					<li>
+						<a
+							href={GITHUB_URL}
+							target="_blank"
+							rel="noopener"
+							class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
+						>
+							<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>
+							<span data-i18n="footer.github">GitHub</span>
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

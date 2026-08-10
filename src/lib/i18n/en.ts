@@ -160,6 +160,7 @@ export const en = {
 	'footer.privacy': 'Privacy Policy',
 	'footer.terms': 'Terms & Conditions',
 	'footer.contact': 'Contact Us',
+	'footer.github': 'GitHub',
 	'footer.links': 'Site links',
 	'footer.linksAria': 'Footer links',
 	'footer.tagline': 'A free cute pomodoro timer for studying and deep focus — made with ♡.',

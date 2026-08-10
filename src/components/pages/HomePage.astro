@@ -6,7 +6,8 @@ import Timer from '../../components/Timer.astro';
 import TodoPanel from '../../components/TodoPanel.astro';
 import SettingsPanel from '../../components/SettingsPanel.astro';
 import Dock from '../../components/Dock.astro';
-import { t, DEFAULT_LANG, localizePath, type LangCode, type TranslationKey } from '../../lib/i18n';
+import Footer from '../../components/Footer.astro';
+import { t, DEFAULT_LANG, type LangCode, type TranslationKey } from '../../lib/i18n';
 
 const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 
@@ -155,70 +156,11 @@ const faqSchema = {
 						}
 					</div>
 				</section>
-
-				<div class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"></div>
-
-				<section aria-labelledby="site-links-heading">
-					<p class="eyebrow text-[var(--accent-ink)]">
-						<span data-i18n="footer.links">{t(lang, 'footer.links')}</span> ♡
-					</p>
-					<h2 id="site-links-heading" class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="page.linksTitle">
-						{t(lang, 'page.linksTitle')}
-					</h2>
-					<nav class="grid gap-3 sm:grid-cols-2" aria-label="Site links" data-i18n-aria="page.linksAria">
-						<a
-							data-i18n-href="/about/"
-							href={localizePath(lang, '/about/')}
-							target="_blank"
-							rel="noopener"
-							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
-						>
-							<span class="block text-base font-bold text-ink" data-i18n="footer.about">{t(lang, 'footer.about')}</span>
-							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkAboutDesc">
-								{t(lang, 'page.linkAboutDesc')}
-							</span>
-						</a>
-						<a
-							data-i18n-href="/contact/"
-							href={localizePath(lang, '/contact/')}
-							target="_blank"
-							rel="noopener"
-							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
-						>
-							<span class="block text-base font-bold text-ink" data-i18n="footer.contact">{t(lang, 'footer.contact')}</span>
-							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkContactDesc">
-								{t(lang, 'page.linkContactDesc')}
-							</span>
-						</a>
-						<a
-							data-i18n-href="/privacy-policy/"
-							href={localizePath(lang, '/privacy-policy/')}
-							target="_blank"
-							rel="noopener"
-							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
-						>
-							<span class="block text-base font-bold text-ink" data-i18n="footer.privacy">{t(lang, 'footer.privacy')}</span>
-							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkPrivacyDesc">
-								{t(lang, 'page.linkPrivacyDesc')}
-							</span>
-						</a>
-						<a
-							data-i18n-href="/terms/"
-							href={localizePath(lang, '/terms/')}
-							target="_blank"
-							rel="noopener"
-							class="group rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-[var(--accent)]"
-						>
-							<span class="block text-base font-bold text-ink" data-i18n="footer.terms">{t(lang, 'footer.terms')}</span>
-							<span class="mt-1 block text-sm leading-snug text-body" data-i18n="page.linkTermsDesc">
-								{t(lang, 'page.linkTermsDesc')}
-							</span>
-						</a>
-					</nav>
-				</section>
 			</div>
 		</section>
 	</main>
+
+	<Footer />
 
 	<TodoPanel />
 	<SettingsPanel />

@@ -151,6 +151,7 @@ const pt: Record<TranslationKey, string> = {
 	'footer.privacy': 'Política de Privacidade',
 	'footer.terms': 'Termos e Condições',
 	'footer.contact': 'Fale conosco',
+	'footer.github': 'GitHub',
 	'footer.links': 'Links do site',
 	'footer.linksAria': 'Links do rodapé',
 	'footer.tagline': 'Um timer pomodoro fofo e gratuito para estudar e focar profundamente — feito com ♡.',

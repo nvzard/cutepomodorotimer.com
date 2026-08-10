@@ -142,6 +142,7 @@ const hi: Record<TranslationKey, string> = {
 	'footer.privacy': 'गोपनीयता नीति',
 	'footer.terms': 'नियम और शर्तें',
 	'footer.contact': 'संपर्क करें',
+	'footer.github': 'GitHub',
 	'footer.links': 'साइट लिंक',
 	'footer.linksAria': 'फ़ुटर लिंक',
 	'footer.tagline': 'पढ़ाई और गहरी एकाग्रता के लिए एक मुफ़्त प्यारा पोमोडोरो टाइमर — ♡ के साथ बनाया गया।',

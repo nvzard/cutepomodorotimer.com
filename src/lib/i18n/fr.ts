@@ -161,6 +161,7 @@ const fr: Record<TranslationKey, string> = {
 	'footer.privacy': 'Politique de confidentialité',
 	'footer.terms': 'Conditions d’utilisation',
 	'footer.contact': 'Contactez-nous',
+	'footer.github': 'GitHub',
 	'footer.links': 'Liens du site',
 	'footer.linksAria': 'Liens du pied de page',
 	'footer.tagline': 'Un mignon minuteur Pomodoro gratuit pour étudier et se concentrer — fait avec ♡.',

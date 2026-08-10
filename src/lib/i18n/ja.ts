@@ -151,6 +151,7 @@ const ja: Record<TranslationKey, string> = {
 	'footer.privacy': 'プライバシーポリシー',
 	'footer.terms': '利用規約',
 	'footer.contact': 'お問い合わせ',
+	'footer.github': 'GitHub',
 	'footer.links': 'サイトリンク',
 	'footer.linksAria': 'フッターリンク',
 	'footer.tagline': '勉強と集中のための無料のかわいいポモドーロタイマー — ♡ を込めて。',

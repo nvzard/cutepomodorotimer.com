@@ -151,6 +151,7 @@ const es: Record<TranslationKey, string> = {
 	'footer.privacy': 'Política de privacidad',
 	'footer.terms': 'Términos y condiciones',
 	'footer.contact': 'Contacto',
+	'footer.github': 'GitHub',
 	'footer.links': 'Enlaces del sitio',
 	'footer.linksAria': 'Enlaces del pie de página',
 	'footer.tagline': 'Un temporizador pomodoro bonito y gratuito para estudiar y concentrarse — hecho con ♡.',

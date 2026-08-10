@@ -161,6 +161,7 @@ const de: Record<TranslationKey, string> = {
 	'footer.privacy': 'Datenschutzerklärung',
 	'footer.terms': 'Nutzungsbedingungen',
 	'footer.contact': 'Kontakt',
+	'footer.github': 'GitHub',
 	'footer.links': 'Seitenlinks',
 	'footer.linksAria': 'Fußzeilen-Links',
 	'footer.tagline': 'Ein kostenloser süßer Pomodoro-Timer zum Lernen und für tiefe Konzentration — gemacht mit ♡.',
