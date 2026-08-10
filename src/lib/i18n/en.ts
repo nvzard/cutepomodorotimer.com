@@ -94,6 +94,7 @@ export const en = {
 	'page.hintReset': 'reset',
 	'page.hintMusic': 'music',
 	'page.hintFullscreen': 'fullscreen',
+	'page.embedCta': 'Embed this cute timer in Notion ♡',
 	'page.aboutEyebrow': 'About the Cute Timer',
 	'page.sec1Title': 'What Is the Cute Timer?',
 	'page.sec1Body':
@@ -157,6 +158,7 @@ export const en = {
 	/* Footer */
 	'footer.home': 'Home',
 	'footer.about': 'About Us',
+	'footer.embed': 'Embed in Notion, WordPress & Websites',
 	'footer.privacy': 'Privacy Policy',
 	'footer.terms': 'Terms & Conditions',
 	'footer.contact': 'Contact Us',

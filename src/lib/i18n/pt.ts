@@ -86,6 +86,7 @@ const pt: Record<TranslationKey, string> = {
 	'page.hintReset': 'reiniciar',
 	'page.hintMusic': 'música',
 	'page.hintFullscreen': 'tela cheia',
+	'page.embedCta': 'Incorpore este fofo temporizador no Notion ♡',
 	'page.aboutEyebrow': 'Sobre o Cute Timer',
 	'page.sec1Title': 'O que é o Cute Timer?',
 	'page.sec1Body':
@@ -148,6 +149,7 @@ const pt: Record<TranslationKey, string> = {
 
 	'footer.home': 'Início',
 	'footer.about': 'Sobre nós',
+	'footer.embed': 'Incorporar no Notion, WordPress e sites',
 	'footer.privacy': 'Política de Privacidade',
 	'footer.terms': 'Termos e Condições',
 	'footer.contact': 'Fale conosco',

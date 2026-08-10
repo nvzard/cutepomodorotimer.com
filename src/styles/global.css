@@ -485,6 +485,16 @@ body[data-phase='break'] {
 }
 
 /* ------------------------------------------------------------------ */
+/* Embed widget (only active on the /embed page inside an iframe)      */
+/* ------------------------------------------------------------------ */
+/* Shrink the ring so the widget fits a Notion embed block. This lives
+   here (unscoped) because it must pierce into the Timer component's
+   scoped styles. */
+html[data-embedded] [data-timer] .timer-ring {
+  --ring: min(78vw, 20rem, max(calc(100dvh - 9.5rem), 8rem));
+}
+
+/* ------------------------------------------------------------------ */
 /* Accessibility                                                       */
 /* ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {

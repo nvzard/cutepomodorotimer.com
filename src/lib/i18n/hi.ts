@@ -77,6 +77,7 @@ const hi: Record<TranslationKey, string> = {
 	'page.hintReset': 'रीसेट',
 	'page.hintMusic': 'संगीत',
 	'page.hintFullscreen': 'फुलस्क्रीन',
+	'page.embedCta': 'इस प्यारे टाइमर को Notion में एम्बेड करें ♡',
 	'page.aboutEyebrow': 'Cute Timer के बारे में',
 	'page.sec1Title': 'Cute Timer क्या है?',
 	'page.sec1Body':
@@ -139,6 +140,7 @@ const hi: Record<TranslationKey, string> = {
 
 	'footer.home': 'होम',
 	'footer.about': 'हमारे बारे में',
+	'footer.embed': 'Notion, WordPress और वेबसाइट में एम्बेड करें',
 	'footer.privacy': 'गोपनीयता नीति',
 	'footer.terms': 'नियम और शर्तें',
 	'footer.contact': 'संपर्क करें',

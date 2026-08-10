@@ -86,6 +86,7 @@ const ja: Record<TranslationKey, string> = {
 	'page.hintReset': 'リセット',
 	'page.hintMusic': 'ミュージック',
 	'page.hintFullscreen': '全画面',
+	'page.embedCta': 'このかわいいタイマーをNotionに埋め込む ♡',
 	'page.aboutEyebrow': 'Cute Timer について',
 	'page.sec1Title': 'Cute Timer って何？',
 	'page.sec1Body':
@@ -148,6 +149,7 @@ const ja: Record<TranslationKey, string> = {
 
 	'footer.home': 'ホーム',
 	'footer.about': '私たちについて',
+	'footer.embed': 'Notion・WordPress・Webサイトに埋め込む',
 	'footer.privacy': 'プライバシーポリシー',
 	'footer.terms': '利用規約',
 	'footer.contact': 'お問い合わせ',

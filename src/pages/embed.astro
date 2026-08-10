@@ -1,0 +1,582 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import Background from "../components/Background.astro";
+import Footer from "../components/Footer.astro";
+import Timer from "../components/Timer.astro";
+
+const title =
+	"Pomodoro Timer Widget for Notion & Websites — Free Cute Timer Embed";
+const description =
+	"Embed a free cute pomodoro timer in Notion or on your own website. A pretty pink pomodoro widget that runs inside a Notion /embed block or a plain website iframe — no login, no sign-up, with customizable minutes, auto-start and themes.";
+const canonical = new URL("/embed", Astro.site).toString();
+
+const keywords = [
+	"pomodoro timer for notion",
+	"notion pomodoro widget",
+	"embed pomodoro timer in notion",
+	"pomodoro widget notion",
+	"notion timer widget",
+	"pomodoro embed",
+	"notion embed timer",
+	"free notion widget",
+	"pomodoro timer widget",
+	"cute timer widget",
+	"embed timer in notion",
+	"notion widgets",
+	"pomodoro timer notion",
+	"embed pomodoro timer website",
+	"pomodoro widget for website",
+	"pomodoro timer iframe",
+	"website pomodoro widget",
+	"embed timer on website",
+].join(", ");
+
+const faqs = [
+	{
+		q: "How do I add this pomodoro timer to Notion?",
+		a: 'Copy the embed link above, open the Notion page where you want the timer, type /embed, paste the link, and click "Embed link". Drag the block handles to resize it — that is all it takes.',
+	},
+	{
+		q: "Is the Notion pomodoro widget free?",
+		a: "Yes. The cute timer widget is completely free, has no sign-up, no ads, and no account. Everything you set is stored only in your own browser.",
+	},
+	{
+		q: "Why is my Notion embed showing a blank box?",
+		a: 'This usually happens when a site blocks embedding with an X-Frame-Options or frame-ancestors header. This widget does not send any framing restrictions, so it loads inside Notion. If you still see a blank box, try pasting the URL again and choosing "Embed link" instead of "Create bookmark".',
+	},
+	{
+		q: "Can I change how long the pomodoro lasts in the embed?",
+		a: "Yes. Add ?minutes=45 to the embed URL (or use the generator above) to set the focus length, and ?mode=short or ?mode=long to start on a break. Use ?auto=1 to auto-start the timer, and ?theme=light or ?theme=dark to lock a theme.",
+	},
+	{
+		q: "Does the widget save my settings?",
+		a: "The widget reads your saved settings from your browser. URL parameters always take priority, so each Notion embed can have its own minutes, mode, and theme without affecting the main site.",
+	},
+	{
+		q: "Can I use the pomodoro widget outside Notion?",
+		a: "Yes. The embed link works anywhere that supports iframes — Notion, Obsidian, websites, dashboards, or as a plain browser tab. You can also just use it directly as a cute pomodoro timer.",
+	},
+	{
+		q: "How do I embed the timer on my own website?",
+		a: "Copy the website embed code above and paste it into your page's HTML editor. It works in WordPress, Wix, Ghost, Squarespace, GitHub Pages, and any site that allows iframes. Resize it by editing the height in the snippet — 560px is the default.",
+	},
+	{
+		q: "Can I embed the timer in WordPress?",
+		a: 'Yes. On the block editor, add a "Custom HTML" block and paste the website embed code. In the classic editor, switch to the Text tab and paste it anywhere. The widget shows the timer only, with no banners or links, so it blends into your layout.',
+	},
+];
+
+const appSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebApplication",
+	name: "Cute Timer — Pomodoro Widget for Notion",
+	url: canonical,
+	description,
+	applicationCategory: "UtilityApplication",
+	operatingSystem: "Any",
+	browserRequirements: "Requires JavaScript",
+	isAccessibleForFree: true,
+	offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+	keywords,
+	inLanguage: "en",
+};
+
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map(({ q, a }) => ({
+		"@type": "Question",
+		name: q,
+		acceptedAnswer: { "@type": "Answer", text: a },
+	})),
+};
+
+const howToSchema = {
+	"@context": "https://schema.org",
+	"@type": "HowTo",
+	name: "How to embed a pomodoro timer in Notion",
+	step: [
+		{
+			"@type": "HowToStep",
+			position: 1,
+			name: "Copy the embed link",
+			text: "Copy the pomodoro timer embed URL from this page, or build your own with the generator.",
+		},
+		{
+			"@type": "HowToStep",
+			position: 2,
+			name: "Add an embed block in Notion",
+			text: 'Type /embed on your Notion page, paste the URL, and click "Embed link".',
+		},
+		{
+			"@type": "HowToStep",
+			position: 3,
+			name: "Resize and start focusing",
+			text: "Drag the block handles to size the widget, then press Start to begin your pomodoro.",
+		},
+	],
+};
+
+const embedUrl = `${canonical}?minutes=25`;
+const embedCode = `<iframe src="${embedUrl}" style="width:100%;max-width:420px;height:560px;border:0" title="Cute Pomodoro timer" loading="lazy"></iframe>`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="robots" content="index, follow" />
+		<meta
+			name="theme-color"
+			content="#fff3f8"
+			media="(prefers-color-scheme: light)"
+		/>
+		<meta
+			name="theme-color"
+			content="#231926"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/favicon-96x96.png"
+			sizes="96x96"
+		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+		<link rel="canonical" href={canonical} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Cute Timer" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta
+			property="og:image"
+			content={`${new URL("/", Astro.site)}og-embed.png`}
+		/>
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta
+			name="twitter:image"
+			content={`${new URL("/", Astro.site)}og-embed.png`}
+		/>
+		<title>{title}</title>
+
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(appSchema)}
+		/>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(faqSchema)}
+		/>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(howToSchema)}
+		/>
+
+		<Font cssVariable="--font-baloo" preload />
+
+		<script is:inline>
+			(function () {
+				var stored = null;
+				try {
+					stored = localStorage.getItem("pomo:theme");
+				} catch (e) {}
+				var theme =
+					stored ||
+					(window.matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light");
+				document.documentElement.classList.toggle(
+					"dark",
+					theme === "dark",
+				);
+
+				var embedded = false;
+				try {
+					embedded = window.self !== window.top;
+				} catch (e) {
+					embedded = true;
+				}
+				if (embedded)
+					document.documentElement.setAttribute("data-embedded", "");
+			})();
+		</script>
+	</head>
+	<body data-phase="focus">
+		<Background />
+
+		<main class="relative">
+			<!-- Live widget (the only thing visible when embedded in Notion) -->
+			<section
+				class="embed-hero flex min-h-dvh flex-col items-center justify-center px-4 py-14 text-center"
+			>
+				<p class="eyebrow text-[var(--accent-ink)]">
+					Pomodoro for Notion ♡
+				</p>
+				<h1
+					class="mt-2 max-w-2xl text-3xl font-extrabold leading-tight text-ink sm:text-5xl"
+				>
+					Embed a cute Pomodoro timer in Notion
+				</h1>
+				<p class="mt-3 max-w-xl text-sm text-body sm:text-base">
+					This free pomodoro timer widget runs inside Notion embed
+					blocks and plain website iframes — no sign-up, no accounts,
+					just a pretty timer you can start in one click.
+				</p>
+				<div class="mt-4 flex w-full flex-col items-center">
+					<Timer />
+				</div>
+				<p class="mt-6 text-xs text-ink/75">
+					<span class="font-semibold">space</span> start/pause &middot;
+					<span class="font-semibold">r</span> reset &middot; <span
+						class="text-[var(--accent)]">♡</span
+					>
+				</p>
+			</section>
+
+			<!-- SEO + how-to content (hidden when the page is embedded in an iframe) -->
+			<div
+				data-embed-content
+				class="mx-auto w-full max-w-3xl px-4 pb-28 sm:px-6"
+			>
+				<div class="glass space-y-10 px-6 py-8 sm:px-10 sm:py-10">
+					<section aria-labelledby="howto-heading">
+						<p class="eyebrow text-[var(--accent-ink)]">
+							How to add it ♡
+						</p>
+						<h2
+							id="howto-heading"
+							class="mb-4 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+						>
+							Add this pomodoro widget to Notion in 3 steps
+						</h2>
+						<ol class="space-y-3">
+							<li
+								class="flex items-start gap-3 rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4"
+							>
+								<span
+									class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[var(--tomato-soft)] text-sm font-extrabold text-[var(--tomato-deep)]"
+									>1</span
+								>
+								<div>
+									<h3 class="font-bold text-ink">
+										Copy the embed link
+									</h3>
+									<p
+										class="mt-1 text-sm leading-relaxed text-body"
+									>
+										Grab the widget URL below, or tailor one
+										with the generator.
+									</p>
+								</div>
+							</li>
+							<li
+								class="flex items-start gap-3 rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4"
+							>
+								<span
+									class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[var(--tomato-soft)] text-sm font-extrabold text-[var(--tomato-deep)]"
+									>2</span
+								>
+								<div>
+									<h3 class="font-bold text-ink">
+										Add an /embed block
+									</h3>
+									<p
+										class="mt-1 text-sm leading-relaxed text-body"
+									>
+										On your Notion page, type <span
+											class="font-semibold">/embed</span
+										>, paste the link, and click
+										<span class="font-semibold"
+											>Embed link</span
+										>.
+									</p>
+								</div>
+							</li>
+							<li
+								class="flex items-start gap-3 rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-5 py-4"
+							>
+								<span
+									class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[var(--tomato-soft)] text-sm font-extrabold text-[var(--tomato-deep)]"
+									>3</span
+								>
+								<div>
+									<h3 class="font-bold text-ink">
+										Resize &amp; start focusing
+									</h3>
+									<p
+										class="mt-1 text-sm leading-relaxed text-body"
+									>
+										Drag the block handles to size the
+										widget, then hit Start on the cute timer
+										and get to work.
+									</p>
+								</div>
+							</li>
+						</ol>
+					</section>
+
+					<div
+						class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"
+					>
+					</div>
+
+					<section aria-labelledby="generator-heading">
+						<p class="eyebrow text-[var(--accent-ink)]">
+							Make it yours ♡
+						</p>
+						<h2
+							id="generator-heading"
+							class="mb-4 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+						>
+							Build your pomodoro embed
+						</h2>
+						<p class="text-sm leading-relaxed text-body">
+							Pick your options, then paste the link into a Notion <span
+								class="font-semibold">/embed</span
+							> block or drop the website code into any page.
+						</p>
+
+						<div class="mt-5 grid gap-4 sm:grid-cols-2">
+							<label class="flex flex-col gap-1.5">
+								<span class="eyebrow text-[var(--accent-ink)]"
+									>Focus length</span
+								>
+								<input
+									type="number"
+									data-gen-minutes
+									name="minutes"
+									value="25"
+									min="1"
+									max="180"
+									class="rounded-full border-2 border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-4 py-2.5 text-sm font-semibold text-ink outline-none focus:border-[var(--tomato)]"
+								/>
+							</label>
+							<label class="flex flex-col gap-1.5">
+								<span class="eyebrow text-[var(--accent-ink)]"
+									>Starting mode</span
+								>
+								<select
+									data-gen-mode
+									name="mode"
+									class="rounded-full border-2 border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-4 py-2.5 text-sm font-semibold text-ink outline-none focus:border-[var(--tomato)]"
+								>
+									<option value="focus">Focus</option>
+									<option value="short">Short break</option>
+									<option value="long">Long break</option>
+								</select>
+							</label>
+							<label class="flex flex-col gap-1.5">
+								<span class="eyebrow text-[var(--accent-ink)]"
+									>Theme</span
+								>
+								<select
+									data-gen-theme
+									name="theme"
+									class="rounded-full border-2 border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-4 py-2.5 text-sm font-semibold text-ink outline-none focus:border-[var(--tomato)]"
+								>
+									<option value="auto">Follow system</option>
+									<option value="light">Light</option>
+									<option value="dark">Dark</option>
+								</select>
+							</label>
+							<label class="flex flex-col gap-1.5">
+								<span class="eyebrow text-[var(--accent-ink)]"
+									>Widget language</span
+								>
+								<select
+									data-gen-lang
+									name="lang"
+									class="rounded-full border-2 border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] px-4 py-2.5 text-sm font-semibold text-ink outline-none focus:border-[var(--tomato)]"
+								>
+									<option value="en">English</option>
+									<option value="es">Español</option>
+									<option value="de">Deutsch</option>
+									<option value="fr">Français</option>
+									<option value="hi">हिन्दी</option>
+									<option value="ja">日本語</option>
+									<option value="pt">Português</option>
+								</select>
+							</label>
+							<label
+								class="flex items-center gap-2.5 sm:col-span-2"
+							>
+								<input
+									type="checkbox"
+									data-gen-auto
+									name="auto"
+									class="h-5 w-5 rounded accent-[var(--tomato-deep)]"
+								/>
+								<span class="text-sm font-semibold text-body"
+									>Auto-start the timer when the page loads</span
+								>
+							</label>
+						</div>
+
+						<div class="mt-6 space-y-5">
+							<div class="flex flex-col gap-2">
+								<span class="eyebrow text-[var(--accent-ink)]"
+									>Notion embed link</span
+								>
+								<div
+									class="flex flex-col gap-3 sm:flex-row sm:items-center"
+								>
+									<code
+										data-gen-url
+										class="min-w-0 flex-1 truncate rounded-full border-2 border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--canvas)_70%,transparent)] px-4 py-2.5 text-xs font-semibold text-body"
+										>{embedUrl}</code
+									>
+									<button
+										type="button"
+										data-gen-copy
+										class="pill-btn shrink-0 bg-[var(--tomato-deep)] px-6 py-2.5 text-sm font-extrabold text-white [box-shadow:0_4px_0_color-mix(in_srgb,var(--tomato-deep)_68%,#000)]"
+									>
+										Copy link
+									</button>
+								</div>
+							</div>
+
+							<div class="flex flex-col gap-2">
+								<span class="eyebrow text-[var(--accent-ink)]"
+									>Website embed code</span
+								>
+								<div
+									class="flex flex-col gap-3 sm:flex-row sm:items-center"
+								>
+									<code
+										data-gen-code
+										class="min-w-0 flex-1 truncate rounded-full border-2 border-[color-mix(in_srgb,var(--ink)_12%,transparent)] bg-[color-mix(in_srgb,var(--canvas)_70%,transparent)] px-4 py-2.5 text-xs font-semibold text-body"
+										>{embedCode}</code
+									>
+									<button
+										type="button"
+										data-gen-code-copy
+										class="pill-btn shrink-0 bg-[var(--tomato-deep)] px-6 py-2.5 text-sm font-extrabold text-white [box-shadow:0_4px_0_color-mix(in_srgb,var(--tomato-deep)_68%,#000)]"
+									>
+										Copy code
+									</button>
+								</div>
+							</div>
+						</div>
+						<p class="mt-3 text-xs leading-relaxed text-mute">
+							Tip: paste the website code anywhere that supports
+							iframes — WordPress, Wix, Ghost, Squarespace, GitHub
+							Pages. Resize the widget by editing the height in
+							the snippet. The widget uses no cookies, no
+							accounts, and sends no tracking — everything lives
+							in the visitor's own browser.
+						</p>
+					</section>
+
+					<div
+						class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"
+					>
+					</div>
+
+					<section aria-labelledby="faq-heading">
+						<p class="eyebrow text-[var(--accent-ink)]">
+							Questions ♡
+						</p>
+						<h2
+							id="faq-heading"
+							class="mb-3 mt-2 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+						>
+							Pomodoro widget for Notion — FAQ
+						</h2>
+						<div class="space-y-3">
+							{
+								faqs.map(({ q, a }) => (
+									<details class="group overflow-hidden rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)]">
+										<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_4%,transparent)] [&::-webkit-details-marker]:hidden">
+											<h3 class="text-base font-bold leading-snug text-ink sm:text-lg">
+												{q}
+											</h3>
+											<span
+												class="shrink-0 text-lg leading-none text-[var(--accent)] transition-transform duration-200 group-open:rotate-45"
+												aria-hidden="true"
+											>
+												+
+											</span>
+										</summary>
+										<div class="px-5 pb-5">
+											<p class="text-sm leading-relaxed text-body sm:text-base">
+												{a}
+											</p>
+										</div>
+									</details>
+								))
+							}
+						</div>
+					</section>
+
+					<div
+						class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"
+					>
+					</div>
+
+					<section class="text-center">
+						<p class="text-sm leading-relaxed text-body">
+							Prefer the full experience? Open the&nbsp;
+							<a
+								href="/"
+								class="font-bold text-[var(--tomato-deep)] underline decoration-2 underline-offset-4 hover:text-ink"
+							>
+								cute pomodoro timer website
+							</a>
+							&nbsp;with lo-fi music, tasks, and more.
+						</p>
+					</section>
+				</div>
+			</div>
+		</main>
+
+		<div data-embed-content>
+			<Footer />
+		</div>
+
+		<audio data-chime preload="none" tabindex="-1" aria-hidden="true">
+			<source src="/sounds/zen-tone.mp3" type="audio/mpeg" />
+			<source src="/sounds/zen-tone.m4a" type="audio/mp4" />
+		</audio>
+
+		<script>
+			import "../lib/widget.ts";
+		</script>
+	</body>
+</html>
+
+<style>
+	/* The task anchor opens the todo panel, which the embed doesn't ship with. */
+	:global([data-timer] [data-task-anchor]) {
+		display: none !important;
+	}
+
+	/* Inside an iframe (e.g. Notion): show only the live widget, full-bleed.
+	   Direct visits use the Timer's own responsive sizing. */
+	html[data-embedded] .embed-hero {
+		min-height: 100dvh;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	html[data-embedded] .embed-hero .eyebrow,
+	html[data-embedded] .embed-hero h1,
+	html[data-embedded] .embed-hero > p,
+	html[data-embedded] [data-embed-content] {
+		display: none;
+	}
+</style>
