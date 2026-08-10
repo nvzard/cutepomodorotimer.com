@@ -663,6 +663,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function applyVolume() {
 		audioEls.forEach((a) => {
+			const fade = fades.get(a);
+			if (fade) cancelAnimationFrame(fade);
+			a.muted = muted;
 			a.volume = muted ? 0 : volume;
 		});
 		volumeIcon.innerHTML = muted || volume === 0 ? volumeX : volume2;
