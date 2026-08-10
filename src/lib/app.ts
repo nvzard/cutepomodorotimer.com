@@ -606,29 +606,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* ------------------------------------------------------------------ */
 	/* Chime + notifications                                               */
 	/* ------------------------------------------------------------------ */
-	let audioCtx: AudioContext | null = null;
+	let chimeEl: HTMLAudioElement | null = null;
 
 	function chime() {
 		try {
-			audioCtx = audioCtx || new AudioContext();
-			const ctx = audioCtx;
-			if (ctx.state === 'suspended') ctx.resume();
-			const now = ctx.currentTime;
-			const notes = phase === 'focus' ? [659.25, 987.77] : [987.77, 659.25];
-			notes.forEach((freq, i) => {
-				const osc = ctx.createOscillator();
-				const gain = ctx.createGain();
-				const t = now + i * 0.2;
-				osc.type = 'sine';
-				osc.frequency.value = freq;
-				gain.gain.setValueAtTime(0.0001, t);
-				gain.gain.exponentialRampToValueAtTime(0.16, t + 0.02);
-				gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.8);
-				osc.connect(gain);
-				gain.connect(ctx.destination);
-				osc.start(t);
-				osc.stop(t + 0.85);
-			});
+			chimeEl = chimeEl || document.querySelector<HTMLAudioElement>('[data-chime]');
+			if (!chimeEl) return;
+			chimeEl.currentTime = 0;
+			chimeEl.volume = 1;
+			chimeEl.play().catch(() => {});
 		} catch {}
 	}
 
