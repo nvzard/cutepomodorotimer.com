@@ -1,8 +1,10 @@
-# Cute Timer ♡
+# Cute Timer ❤️
 
-A free, cute Pomodoro timer for studying and deep focus. Pair a kawaii pink pomodoro countdown with gentle lo-fi music, a blushing tomato mascot, and a pastel design — all in your browser with no sign-up, no ads, and no downloads.
+A free, cute Pomodoro timer for studying and deep focus. Pair a kawaii pink pomodoro countdown with gentle lo-fi music, a blushing tomato mascot, and a pastel design — all in your browser with no sign-up.
 
 Live at [cutepomodorotimer.com](https://cutepomodorotimer.com)
+
+![Cute Pomodoro Timer](https://github.com/user-attachments/assets/f430a0a8-f0ab-4407-ad9f-a965d9ce4bb6)
 
 ## Features
 
