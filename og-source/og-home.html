@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1200px; height:630px; overflow:hidden; }
+body { font-family:'Baloo 2', ui-rounded, system-ui, sans-serif; background:#fff3f8; }
+.canvas { position:relative; width:1200px; height:630px; }
+
+.blob { position:absolute; border-radius:50%; }
+.blob-1 { width:360px; height:360px; left:-70px; top:-90px; background:#ffc9dd; opacity:.6; filter:blur(70px); }
+.blob-2 { width:400px; height:400px; left:880px; top:430px; background:#ffe3cb; opacity:.55; filter:blur(70px); }
+.blob-3 { width:320px; height:320px; left:920px; top:-80px; background:#e1f0fd; opacity:.5; filter:blur(70px); }
+.blob-4 { width:340px; height:340px; left:340px; top:430px; background:#ffd9ee; opacity:.55; filter:blur(70px); }
+
+.deco { position:absolute; display:flex; align-items:center; justify-content:center; opacity:.9; }
+
+.eyebrow { position:absolute; left:72px; top:150px; display:flex; align-items:center; gap:10px; }
+.eyebrow .txt { font-size:19px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#f25a8c; }
+
+h1 { position:absolute; left:70px; top:190px; font-size:118px; line-height:1; font-weight:800; color:#4b3450; letter-spacing:-.01em; text-shadow:0 5px 0 rgba(75,52,80,.16); white-space:nowrap; }
+
+.sub { position:absolute; left:72px; top:320px; font-size:27px; font-weight:500; line-height:1.42; color:#8a6685; }
+.sub b { color:#f25a8c; font-weight:700; }
+
+.pill { position:absolute; left:72px; top:448px; display:inline-flex; align-items:center; gap:10px; padding:13px 27px 14px; border-radius:999px; background:#fffdfe; border:2px solid #f25a8c; box-shadow:0 5px 0 rgba(242,90,140,.3); }
+.pill .txt { font-size:26px; font-weight:700; color:#f25a8c; }
+
+.ring-wrap { position:absolute; left:688px; top:118px; width:364px; height:364px; filter:drop-shadow(0 18px 32px rgba(242,90,140,.28)); }
+.ring { width:100%; height:100%; transform:rotate(-90deg); }
+.ring-time { position:absolute; left:0; right:0; top:38%; transform:translateY(-50%); text-align:center; font-size:94px; font-weight:800; color:#4b3450; text-shadow:0 4px 0 rgba(75,52,80,.14); }
+.ring-label { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:23px; font-weight:700; color:#f25a8c; letter-spacing:.05em; }
+
+.mascot { position:absolute; left:820px; top:88px; width:100px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+	<div class="blob blob-1"></div>
+	<div class="blob blob-2"></div>
+	<div class="blob blob-3"></div>
+	<div class="blob blob-4"></div>
+
+	<!-- decorative hearts + sparkles -->
+	<div class="deco" style="left:120px;top:64px;transform:rotate(-10deg);color:#ff7ba6">
+		<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+	</div>
+	<div class="deco" style="left:400px;top:48px;color:#ffcf5e">
+		<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1z"/></svg>
+	</div>
+	<div class="deco" style="left:650px;top:38px;transform:rotate(8deg);color:#c79ce8">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+	</div>
+	<div class="deco" style="left:990px;top:60px;transform:rotate(12deg);color:#ffab7a">
+		<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1z"/></svg>
+	</div>
+	<div class="deco" style="left:1130px;top:210px;transform:rotate(6deg);color:#f2a0bd">
+		<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+	</div>
+	<div class="deco" style="left:44px;top:420px;color:#8fc8f2">
+		<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1z"/></svg>
+	</div>
+	<div class="deco" style="left:300px;top:556px;transform:rotate(-6deg);color:#ff7ba6">
+		<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+	</div>
+	<div class="deco" style="left:1176px;top:540px;transform:rotate(-12deg);color:#ffcf5e">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1z"/></svg>
+	</div>
+	<div class="deco" style="left:702px;top:150px;color:#ffcf5e;opacity:.85">
+		<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1z"/></svg>
+	</div>
+	<div class="deco" style="left:1078px;top:120px;transform:rotate(8deg);color:#c79ce8;opacity:.9">
+		<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+	</div>
+
+	<!-- left copy -->
+	<div class="eyebrow">
+		<svg width="22" height="22" viewBox="0 0 24 24" fill="#f25a8c" style="transform:rotate(-8deg)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+		<span class="txt">Cute Pomodoro Timer Online</span>
+	</div>
+	<h1>Cute Timer</h1>
+	<p class="sub">A free cute pomodoro timer for studying<br/>with <b>lo-fi music</b>, tasks &amp; a <b>cute mascot</b> ♡</p>
+	<div class="pill">
+		<span class="txt">cutepomodorotimer.com</span>
+	</div>
+
+	<!-- right ring -->
+	<div class="ring-wrap">
+		<svg class="ring" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<linearGradient id="og-ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="#ff7ba6"/>
+					<stop offset="100%" stop-color="#ffab7a"/>
+				</linearGradient>
+			</defs>
+			<circle cx="180" cy="180" r="166" stroke="#f4dde6" stroke-width="13"/>
+			<circle cx="180" cy="180" r="166" stroke="url(#og-ring-grad)" stroke-width="13" stroke-linecap="round" stroke-dasharray="782 261"/>
+		</svg>
+		<div class="ring-time">25:00</div>
+		<div class="ring-label">FOCUS TIME ♡</div>
+	</div>
+
+	<!-- mascot -->
+	<div class="mascot">
+		<svg viewBox="0 0 140 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<linearGradient id="og-mascot-body" x1="30" y1="24" x2="110" y2="116" gradientUnits="userSpaceOnUse">
+					<stop stop-color="#ff9dbb"/>
+					<stop offset="1" stop-color="#f85e8e"/>
+				</linearGradient>
+				<filter id="og-mascot-shadow" x="-30%" y="-30%" width="160%" height="160%">
+					<feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#e84a78" flood-opacity="0.32"/>
+				</filter>
+			</defs>
+			<g filter="url(#og-mascot-shadow)">
+				<path d="M70 26 C60 18 44 15 32 18 C44 26 58 30 70 28 Z" fill="#7bd88f"/>
+				<path d="M70 26 C80 18 96 15 108 18 C96 26 82 30 70 28 Z" fill="#7bd88f"/>
+				<path d="M70 30 C70 21 70 14 70 9 C73 12 76 15 76 19 C74 24 72 27 70 30 Z" fill="#6cc37f"/>
+				<circle cx="70" cy="74" r="46" fill="url(#og-mascot-body)" stroke="#e84a78" stroke-width="3.5"/>
+				<ellipse cx="52" cy="54" rx="16" ry="10" fill="#fff" opacity="0.4" transform="rotate(-24 52 54)"/>
+				<ellipse cx="43" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95"/>
+				<ellipse cx="97" cy="86" rx="8" ry="4.6" fill="#ffb3c7" opacity="0.95"/>
+				<g stroke="#7a2440" stroke-width="4.2" stroke-linecap="round">
+					<path d="M44 67 q8 9 16 0"/>
+					<path d="M80 67 q8 9 16 0"/>
+				</g>
+				<path d="M57 88 q6 7 12 0 q6 7 12 0" stroke="#7a2440" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+			</g>
+		</svg>
+	</div>
+</div>
+</body>
+</html>
