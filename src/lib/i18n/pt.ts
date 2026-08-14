@@ -219,6 +219,10 @@ const pt: Record<TranslationKey, string> = {
 	'about.sec4Title': 'Nossos valores',
 	'about.sec4Body':
 		'Grátis para sempre. Sem cadastro, sem anúncios, sem contas. Tudo o que você configura — suas durações de timer, sua lista de tarefas, sua preferência musical — fica armazenado apenas no seu próprio navegador, para você manter o controle. Construímos de forma aberta, mantemos a interface simples e sempre colocamos o seu foco em primeiro lugar.',
+	'about.thanksTitle': 'Obrigado, gente querida ♡',
+	'about.thanksBody':
+		'Todo dia alguém abre o Cute Timer, e alguns de vocês vão mais longe — sugerindo recursos úteis, compartilhando feedback e nos ajudando a tornar o foco um pouco mais acolhedor. Obrigado, de todos nós. Vocês fazem o dia deste pequeno tomate.',
+	'about.thanksNamesLabel': 'Um agradecimento especial a quem ajuda a moldar o Cute Timer:',
 
 	/* Privacy body */
 	'privacy.introAfterDate':

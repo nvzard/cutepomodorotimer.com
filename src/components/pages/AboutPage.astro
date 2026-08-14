@@ -1,52 +1,124 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import { t, DEFAULT_LANG, type LangCode, type TranslationKey } from '../../lib/i18n';
+import PageLayout from "../../layouts/PageLayout.astro";
+import {
+	t,
+	DEFAULT_LANG,
+	type LangCode,
+	type TranslationKey,
+} from "../../lib/i18n";
 
 const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
+
+const contributors = ["Samantha", "Andy"];
 ---
 
 <PageLayout page="about">
-	<p class="eyebrow text-[var(--accent-ink)]" data-i18n="about.eyebrow">{t(lang, 'about.eyebrow' as TranslationKey)}</p>
-	<h1 class="mt-2 text-3xl font-extrabold leading-snug text-ink sm:text-4xl" data-i18n="about.title">
-		{t(lang, 'about.title' as TranslationKey)}
+	<p class="eyebrow text-[var(--accent-ink)]" data-i18n="about.eyebrow">
+		{t(lang, "about.eyebrow" as TranslationKey)}
+	</p>
+	<h1
+		class="mt-2 text-3xl font-extrabold leading-snug text-ink sm:text-4xl"
+		data-i18n="about.title"
+	>
+		{t(lang, "about.title" as TranslationKey)}
 	</h1>
-	<p class="mt-4 text-sm leading-relaxed text-body sm:text-base" data-i18n="about.intro">
-		{t(lang, 'about.intro' as TranslationKey)}
+	<p
+		class="mt-4 text-sm leading-relaxed text-body sm:text-base"
+		data-i18n="about.intro"
+	>
+		{t(lang, "about.intro" as TranslationKey)}
 	</p>
 
 	<section class="mt-8">
-		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="about.sec1Title">
-			{t(lang, 'about.sec1Title' as TranslationKey)}
+		<h2
+			class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+			data-i18n="about.sec1Title"
+		>
+			{t(lang, "about.sec1Title" as TranslationKey)}
 		</h2>
-		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="about.sec1Body">
-			{t(lang, 'about.sec1Body' as TranslationKey)}
+		<p
+			class="text-sm leading-relaxed text-body sm:text-base"
+			data-i18n="about.sec1Body"
+		>
+			{t(lang, "about.sec1Body" as TranslationKey)}
 		</p>
 	</section>
 
 	<section class="mt-8">
-		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="about.sec2Title">
-			{t(lang, 'about.sec2Title' as TranslationKey)}
+		<h2
+			class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+			data-i18n="about.sec2Title"
+		>
+			{t(lang, "about.sec2Title" as TranslationKey)}
 		</h2>
-		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="about.sec2Body">
-			{t(lang, 'about.sec2Body' as TranslationKey)}
+		<p
+			class="text-sm leading-relaxed text-body sm:text-base"
+			data-i18n="about.sec2Body"
+		>
+			{t(lang, "about.sec2Body" as TranslationKey)}
 		</p>
 	</section>
 
 	<section class="mt-8">
-		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="about.sec3Title">
-			{t(lang, 'about.sec3Title' as TranslationKey)}
+		<h2
+			class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+			data-i18n="about.sec3Title"
+		>
+			{t(lang, "about.sec3Title" as TranslationKey)}
 		</h2>
-		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="about.sec3Body">
-			{t(lang, 'about.sec3Body' as TranslationKey)}
+		<p
+			class="text-sm leading-relaxed text-body sm:text-base"
+			data-i18n="about.sec3Body"
+		>
+			{t(lang, "about.sec3Body" as TranslationKey)}
 		</p>
 	</section>
 
 	<section class="mt-8">
-		<h2 class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl" data-i18n="about.sec4Title">
-			{t(lang, 'about.sec4Title' as TranslationKey)}
+		<h2
+			class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+			data-i18n="about.sec4Title"
+		>
+			{t(lang, "about.sec4Title" as TranslationKey)}
 		</h2>
-		<p class="text-sm leading-relaxed text-body sm:text-base" data-i18n="about.sec4Body">
-			{t(lang, 'about.sec4Body' as TranslationKey)}
+		<p
+			class="text-sm leading-relaxed text-body sm:text-base"
+			data-i18n="about.sec4Body"
+		>
+			{t(lang, "about.sec4Body" as TranslationKey)}
 		</p>
+	</section>
+
+	<section class="mt-8">
+		<h2
+			class="mb-3 text-2xl font-extrabold leading-snug text-ink sm:text-3xl"
+			data-i18n="about.thanksTitle"
+		>
+			{t(lang, "about.thanksTitle" as TranslationKey)}
+		</h2>
+		<p
+			class="text-sm leading-relaxed text-body sm:text-base"
+			data-i18n="about.thanksBody"
+		>
+			{t(lang, "about.thanksBody" as TranslationKey)}
+		</p>
+		<p
+			class="mt-4 text-sm font-semibold text-ink"
+			data-i18n="about.thanksNamesLabel"
+		>
+			{t(lang, "about.thanksNamesLabel" as TranslationKey)}
+		</p>
+		<ul class="mt-3 flex flex-wrap gap-2">
+			{
+				contributors.map((name) => (
+					<li class="inline-flex items-center gap-1.5 rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_35%,transparent)] bg-[var(--tomato-soft)] px-4 py-1.5 text-sm font-bold text-ink">
+						<span class="text-[var(--tomato)]" aria-hidden="true">
+							♡
+						</span>
+						{name}
+					</li>
+				))
+			}
+		</ul>
 	</section>
 </PageLayout>

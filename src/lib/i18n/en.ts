@@ -230,6 +230,10 @@ export const en = {
 	'about.sec4Title': 'Our values',
 	'about.sec4Body':
 		'Free forever. No sign-up, no ads, no accounts. Everything you set — your timer lengths, your to-do list, your music preference — is stored only in your own browser, so you stay in control. We build in the open, keep the interface simple, and always put your focus first.',
+	'about.thanksTitle': 'Thank you, lovely people ♡',
+	'about.thanksBody':
+		'Every day, someone opens the Cute Timer, and some of you go a little further — suggesting helpful features, sharing feedback, and helping us make focusing a bit friendlier. Thank you, from all of us. You make this little tomato’s day.',
+	'about.thanksNamesLabel': 'A special thank-you to the friends who help shape the Cute Timer:',
 
 	/* Privacy body */
 	'privacy.introAfterDate':
