@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let playing = false;
 	let spotifyPlaying = false;
 	let spotifyLoaded = false;
+	let spotifyPauseGuardUntil = 0;
 	let muted = false;
 	let volume = 0.6;
 
@@ -886,6 +887,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function toggleMusic() {
 		if (playing || spotifyPlaying) {
+			/* Ignore stale "playing" updates for a moment after an intentional
+			   pause — Spotify's embed can emit one final playback_update
+			   (isPaused:false) right after the pause command lands, which would
+			   flip the button back to "playing" and make you click twice. */
+			spotifyPauseGuardUntil = Date.now() + 600;
 			stopMusic();
 			pauseSpotify();
 			setSpotifyPlaying(false);
@@ -935,7 +941,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* Spotify embed mutual exclusion — never run both players at once. */
 	function pauseSpotify() {
-		if (!spotifyLoaded || !spotifyFrame?.contentWindow) return;
+		if (!spotifyFrame?.contentWindow) return;
 		try {
 			spotifyFrame.contentWindow.postMessage({ command: 'pause' }, 'https://open.spotify.com');
 		} catch {}
@@ -975,6 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					? !payload.is_playing
 					: null;
 		if (paused === null) return;
+		if (!paused && Date.now() < spotifyPauseGuardUntil) return;
 		setSpotifyPlaying(!paused);
 		if (!paused) stopMusic();
 	});
