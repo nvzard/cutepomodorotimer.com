@@ -70,6 +70,8 @@ const de: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'Lo-Fi-Titel wechseln',
 	'dock.volumeAria': 'Musiklautstärke',
 	'dock.muteAria': 'Musik stummschalten',
+	'dock.spotifyVolumeHint': 'Spotify regelt seine eigene Lautstärke — nutze die Lautstärke im Spotify-Player.',
+	'dock.spotifyTrack': 'Spotify',
 	'dock.spotifyAria': 'Spotify-Wiedergabeliste öffnen',
 	'dock.uploadAria': 'Eigene Musik hochladen',
 	'dock.removeCustomAria': 'Hochgeladenen Titel entfernen',
@@ -87,6 +89,7 @@ const de: Record<TranslationKey, string> = {
 	'spotify.reset': 'Zurücksetzen',
 	'spotify.signIn':
 		'Vollständige Songs erfordern eine kostenlose Spotify-Anmeldung — sonst spielt Spotify nur kurze Vorschauen. Oder lade deine eigenen Songs in der Leiste hoch.',
+	'spotify.login': 'Bei Spotify anmelden',
 
 	/* Titles */
 	'title.focus': 'Fokus',

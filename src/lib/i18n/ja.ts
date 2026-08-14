@@ -64,6 +64,8 @@ const ja: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'ローファイトラックを切り替え',
 	'dock.volumeAria': '音楽の音量',
 	'dock.muteAria': 'ミュート',
+	'dock.spotifyVolumeHint': 'Spotify は音量を独自に制御します。Spotify プレーヤー内の音量をご利用ください。',
+	'dock.spotifyTrack': 'Spotify',
 	'dock.spotifyAria': 'Spotifyプレイリストを開く',
 	'dock.uploadAria': '自分の音楽をアップロード',
 	'dock.removeCustomAria': 'アップロードしたトラックを削除',
@@ -81,6 +83,7 @@ const ja: Record<TranslationKey, string> = {
 	'spotify.reset': 'リセット',
 	'spotify.signIn':
 		'フル再生には無料のSpotifyサインインが必要です。サインインしないと短いプレビューしか再生されません。または下のバーで自分の曲をアップロードしてください。',
+	'spotify.login': 'Spotify にサインイン',
 
 	'title.focus': 'フォーカス',
 	'title.short': 'ショートブレイク',

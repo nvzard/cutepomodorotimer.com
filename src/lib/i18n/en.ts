@@ -68,6 +68,8 @@ export const en = {
 	'dock.switchTrack': 'switch lo-fi track',
 	'dock.volumeAria': 'Music volume',
 	'dock.muteAria': 'Mute music',
+	'dock.spotifyVolumeHint': "Spotify controls its own volume — use the volume inside the Spotify player.",
+	'dock.spotifyTrack': 'Spotify',
 	'dock.spotifyAria': 'Open Spotify playlist',
 	'dock.uploadAria': 'Upload your own music',
 	'dock.removeCustomAria': 'Remove uploaded track',
@@ -85,6 +87,7 @@ export const en = {
 	'spotify.reset': 'Reset',
 	'spotify.signIn':
 		'Full songs need a free Spotify sign-in — otherwise Spotify streams short previews. Or upload your own songs in the dock.',
+	'spotify.login': 'Sign in to Spotify',
 
 	/* Titles */
 	'title.focus': 'Focus',

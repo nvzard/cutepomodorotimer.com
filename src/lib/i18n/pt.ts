@@ -64,6 +64,8 @@ const pt: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'trocar faixa lo-fi',
 	'dock.volumeAria': 'Volume da música',
 	'dock.muteAria': 'Silenciar música',
+	'dock.spotifyVolumeHint': 'O Spotify controla o próprio volume — use o volume dentro do player do Spotify.',
+	'dock.spotifyTrack': 'Spotify',
 	'dock.spotifyAria': 'Abrir lista de reprodução do Spotify',
 	'dock.uploadAria': 'Enviar sua própria música',
 	'dock.removeCustomAria': 'Remover faixa enviada',
@@ -81,6 +83,7 @@ const pt: Record<TranslationKey, string> = {
 	'spotify.reset': 'Redefinir',
 	'spotify.signIn':
 		'As músicas completas exigem um login gratuito no Spotify; caso contrário, o Spotify reproduz prévias curtas. Ou envie suas próprias músicas na barra.',
+	'spotify.login': 'Entrar no Spotify',
 
 	'title.focus': 'Foco',
 	'title.short': 'Pausa Curta',

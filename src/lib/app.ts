@@ -134,6 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	let track = 0;
 	let playing = false;
+	let spotifyPlaying = false;
+	let spotifyLoaded = false;
 	let muted = false;
 	let volume = 0.6;
 
@@ -197,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const spotifyUrlInput = $<HTMLInputElement>('[data-spotify-url]');
 	const spotifyError = $('[data-spotify-error]');
 	const spotifyResetBtn = $('[data-spotify-reset]');
+	const spotifyLoginLink = $('[data-spotify-login]');
 
 	const uploadBtn = $('[data-upload-btn]');
 	const fileInput = $<HTMLInputElement>('[data-file-input]');
@@ -720,8 +723,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	let customAudioEl: HTMLAudioElement | null = null;
 
 	function updateTrackLabel(): string {
-		const label =
-			track >= BUILTIN_TRACK_KEYS.length
+		const label = spotifyPlaying
+			? t(lang, 'dock.spotifyTrack')
+			: track >= BUILTIN_TRACK_KEYS.length
 				? customTrack?.name ?? t(lang, 'dock.custom')
 				: t(lang, BUILTIN_TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
 		trackLabel.textContent = label;
@@ -814,12 +818,35 @@ document.addEventListener('DOMContentLoaded', () => {
 		fades.set(a, requestAnimationFrame(step));
 	}
 
+	function updateMusicControls() {
+		const anyPlaying = playing || spotifyPlaying;
+		musicPlayIcon.innerHTML = anyPlaying ? pauseSvg(18) : playSvg(18);
+		musicPlayBtn.setAttribute('aria-pressed', String(anyPlaying));
+		musicPlayBtn.setAttribute('aria-label', anyPlaying ? t(lang, 'dock.pauseMusic') : t(lang, 'dock.playMusic'));
+		dock.setAttribute('data-playing', String(anyPlaying));
+
+		updateTrackLabel();
+
+		/* Spotify's embed exposes no volume/mute API, so the dock's lo-fi
+		   volume controls can't affect it. Disable them (with a hint) while
+		   Spotify is the active source instead of silently doing nothing. */
+		const spotifyDisables = spotifyPlaying;
+		volumeInput.disabled = spotifyDisables;
+		(muteBtn as HTMLButtonElement).disabled = spotifyDisables;
+		volumeInput.title = spotifyDisables ? t(lang, 'dock.spotifyVolumeHint') : '';
+		(muteBtn as HTMLButtonElement).title = spotifyDisables ? t(lang, 'dock.spotifyVolumeHint') : '';
+		volumeInput.setAttribute('aria-label', spotifyDisables ? t(lang, 'dock.spotifyVolumeHint') : t(lang, 'dock.volumeAria'));
+		muteBtn.setAttribute('aria-label', spotifyDisables ? t(lang, 'dock.spotifyVolumeHint') : t(lang, 'dock.muteAria'));
+	}
+
 	function setPlaying(p: boolean) {
 		playing = p;
-		musicPlayIcon.innerHTML = p ? pauseSvg(18) : playSvg(18);
-		musicPlayBtn.setAttribute('aria-pressed', String(p));
-		musicPlayBtn.setAttribute('aria-label', p ? t(lang, 'dock.pauseMusic') : t(lang, 'dock.playMusic'));
-		dock.setAttribute('data-playing', String(p));
+		updateMusicControls();
+	}
+
+	function setSpotifyPlaying(p: boolean) {
+		spotifyPlaying = p;
+		updateMusicControls();
 	}
 
 	function applyVolume() {
@@ -833,6 +860,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function playTrack(index: number, restart = true) {
+		pauseSpotify();
+		setSpotifyPlaying(false);
 		const next = audioEls[index];
 		const prev = audioEls.find((a, i) => i !== index && !a.paused);
 		setPlaying(true);
@@ -855,20 +884,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	musicPlayBtn.addEventListener('click', () => {
-		if (playing) stopMusic();
-		else {
+	function toggleMusic() {
+		if (playing || spotifyPlaying) {
+			stopMusic();
 			pauseSpotify();
+			setSpotifyPlaying(false);
+		} else {
 			playTrack(track, false);
 		}
-	});
+	}
+
+	musicPlayBtn.addEventListener('click', toggleMusic);
 
 	trackBtn.addEventListener('click', () => {
 		if (audioEls.length < 2) return;
 		track = (track + 1) % audioEls.length;
 		updateTrackLabel();
 		saveJSON(MUSIC_KEY, { track, volume, muted });
-		if (playing) playTrack(track);
+		if (playing || spotifyPlaying) playTrack(track);
 	});
 
 	volumeInput.addEventListener('input', () => {
@@ -902,7 +935,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* Spotify embed mutual exclusion — never run both players at once. */
 	function pauseSpotify() {
-		if (!spotifyFrame?.contentWindow) return;
+		if (!spotifyLoaded || !spotifyFrame?.contentWindow) return;
 		try {
 			spotifyFrame.contentWindow.postMessage({ command: 'pause' }, 'https://open.spotify.com');
 		} catch {}
@@ -910,14 +943,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	window.addEventListener('message', (e) => {
 		if (e.origin !== 'https://open.spotify.com') return;
-		const msg = e.data as { type?: string; payload?: { isPaused?: boolean; is_playing?: boolean; playingURI?: string } };
+		const msg = e.data as {
+			type?: string;
+			payload?: {
+				isPaused?: boolean;
+				is_playing?: boolean;
+				isBuffering?: boolean;
+				playingURI?: string;
+				isLoggedIn?: boolean;
+			};
+		};
 		if (!msg || typeof msg !== 'object') return;
-		if (msg.type === 'playback_update' && !msg.payload?.isPaused) stopMusic();
+		if (msg.type === 'log_in') {
+			spotifyLoginLink?.classList.add('hidden');
+			return;
+		}
+		if (msg.type === 'log_out') {
+			spotifyLoginLink?.classList.remove('hidden');
+			return;
+		}
+		if (msg.type !== 'playback_update') return;
+		spotifyLoaded = true;
+		const payload = msg.payload;
+		if (typeof payload?.isLoggedIn === 'boolean') {
+			spotifyLoginLink?.classList.toggle('hidden', payload.isLoggedIn);
+		}
+		const paused =
+			typeof payload?.isPaused === 'boolean'
+				? payload.isPaused
+				: typeof payload?.is_playing === 'boolean'
+					? !payload.is_playing
+					: null;
+		if (paused === null) return;
+		setSpotifyPlaying(!paused);
+		if (!paused) stopMusic();
 	});
 
 	/* Play a user's own Spotify link instead of the preset playlist. */
 	const SPOTIFY_DEFAULT_EMBED =
-		'https://open.spotify.com/embed/playlist/37i9dQZF1DWZZbwlv3Vmtr?utm_source=generator&theme=0&si=2b71826d4bb04043';
+		'https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0&si=2b71826d4bb04043';
 
 	function spotifyEmbedSrc(url: string): string | null {
 		const type = url.match(/spotify\.com\/(track|album|playlist|show|episode)\//)?.[1] ?? url.match(/spotify:(track|album|playlist|show|episode):/)?.[1];

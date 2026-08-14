@@ -59,6 +59,8 @@ const hi: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'लो-फ़ाई ट्रैक बदलें',
 	'dock.volumeAria': 'संगीत की आवाज़',
 	'dock.muteAria': 'संगीत म्यूट करें',
+	'dock.spotifyVolumeHint': 'Spotify अपना वॉल्यूम खुद नियंत्रित करता है — Spotify प्लेयर के अंदर वॉल्यूम का उपयोग करें।',
+	'dock.spotifyTrack': 'Spotify',
 	'dock.spotifyAria': 'Spotify प्लेलिस्ट खोलें',
 	'dock.uploadAria': 'अपना संगीत अपलोड करें',
 	'dock.removeCustomAria': 'अपलोड किया गया ट्रैक हटाएँ',
@@ -76,6 +78,7 @@ const hi: Record<TranslationKey, string> = {
 	'spotify.reset': 'रीसेट',
 	'spotify.signIn':
 		'पूरे गाने सुनने के लिए मुफ़्त Spotify साइन-इन ज़रूरी है — वरना Spotify केवल छोटे प्रीव्यू चलाता है। या नीचे डॉक में अपने गाने अपलोड करें।',
+	'spotify.login': 'Spotify में साइन इन करें',
 	'title.focus': 'फ़ोकस',
 	'title.short': 'छोटा ब्रेक',
 	'title.long': 'लंबा ब्रेक',
