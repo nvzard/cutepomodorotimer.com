@@ -6,6 +6,7 @@ import Timer from '../../components/Timer.astro';
 import TodoPanel from '../../components/TodoPanel.astro';
 import SettingsPanel from '../../components/SettingsPanel.astro';
 import Dock from '../../components/Dock.astro';
+import SpotifyPanel from '../../components/SpotifyPanel.astro';
 import Footer from '../../components/Footer.astro';
 import { t, DEFAULT_LANG, type LangCode, type TranslationKey } from '../../lib/i18n';
 
@@ -169,6 +170,7 @@ const faqSchema = {
 
 	<TodoPanel />
 	<SettingsPanel />
+	<SpotifyPanel />
 	<Dock />
 
 	<audio data-chime preload="none" tabindex="-1" aria-hidden="true">

@@ -23,8 +23,12 @@ import { t, getLang, applyTranslations, setLang, isLang, getBasePath, getLangFro
 const SETTINGS_KEY = 'pomo:settings';
 const TODOS_KEY = 'pomo:todos';
 const MUSIC_KEY = 'pomo:music';
+const SPOTIFY_URL_KEY = 'pomo:spotify-url';
+const CUSTOM_DB = 'pomo-custom-track';
+const CUSTOM_DB_STORE = 'files';
+const CUSTOM_DB_KEY = 'track';
 
-const TRACK_KEYS = ['dock.track0', 'dock.track1'];
+const BUILTIN_TRACK_KEYS = ['dock.track0', 'dock.track1'];
 const RING_CIRC = 842;
 
 const defaultSettings: Settings = { focus: 25, short: 5, long: 15, autoBreaks: true, sound: true, notify: false };
@@ -45,6 +49,58 @@ function saveJSON(key: string, value: unknown) {
 	try {
 		localStorage.setItem(key, JSON.stringify(value));
 	} catch {}
+}
+
+interface CustomTrackRecord {
+	name: string;
+	blob: Blob;
+}
+
+function openCustomDB(): Promise<IDBDatabase> {
+	return new Promise((resolve, reject) => {
+		const req = indexedDB.open(CUSTOM_DB, 1);
+		req.onupgradeneeded = () => {
+			if (!req.result.objectStoreNames.contains(CUSTOM_DB_STORE)) req.result.createObjectStore(CUSTOM_DB_STORE);
+		};
+		req.onsuccess = () => resolve(req.result);
+		req.onerror = () => reject(req.error);
+	});
+}
+
+function saveCustomTrack(record: CustomTrackRecord): Promise<void> {
+	return openCustomDB().then(
+		(db) =>
+			new Promise<void>((resolve, reject) => {
+				const tx = db.transaction(CUSTOM_DB_STORE, 'readwrite');
+				tx.objectStore(CUSTOM_DB_STORE).put(record, CUSTOM_DB_KEY);
+				tx.oncomplete = () => resolve();
+				tx.onerror = () => reject(tx.error);
+			}),
+	);
+}
+
+function loadCustomTrack(): Promise<CustomTrackRecord | null> {
+	return openCustomDB().then(
+		(db) =>
+			new Promise<CustomTrackRecord | null>((resolve, reject) => {
+				const tx = db.transaction(CUSTOM_DB_STORE, 'readonly');
+				const req = tx.objectStore(CUSTOM_DB_STORE).get(CUSTOM_DB_KEY);
+				req.onsuccess = () => resolve((req.result as CustomTrackRecord | undefined) ?? null);
+				req.onerror = () => reject(req.error);
+			}),
+	);
+}
+
+function deleteCustomTrack(): Promise<void> {
+	return openCustomDB().then(
+		(db) =>
+			new Promise<void>((resolve, reject) => {
+				const tx = db.transaction(CUSTOM_DB_STORE, 'readwrite');
+				tx.objectStore(CUSTOM_DB_STORE).delete(CUSTOM_DB_KEY);
+				tx.oncomplete = () => resolve();
+				tx.onerror = () => reject(tx.error);
+			}),
+	);
 }
 
 function esc(text: string): string {
@@ -132,6 +188,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	const muteBtn = $('[data-mute-btn]');
 	const volumeIcon = $('[data-volume-icon]');
 	const audioEls = $$<HTMLAudioElement>('[data-audio]');
+
+	const spotifyBtn = $('[data-spotify-btn]');
+	const spotifyPanel = $('[data-spotify-panel]');
+	const spotifyClose = $('[data-spotify-close]');
+	const spotifyFrame = $<HTMLIFrameElement>('[data-spotify-frame]');
+	const spotifyForm = $<HTMLFormElement>('[data-spotify-form]');
+	const spotifyUrlInput = $<HTMLInputElement>('[data-spotify-url]');
+	const spotifyError = $('[data-spotify-error]');
+	const spotifyResetBtn = $('[data-spotify-reset]');
+
+	const uploadBtn = $('[data-upload-btn]');
+	const fileInput = $<HTMLInputElement>('[data-file-input]');
+	const customRemoveBtn = $('[data-custom-remove]');
 
 	/* ------------------------------------------------------------------ */
 	/* Settings UI                                                         */
@@ -339,6 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function closePanels() {
 		openPanel(todoPanel, false, todoBtn);
 		openPanel(settingsPanel, false, settingsBtn);
+		openPanel(spotifyPanel, false, spotifyBtn);
 		langPanel.classList.add('hidden');
 		langBtn.setAttribute('aria-expanded', 'false');
 	}
@@ -355,6 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const open = langPanel.classList.contains('hidden');
 		openPanel(settingsPanel, false, settingsBtn);
 		openPanel(todoPanel, false, todoBtn);
+		openPanel(spotifyPanel, false, spotifyBtn);
 		langPanel.classList.toggle('hidden', !open);
 		langBtn.setAttribute('aria-expanded', String(open));
 	});
@@ -391,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		updateTitle();
 		updateStartBtn();
 		phaseLabel.textContent = phaseLabelText();
-		trackLabel.textContent = t(lang, TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
+		trackLabel.textContent = updateTrackLabel();
 		setPlaying(playing);
 		updateFullscreenUI();
 	});
@@ -399,6 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	todoBtn.addEventListener('click', () => {
 		const open = todoPanel.classList.contains('hidden');
 		openPanel(settingsPanel, false, settingsBtn);
+		openPanel(spotifyPanel, false, spotifyBtn);
 		openPanel(todoPanel, open, todoBtn);
 		if (open) setTimeout(() => todoInput.focus(), 50);
 	});
@@ -407,15 +479,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	settingsBtn.addEventListener('click', () => {
 		const open = settingsPanel.classList.contains('hidden');
 		openPanel(todoPanel, false, todoBtn);
+		openPanel(spotifyPanel, false, spotifyBtn);
 		openPanel(settingsPanel, open, settingsBtn);
 	});
 	settingsClose.addEventListener('click', () => openPanel(settingsPanel, false, settingsBtn));
+
+	spotifyBtn.addEventListener('click', () => {
+		const open = spotifyPanel.classList.contains('hidden');
+		openPanel(todoPanel, false, todoBtn);
+		openPanel(settingsPanel, false, settingsBtn);
+		openPanel(spotifyPanel, open, spotifyBtn);
+	});
+	spotifyClose.addEventListener('click', () => openPanel(spotifyPanel, false, spotifyBtn));
 
 	document.addEventListener('click', (e) => {
 		const target = e.target as HTMLElement;
 		if (!todoPanel.contains(target) && !todoBtn.contains(target) && !taskAnchor.contains(target))
 			openPanel(todoPanel, false, todoBtn);
 		if (!settingsPanel.contains(target) && !settingsBtn.contains(target)) openPanel(settingsPanel, false, settingsBtn);
+		if (!spotifyPanel.contains(target) && !spotifyBtn.contains(target)) openPanel(spotifyPanel, false, spotifyBtn);
 		if (!langPanel.contains(target) && !langBtn.contains(target)) {
 			langPanel.classList.add('hidden');
 			langBtn.setAttribute('aria-expanded', 'false');
@@ -425,6 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	taskAnchor.addEventListener('click', () => {
 		const open = todoPanel.classList.contains('hidden');
 		openPanel(settingsPanel, false, settingsBtn);
+		openPanel(spotifyPanel, false, spotifyBtn);
 		openPanel(todoPanel, open, todoBtn);
 		if (open) setTimeout(() => todoInput.focus(), 50);
 	});
@@ -629,11 +712,89 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* Music                                                               */
 	/* ------------------------------------------------------------------ */
 	const musicPrefs = loadJSON(MUSIC_KEY, { track: 0, volume: 0.6, muted: false });
-	track = musicPrefs.track;
 	volume = musicPrefs.volume;
 	muted = musicPrefs.muted;
-	trackLabel.textContent = t(lang, TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
 	volumeInput.value = String(Math.round(volume * 100));
+
+	let customTrack: { name: string; url: string } | null = null;
+	let customAudioEl: HTMLAudioElement | null = null;
+
+	function updateTrackLabel(): string {
+		const label =
+			track >= BUILTIN_TRACK_KEYS.length
+				? customTrack?.name ?? t(lang, 'dock.custom')
+				: t(lang, BUILTIN_TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
+		trackLabel.textContent = label;
+		customRemoveBtn.classList.toggle('hidden', !customTrack);
+		return label;
+	}
+
+	function removeCustomTrack() {
+		if (!customTrack) return;
+		const wasPlaying = customAudioEl ? !customAudioEl.paused : false;
+		if (customAudioEl) {
+			audioEls.splice(audioEls.indexOf(customAudioEl), 1);
+			customAudioEl.pause();
+			customAudioEl.src = '';
+			customAudioEl = null;
+		}
+		URL.revokeObjectURL(customTrack.url);
+		customTrack = null;
+		track = Math.min(track, audioEls.length - 1);
+		deleteCustomTrack().catch(() => {});
+		updateTrackLabel();
+		if (wasPlaying) playTrack(track);
+	}
+
+	function setCustomTrack(file: File) {
+		const name = file.name.replace(/\.[^.]+$/, '') || 'my music';
+		if (customTrack) {
+			URL.revokeObjectURL(customTrack.url);
+			if (customAudioEl) {
+				audioEls.splice(audioEls.indexOf(customAudioEl), 1);
+				customAudioEl.pause();
+				customAudioEl.src = '';
+			}
+		}
+		const url = URL.createObjectURL(file);
+		const el = document.createElement('audio');
+		el.src = url;
+		el.loop = true;
+		el.preload = 'none';
+		el.muted = muted;
+		el.volume = muted ? 0 : volume;
+		el.dataset.audio = 'custom';
+		customAudioEl = el;
+		customTrack = { name, url };
+		audioEls.push(el);
+		saveCustomTrack({ name, blob: file }).catch(() => {});
+		track = audioEls.length - 1;
+		updateTrackLabel();
+		playTrack(track);
+	}
+
+	/* Restore a previously uploaded track from IndexedDB. */
+	loadCustomTrack()
+		.then((record) => {
+			if (!record) return;
+			const url = URL.createObjectURL(record.blob);
+			const el = document.createElement('audio');
+			el.src = url;
+			el.loop = true;
+			el.preload = 'none';
+			el.muted = muted;
+			el.volume = muted ? 0 : volume;
+			el.dataset.audio = 'custom';
+			customAudioEl = el;
+			customTrack = { name: record.name, url };
+			audioEls.push(el);
+		})
+		.catch(() => {})
+		.finally(() => {
+			track = Math.min(musicPrefs.track, audioEls.length - 1);
+			updateTrackLabel();
+			applyVolume();
+		});
 
 	const fades = new Map<HTMLAudioElement, number>();
 
@@ -696,12 +857,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	musicPlayBtn.addEventListener('click', () => {
 		if (playing) stopMusic();
-		else playTrack(track, false);
+		else {
+			pauseSpotify();
+			playTrack(track, false);
+		}
 	});
 
 	trackBtn.addEventListener('click', () => {
-		track = (track + 1) % TRACK_KEYS.length;
-		trackLabel.textContent = t(lang, TRACK_KEYS[track] as 'dock.track0' | 'dock.track1');
+		if (audioEls.length < 2) return;
+		track = (track + 1) % audioEls.length;
+		updateTrackLabel();
 		saveJSON(MUSIC_KEY, { track, volume, muted });
 		if (playing) playTrack(track);
 	});
@@ -719,6 +884,91 @@ document.addEventListener('DOMContentLoaded', () => {
 		applyVolume();
 		saveJSON(MUSIC_KEY, { track, volume, muted });
 	});
+
+	uploadBtn.addEventListener('click', () => fileInput.click());
+
+	fileInput.addEventListener('change', () => {
+		const file = fileInput.files?.[0];
+		fileInput.value = '';
+		if (!file) return;
+		if (!file.type.startsWith('audio/')) return;
+		setCustomTrack(file);
+	});
+
+	customRemoveBtn.addEventListener('click', () => {
+		removeCustomTrack();
+		saveJSON(MUSIC_KEY, { track, volume, muted });
+	});
+
+	/* Spotify embed mutual exclusion — never run both players at once. */
+	function pauseSpotify() {
+		if (!spotifyFrame?.contentWindow) return;
+		try {
+			spotifyFrame.contentWindow.postMessage({ command: 'pause' }, 'https://open.spotify.com');
+		} catch {}
+	}
+
+	window.addEventListener('message', (e) => {
+		if (e.origin !== 'https://open.spotify.com') return;
+		const msg = e.data as { type?: string; payload?: { isPaused?: boolean; is_playing?: boolean; playingURI?: string } };
+		if (!msg || typeof msg !== 'object') return;
+		if (msg.type === 'playback_update' && !msg.payload?.isPaused) stopMusic();
+	});
+
+	/* Play a user's own Spotify link instead of the preset playlist. */
+	const SPOTIFY_DEFAULT_EMBED =
+		'https://open.spotify.com/embed/playlist/37i9dQZF1DWZZbwlv3Vmtr?utm_source=generator&theme=0&si=2b71826d4bb04043';
+
+	function spotifyEmbedSrc(url: string): string | null {
+		const type = url.match(/spotify\.com\/(track|album|playlist|show|episode)\//)?.[1] ?? url.match(/spotify:(track|album|playlist|show|episode):/)?.[1];
+		const id =
+			url.match(/spotify\.com\/(?:track|album|playlist|show|episode)\/([A-Za-z0-9]+)/)?.[1] ??
+			url.match(/spotify:(?:track|album|playlist|show|episode):([A-Za-z0-9]+)/)?.[1];
+		if (!type || !id) return null;
+		return `https://open.spotify.com/embed/${type}/${id}?utm_source=generator&theme=0`;
+	}
+
+	function applySpotifyUrl(url: string) {
+		const src = spotifyEmbedSrc(url.trim());
+		if (!src) {
+			spotifyError.classList.remove('hidden');
+			return;
+		}
+		spotifyError.classList.add('hidden');
+		spotifyFrame.src = src;
+		spotifyResetBtn.classList.remove('hidden');
+		try {
+			localStorage.setItem(SPOTIFY_URL_KEY, url.trim());
+		} catch {}
+	}
+
+	spotifyForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		applySpotifyUrl(spotifyUrlInput.value);
+	});
+
+	spotifyResetBtn.addEventListener('click', () => {
+		spotifyFrame.src = SPOTIFY_DEFAULT_EMBED;
+		spotifyUrlInput.value = '';
+		spotifyResetBtn.classList.add('hidden');
+		spotifyError.classList.add('hidden');
+		try {
+			localStorage.removeItem(SPOTIFY_URL_KEY);
+		} catch {}
+	});
+
+	const savedSpotifyUrl = (() => {
+		try {
+			return localStorage.getItem(SPOTIFY_URL_KEY) ?? '';
+		} catch {
+			return '';
+		}
+	})();
+	if (savedSpotifyUrl && spotifyEmbedSrc(savedSpotifyUrl)) {
+		spotifyFrame.src = spotifyEmbedSrc(savedSpotifyUrl)!;
+		spotifyUrlInput.value = savedSpotifyUrl;
+		spotifyResetBtn.classList.remove('hidden');
+	}
 
 	const volume2 =
 		'<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';

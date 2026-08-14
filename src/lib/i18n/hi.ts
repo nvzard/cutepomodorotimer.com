@@ -59,6 +59,23 @@ const hi: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'लो-फ़ाई ट्रैक बदलें',
 	'dock.volumeAria': 'संगीत की आवाज़',
 	'dock.muteAria': 'संगीत म्यूट करें',
+	'dock.spotifyAria': 'Spotify प्लेलिस्ट खोलें',
+	'dock.uploadAria': 'अपना संगीत अपलोड करें',
+	'dock.removeCustomAria': 'अपलोड किया गया ट्रैक हटाएँ',
+	'dock.custom': 'मेरा संगीत',
+
+	/* Spotify */
+	'spotify.panelAria': 'Spotify फ़ोकस प्लेलिस्ट',
+	'spotify.title': 'फ़ोकस प्लेलिस्ट',
+	'spotify.closeAria': 'म्यूज़िक प्लेयर बंद करें',
+	'spotify.apply': 'चलाएँ',
+	'spotify.urlAria': 'Spotify लिंक',
+	'spotify.urlPlaceholder': 'Spotify लिंक पेस्ट करें…',
+	'spotify.urlError': 'यह Spotify लिंक नहीं लग रहा — ट्रैक, एल्बम या प्लेलिस्ट लिंक आज़माएँ।',
+	'spotify.ownHint': 'डिफ़ॉल्ट प्लेलिस्ट के बजाय चलाने के लिए कोई भी Spotify लिंक (ट्रैक, एल्बम या प्लेलिस्ट) पेस्ट करें।',
+	'spotify.reset': 'रीसेट',
+	'spotify.signIn':
+		'पूरे गाने सुनने के लिए मुफ़्त Spotify साइन-इन ज़रूरी है — वरना Spotify केवल छोटे प्रीव्यू चलाता है। या नीचे डॉक में अपने गाने अपलोड करें।',
 	'title.focus': 'फ़ोकस',
 	'title.short': 'छोटा ब्रेक',
 	'title.long': 'लंबा ब्रेक',

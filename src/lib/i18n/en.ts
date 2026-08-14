@@ -68,6 +68,23 @@ export const en = {
 	'dock.switchTrack': 'switch lo-fi track',
 	'dock.volumeAria': 'Music volume',
 	'dock.muteAria': 'Mute music',
+	'dock.spotifyAria': 'Open Spotify playlist',
+	'dock.uploadAria': 'Upload your own music',
+	'dock.removeCustomAria': 'Remove uploaded track',
+	'dock.custom': 'my music',
+
+	/* Spotify */
+	'spotify.panelAria': 'Spotify focus playlist',
+	'spotify.title': 'Focus playlist',
+	'spotify.closeAria': 'Close music player',
+	'spotify.apply': 'Play',
+	'spotify.urlAria': 'Spotify link',
+	'spotify.urlPlaceholder': 'Paste a Spotify link…',
+	'spotify.urlError': "That doesn't look like a Spotify link — try a track, album, or playlist URL.",
+	'spotify.ownHint': 'Paste any Spotify link (track, album, or playlist) to play it instead of the preset playlist.',
+	'spotify.reset': 'Reset',
+	'spotify.signIn':
+		'Full songs need a free Spotify sign-in — otherwise Spotify streams short previews. Or upload your own songs in the dock.',
 
 	/* Titles */
 	'title.focus': 'Focus',

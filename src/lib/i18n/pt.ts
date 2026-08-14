@@ -64,6 +64,23 @@ const pt: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'trocar faixa lo-fi',
 	'dock.volumeAria': 'Volume da música',
 	'dock.muteAria': 'Silenciar música',
+	'dock.spotifyAria': 'Abrir lista de reprodução do Spotify',
+	'dock.uploadAria': 'Enviar sua própria música',
+	'dock.removeCustomAria': 'Remover faixa enviada',
+	'dock.custom': 'minha música',
+
+	/* Spotify */
+	'spotify.panelAria': 'Playlist de foco do Spotify',
+	'spotify.title': 'Playlist de foco',
+	'spotify.closeAria': 'Fechar o reprodutor de música',
+	'spotify.apply': 'Tocar',
+	'spotify.urlAria': 'Link do Spotify',
+	'spotify.urlPlaceholder': 'Cole um link do Spotify…',
+	'spotify.urlError': 'Isso não parece um link do Spotify — tente um link de música, álbum ou playlist.',
+	'spotify.ownHint': 'Cole qualquer link do Spotify (música, álbum ou playlist) para tocá-lo no lugar da playlist padrão.',
+	'spotify.reset': 'Redefinir',
+	'spotify.signIn':
+		'As músicas completas exigem um login gratuito no Spotify; caso contrário, o Spotify reproduz prévias curtas. Ou envie suas próprias músicas na barra.',
 
 	'title.focus': 'Foco',
 	'title.short': 'Pausa Curta',

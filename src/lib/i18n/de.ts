@@ -70,6 +70,23 @@ const de: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'Lo-Fi-Titel wechseln',
 	'dock.volumeAria': 'Musiklautstärke',
 	'dock.muteAria': 'Musik stummschalten',
+	'dock.spotifyAria': 'Spotify-Wiedergabeliste öffnen',
+	'dock.uploadAria': 'Eigene Musik hochladen',
+	'dock.removeCustomAria': 'Hochgeladenen Titel entfernen',
+	'dock.custom': 'meine musik',
+
+	/* Spotify */
+	'spotify.panelAria': 'Spotify-Fokus-Playlist',
+	'spotify.title': 'Fokus-Playlist',
+	'spotify.closeAria': 'Musikplayer schließen',
+	'spotify.apply': 'Abspielen',
+	'spotify.urlAria': 'Spotify-Link',
+	'spotify.urlPlaceholder': 'Spotify-Link einfügen…',
+	'spotify.urlError': 'Das sieht nicht nach einem Spotify-Link aus — versuche einen Track-, Album- oder Playlist-Link.',
+	'spotify.ownHint': 'Füge einen beliebigen Spotify-Link (Track, Album oder Playlist) ein, um ihn statt der voreingestellten Playlist abzuspielen.',
+	'spotify.reset': 'Zurücksetzen',
+	'spotify.signIn':
+		'Vollständige Songs erfordern eine kostenlose Spotify-Anmeldung — sonst spielt Spotify nur kurze Vorschauen. Oder lade deine eigenen Songs in der Leiste hoch.',
 
 	/* Titles */
 	'title.focus': 'Fokus',

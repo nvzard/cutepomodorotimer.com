@@ -70,6 +70,23 @@ const fr: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'changer de piste lo-fi',
 	'dock.volumeAria': 'Volume de la musique',
 	'dock.muteAria': 'Couper la musique',
+	'dock.spotifyAria': 'Ouvrir la playlist Spotify',
+	'dock.uploadAria': 'Envoyer votre propre musique',
+	'dock.removeCustomAria': 'Supprimer le morceau envoyé',
+	'dock.custom': 'ma musique',
+
+	/* Spotify */
+	'spotify.panelAria': 'Playlist de concentration Spotify',
+	'spotify.title': 'Playlist de concentration',
+	'spotify.closeAria': 'Fermer le lecteur de musique',
+	'spotify.apply': 'Lire',
+	'spotify.urlAria': 'Lien Spotify',
+	'spotify.urlPlaceholder': 'Collez un lien Spotify…',
+	'spotify.urlError': "Cela ne ressemble pas à un lien Spotify — essayez un lien de morceau, d'album ou de playlist.",
+	'spotify.ownHint': "Collez n'importe quel lien Spotify (morceau, album ou playlist) pour le lire à la place de la playlist prédéfinie.",
+	'spotify.reset': 'Réinitialiser',
+	'spotify.signIn':
+		'Les chansons complètes nécessitent une connexion Spotify gratuite — sinon Spotify diffuse de courts extraits. Ou importez vos propres chansons dans la barre.',
 
 	/* Titles */
 	'title.focus': 'Concentration',

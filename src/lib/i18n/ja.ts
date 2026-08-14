@@ -64,6 +64,23 @@ const ja: Record<TranslationKey, string> = {
 	'dock.switchTrack': 'ローファイトラックを切り替え',
 	'dock.volumeAria': '音楽の音量',
 	'dock.muteAria': 'ミュート',
+	'dock.spotifyAria': 'Spotifyプレイリストを開く',
+	'dock.uploadAria': '自分の音楽をアップロード',
+	'dock.removeCustomAria': 'アップロードしたトラックを削除',
+	'dock.custom': 'マイミュージック',
+
+	/* Spotify */
+	'spotify.panelAria': 'Spotify集中プレイリスト',
+	'spotify.title': '集中プレイリスト',
+	'spotify.closeAria': 'ミュージックプレイヤーを閉じる',
+	'spotify.apply': '再生',
+	'spotify.urlAria': 'Spotifyリンク',
+	'spotify.urlPlaceholder': 'Spotifyリンクを貼り付け…',
+	'spotify.urlError': 'Spotifyリンクではないようです。トラック・アルバム・プレイリストのリンクをお試しください。',
+	'spotify.ownHint': '任意のSpotifyリンク（トラック・アルバム・プレイリスト）を貼り付けると、既定のプレイリストの代わりに再生します。',
+	'spotify.reset': 'リセット',
+	'spotify.signIn':
+		'フル再生には無料のSpotifyサインインが必要です。サインインしないと短いプレビューしか再生されません。または下のバーで自分の曲をアップロードしてください。',
 
 	'title.focus': 'フォーカス',
 	'title.short': 'ショートブレイク',
