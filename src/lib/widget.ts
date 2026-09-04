@@ -12,7 +12,7 @@ interface Settings {
 const $ = <T extends Element = HTMLElement>(sel: string): T => document.querySelector(sel) as T;
 const $$ = <T extends Element>(sel: string): T[] => Array.from(document.querySelectorAll(sel));
 
-import { t, applyTranslations, isLang, type LangCode } from './i18n';
+import { t, applyTranslations, isLang, type LangCode } from './i18n/client';
 
 const SETTINGS_KEY = 'pomo:settings';
 const THEME_KEY = 'pomo:theme';

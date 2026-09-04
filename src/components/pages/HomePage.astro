@@ -55,10 +55,10 @@ const faqSchema = {
 	<TopBar />
 
 	<main id="main" class="relative">
-		<div class="flex min-h-dvh flex-col items-center justify-center px-4 pb-[calc(6.5rem+env(safe-area-inset-bottom))] pt-[calc(4.5rem+env(safe-area-inset-top))] [justify-content:safe_center] md:pb-[calc(9rem+env(safe-area-inset-bottom))] md:pt-[calc(6rem+env(safe-area-inset-top))] [@media(max-height:720px)]:pb-[calc(5.5rem+env(safe-area-inset-bottom))] [@media(max-height:720px)]:pt-[calc(3.5rem+env(safe-area-inset-top))] [@media(max-height:520px)]:pb-[calc(5rem+env(safe-area-inset-bottom))] [@media(max-height:520px)]:pt-[calc(2.5rem+env(safe-area-inset-top))]">
+		<div class="flex min-h-dvh flex-col items-center justify-center px-4 pb-[calc(6rem+env(safe-area-inset-bottom))] pt-[calc(4.5rem+env(safe-area-inset-top))] [justify-content:safe_center] [@media(min-height:920px)]:pb-[calc(7.5rem+env(safe-area-inset-bottom))] [@media(min-height:920px)]:pt-[calc(5.5rem+env(safe-area-inset-top))] [@media(max-height:720px)]:pb-[calc(5.5rem+env(safe-area-inset-bottom))] [@media(max-height:720px)]:pt-[calc(3.5rem+env(safe-area-inset-top))] [@media(max-height:520px)]:pb-[calc(4.75rem+env(safe-area-inset-bottom))] [@media(max-height:520px)]:pt-[calc(2.5rem+env(safe-area-inset-top))]">
 			<h1 class="sr-only" data-i18n="page.h1">{t(lang, 'page.h1')}</h1>
 			<Timer />
-			<p class="mt-10 hidden text-xs text-mute/80 md:block [@media(max-height:520px)]:hidden">
+			<p class="mt-4 hidden text-xs text-mute/80 sm:mt-5 md:block [@media(max-height:720px)]:mt-2.5 [@media(max-height:520px)]:hidden">
 				<span class="font-semibold">space</span> <span data-i18n="page.hintStart">{t(lang, 'page.hintStart')}</span>
 				&middot; <span class="font-semibold">r</span> <span data-i18n="page.hintReset">{t(lang, 'page.hintReset')}</span>
 				&middot; <span class="font-semibold">m</span> <span data-i18n="page.hintMusic">{t(lang, 'page.hintMusic')}</span>
@@ -66,8 +66,8 @@ const faqSchema = {
 				&middot; <span class="font-semibold">f</span> <span data-i18n="page.hintFullscreen">{t(lang, 'page.hintFullscreen')}</span>
 				<span class="text-[var(--accent)]">♡</span>
 			</p>
-			<p class="mt-4 text-sm font-bold">
-				<a href="/embed" class="text-[var(--tomato-deep)] underline decoration-2 underline-offset-4 transition-colors hover:text-ink" data-i18n="page.embedCta">
+			<p class="mt-7 text-sm font-bold sm:mt-8 md:mt-2.5 [@media(max-height:720px)]:mt-2 [@media(max-height:720px)]:text-xs">
+				<a href="/embed" class="text-[var(--tomato-deep)] dark:text-[var(--tomato)] underline decoration-2 underline-offset-4 transition-colors hover:text-ink" data-i18n="page.embedCta">
 					{t(lang, 'page.embedCta')}
 				</a>
 			</p>

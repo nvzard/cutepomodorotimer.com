@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Mascot from './Mascot.astro';
-import { LANGUAGES, DEFAULT_LANG, getBasePath, localizePath, type LangCode } from '../lib/i18n';
+import { t, LANGUAGES, DEFAULT_LANG, getBasePath, localizePath, type LangCode } from '../lib/i18n';
 
 const lang = (Astro.currentLocale ?? DEFAULT_LANG) as LangCode;
 const basePath = getBasePath(Astro.url.pathname);
@@ -35,12 +35,12 @@ const basePath = getBasePath(Astro.url.pathname);
 				data-lang-btn
 				class="icon-btn lang-btn"
 				data-i18n-aria="topbar.langAria"
-				aria-label="Change language"
+				aria-label={`${t(lang, 'topbar.langAria')} (${lang.toUpperCase()})`}
 				aria-haspopup="menu"
 				aria-expanded="false"
 			>
 				<Icon name="globe" size={17} />
-				<span data-lang-code class="lang-code">EN</span>
+				<span data-lang-code class="lang-code">{lang.toUpperCase()}</span>
 			</button>
 			<div
 				data-lang-panel

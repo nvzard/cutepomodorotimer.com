@@ -18,6 +18,10 @@ export default defineConfig({
     },
   },
 
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   devToolbar: { enabled: false },
 
   integrations: [

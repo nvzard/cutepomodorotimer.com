@@ -24,7 +24,9 @@ import Icon from './Icon.astro';
 			data-testid="embed-iframe"
 			data-spotify-frame
 			title="Spotify focus playlist"
-			src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0&si=2b71826d4bb04043"
+			src="about:blank"
+			data-src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0&si=2b71826d4bb04043"
+			loading="lazy"
 			style="border-radius: 12px"
 			width="100%"
 			height="152"
@@ -55,7 +57,7 @@ import Icon from './Icon.astro';
 		</button>
 	</form>
 
-	<p data-spotify-error class="mt-2 hidden text-xs font-semibold text-[var(--tomato-deep)]" data-i18n="spotify.urlError">
+	<p data-spotify-error class="mt-2 hidden text-xs font-semibold text-[var(--tomato-deep)] dark:text-[var(--tomato)]" data-i18n="spotify.urlError">
 		That doesn't look like a Spotify link — try a track, album, or playlist URL.
 	</p>
 	<div data-spotify-own-note class="mt-1 text-xs leading-relaxed text-mute">
@@ -63,7 +65,7 @@ import Icon from './Icon.astro';
 		<button
 			type="button"
 			data-spotify-reset
-			class="hidden ml-1 font-bold text-[var(--tomato-deep)] underline underline-offset-2 hover:text-ink"
+			class="hidden ml-1 font-bold text-[var(--tomato-deep)] dark:text-[var(--tomato)] underline underline-offset-2 hover:text-ink"
 			data-i18n="spotify.reset"
 			>Reset</button
 		>
@@ -78,7 +80,7 @@ import Icon from './Icon.astro';
 		rel="noopener noreferrer"
 		data-i18n="spotify.login"
 		data-spotify-login
-		class="mt-2 block text-xs font-semibold text-[var(--tomato-deep)] underline underline-offset-2 transition-colors hover:bg-transparent hover:text-ink"
+		class="mt-2 block text-xs font-semibold text-[var(--tomato-deep)] dark:text-[var(--tomato)] underline underline-offset-2 transition-colors hover:bg-transparent hover:text-ink"
 		>Sign in to Spotify</a
 	>
 </div>

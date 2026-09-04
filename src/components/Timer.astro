@@ -120,7 +120,7 @@ import Mascot from './Mascot.astro';
 	[data-timer] {
 		gap: 1rem;
 	}
-	@media (min-width: 768px) {
+	@media (min-width: 768px) and (min-height: 860px) {
 		[data-timer] {
 			gap: 1.25rem;
 		}
@@ -139,18 +139,23 @@ import Mascot from './Mascot.astro';
 	/* Ring shrinks to always fit between the fixed top bar and bottom dock.
 	   The countdown text scales off the ring via cqw container units. */
 	.timer-ring {
-		--ring: min(74vw, 30rem, max(calc(100dvh - 31rem), 12rem));
+		--ring: min(74vw, 28rem, max(calc(100dvh - 33rem), 11rem));
 		width: var(--ring);
 		height: var(--ring);
 	}
+	@media (min-height: 860px) {
+		.timer-ring {
+			--ring: min(74vw, 30rem, max(calc(100dvh - 33rem), 12rem));
+		}
+	}
 	@media (max-height: 720px) {
 		.timer-ring {
-			--ring: min(78vw, 30rem, max(calc(100dvh - 25rem), 5rem));
+			--ring: min(78vw, 28rem, max(calc(100dvh - 27rem), 5rem));
 		}
 	}
 	@media (max-height: 520px) {
 		.timer-ring {
-			--ring: min(78vw, 30rem, max(calc(100dvh - 22rem), 3.5rem));
+			--ring: min(78vw, 26rem, max(calc(100dvh - 22rem), 3.5rem));
 		}
 	}
 

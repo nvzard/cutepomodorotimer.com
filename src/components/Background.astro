@@ -42,7 +42,9 @@ const deco = [
 				class={`bg-deco bg-deco-${d.kind}`}
 				style={`--x:${d.x}%;--y:${d.y}%;--dur:${d.dur}s;--d:${d.d}s;--tw:${d.tw}s;--o:${d.o}`}
 			>
-				<Icon name={d.kind === 'heart-soft' ? 'heart' : d.kind} size={d.s} />
+				<span class="bg-deco-inner">
+					<Icon name={d.kind === 'heart-soft' ? 'heart' : d.kind} size={d.s} />
+				</span>
 			</span>
 		))
 	}
@@ -126,6 +128,7 @@ const deco = [
 		height: var(--s);
 		border-radius: 9999px;
 		background: color-mix(in srgb, var(--ink) 22%, transparent);
+		will-change: transform;
 		animation: var(--animate-float);
 		animation-duration: var(--dur);
 		animation-delay: var(--d);

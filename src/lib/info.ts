@@ -1,17 +1,12 @@
 import {
-	applyTranslations,
 	getLang,
-	setLang,
 	isLang,
-	getBasePath,
-	getLangFromPath,
-	localizePath,
 	type LangCode,
-} from './i18n';
+	LANG_KEY,
+} from './i18n/client';
 
 document.addEventListener('DOMContentLoaded', () => {
 	let lang: LangCode = getLang();
-	applyTranslations(lang);
 
 	const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
 	const langBtn = document.querySelector<HTMLButtonElement>('[data-lang-btn]');
@@ -24,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			opt.setAttribute('aria-checked', String(opt.dataset.langOption === lang));
 		});
 		if (langCode) langCode.textContent = lang.toUpperCase();
+		if (langBtn) {
+			const label = langBtn.getAttribute('aria-label') || 'Change language';
+			const base = label.split('(')[0].trim();
+			langBtn.setAttribute('aria-label', `${base} (${lang.toUpperCase()})`);
+		}
 	}
 
 	updateLangOptions();
@@ -43,27 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	langOptions.forEach((opt) => {
-		opt.addEventListener('click', (e) => {
-			e.preventDefault();
+		opt.addEventListener('click', () => {
 			const code = opt.dataset.langOption;
 			if (code && isLang(code)) {
-				lang = code;
-				setLang(code);
-				updateLangOptions();
-				history.pushState({}, '', localizePath(code, getBasePath(window.location.pathname)));
+				try {
+					localStorage.setItem(LANG_KEY, code);
+				} catch {}
 			}
 			langPanel?.classList.add('hidden');
 			langBtn?.setAttribute('aria-expanded', 'false');
 		});
-	});
-
-	window.addEventListener('popstate', () => {
-		const urlLang = getLangFromPath(window.location.pathname);
-		if (urlLang !== lang) {
-			lang = urlLang;
-			setLang(urlLang);
-			updateLangOptions();
-		}
 	});
 
 	document.addEventListener('click', (e) => {

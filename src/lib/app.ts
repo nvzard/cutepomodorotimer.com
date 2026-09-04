@@ -18,7 +18,7 @@ interface Todo {
 const $ = <T extends Element = HTMLElement>(sel: string): T => document.querySelector(sel) as T;
 const $$ = <T extends Element>(sel: string): T[] => Array.from(document.querySelectorAll(sel));
 
-import { t, getLang, applyTranslations, setLang, isLang, getBasePath, getLangFromPath, localizePath, type LangCode } from './i18n';
+import { t, getLang, isLang, type LangCode, LANG_KEY } from './i18n/client';
 
 const SETTINGS_KEY = 'pomo:settings';
 const TODOS_KEY = 'pomo:todos';
@@ -423,6 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			opt.setAttribute('aria-checked', String(opt.dataset.langOption === lang));
 		});
 		langCode.textContent = lang.toUpperCase();
+		langBtn?.setAttribute('aria-label', `${t(lang, 'topbar.langAria')} (${lang.toUpperCase()})`);
 	}
 
 	langBtn.addEventListener('click', () => {
@@ -435,25 +436,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	langOptions.forEach((opt) => {
-		opt.addEventListener('click', (e) => {
-			e.preventDefault();
+		opt.addEventListener('click', () => {
 			const code = opt.dataset.langOption;
 			if (code && isLang(code)) {
-				lang = code;
-				setLang(code);
-				history.pushState({}, '', localizePath(code, getBasePath(window.location.pathname)));
+				try {
+					localStorage.setItem(LANG_KEY, code);
+				} catch {}
 			}
 			langPanel.classList.add('hidden');
 			langBtn.setAttribute('aria-expanded', 'false');
 		});
-	});
-
-	window.addEventListener('popstate', () => {
-		const urlLang = getLangFromPath(window.location.pathname);
-		if (urlLang !== lang) {
-			lang = urlLang;
-			setLang(urlLang);
-		}
 	});
 
 	document.addEventListener('langchange', (e) => {
@@ -488,10 +480,44 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 	settingsClose.addEventListener('click', () => openPanel(settingsPanel, false, settingsBtn));
 
+	const SPOTIFY_DEFAULT_EMBED =
+		'https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0&si=2b71826d4bb04043';
+
+	function spotifyEmbedSrc(url: string): string | null {
+		const type = url.match(/spotify\.com\/(track|album|playlist|show|episode)\//)?.[1] ?? url.match(/spotify:(track|album|playlist|show|episode):/)?.[1];
+		const id =
+			url.match(/spotify\.com\/(?:track|album|playlist|show|episode)\/([A-Za-z0-9]+)/)?.[1] ??
+			url.match(/spotify:(?:track|album|playlist|show|episode):([A-Za-z0-9]+)/)?.[1];
+		if (!type || !id) return null;
+		return `https://open.spotify.com/embed/${type}/${id}?utm_source=generator&theme=0`;
+	}
+
+	const savedSpotifyUrl = (() => {
+		try {
+			return localStorage.getItem(SPOTIFY_URL_KEY) ?? '';
+		} catch {
+			return '';
+		}
+	})();
+	if (savedSpotifyUrl && spotifyEmbedSrc(savedSpotifyUrl)) {
+		spotifyUrlInput.value = savedSpotifyUrl;
+		spotifyResetBtn.classList.remove('hidden');
+	}
+
+	function ensureSpotifyLoaded() {
+		if (!spotifyFrame) return;
+		if (spotifyFrame.src && spotifyFrame.src !== 'about:blank' && !spotifyFrame.src.endsWith('about:blank')) return;
+		const target = (savedSpotifyUrl && spotifyEmbedSrc(savedSpotifyUrl))
+			? spotifyEmbedSrc(savedSpotifyUrl)!
+			: (spotifyFrame.dataset.src || SPOTIFY_DEFAULT_EMBED);
+		spotifyFrame.src = target;
+	}
+
 	spotifyBtn.addEventListener('click', () => {
 		const open = spotifyPanel.classList.contains('hidden');
 		openPanel(todoPanel, false, todoBtn);
 		openPanel(settingsPanel, false, settingsBtn);
+		if (open) ensureSpotifyLoaded();
 		openPanel(spotifyPanel, open, spotifyBtn);
 	});
 	spotifyClose.addEventListener('click', () => openPanel(spotifyPanel, false, spotifyBtn));
@@ -987,17 +1013,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	/* Play a user's own Spotify link instead of the preset playlist. */
-	const SPOTIFY_DEFAULT_EMBED =
-		'https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0&si=2b71826d4bb04043';
 
-	function spotifyEmbedSrc(url: string): string | null {
-		const type = url.match(/spotify\.com\/(track|album|playlist|show|episode)\//)?.[1] ?? url.match(/spotify:(track|album|playlist|show|episode):/)?.[1];
-		const id =
-			url.match(/spotify\.com\/(?:track|album|playlist|show|episode)\/([A-Za-z0-9]+)/)?.[1] ??
-			url.match(/spotify:(?:track|album|playlist|show|episode):([A-Za-z0-9]+)/)?.[1];
-		if (!type || !id) return null;
-		return `https://open.spotify.com/embed/${type}/${id}?utm_source=generator&theme=0`;
-	}
 
 	function applySpotifyUrl(url: string) {
 		const src = spotifyEmbedSrc(url.trim());
@@ -1028,18 +1044,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		} catch {}
 	});
 
-	const savedSpotifyUrl = (() => {
-		try {
-			return localStorage.getItem(SPOTIFY_URL_KEY) ?? '';
-		} catch {
-			return '';
-		}
-	})();
-	if (savedSpotifyUrl && spotifyEmbedSrc(savedSpotifyUrl)) {
-		spotifyFrame.src = spotifyEmbedSrc(savedSpotifyUrl)!;
-		spotifyUrlInput.value = savedSpotifyUrl;
-		spotifyResetBtn.classList.remove('hidden');
-	}
+
 
 	const volume2 =
 		'<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
@@ -1072,7 +1077,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* ------------------------------------------------------------------ */
 	/* Init                                                                */
 	/* ------------------------------------------------------------------ */
-	applyTranslations(lang);
 	updateLangOptions();
 	applySettingsUI();
 	renderTodos();

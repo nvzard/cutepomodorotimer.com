@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Mascot from './Mascot.astro';
-import { DEFAULT_LANG, localizePath, type LangCode } from '../lib/i18n';
+import { t, DEFAULT_LANG, localizePath, type LangCode, type TranslationKey } from '../lib/i18n';
 
 const links = [
 	{ href: '/', key: 'footer.home', external: false },
@@ -21,24 +21,24 @@ const year = new Date().getFullYear();
 	<div class="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
 		<div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-between">
 			<div class="flex max-w-xs flex-col items-center gap-3 text-center sm:items-start sm:text-left">
-				<a data-i18n-href="/" href={localizePath(lang, '/')} class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label="Cute Pomodoro Timer home">
+				<a data-i18n-href="/" href={localizePath(lang, '/')} class="group flex items-center gap-2.5" data-i18n-aria="brand.homeAria" aria-label={t(lang, 'brand.homeAria')}>
 					<span
 						class="grid h-9 w-9 place-items-center rounded-full border-2 border-[color-mix(in_srgb,var(--tomato)_55%,transparent)] bg-[var(--tomato-soft)] shadow-[0_3px_0_color-mix(in_srgb,var(--tomato)_35%,transparent)] transition-transform group-hover:-rotate-6 group-hover:scale-110"
 					>
 						<Mascot class="h-7 w-full" />
 					</span>
 					<span class="text-base font-bold tracking-tight text-ink">
-						<span data-i18n="brand.title">Cute Pomodoro</span> <span class="text-[var(--tomato)]">♡</span>
+						<span data-i18n="brand.title">{t(lang, 'brand.title')}</span> <span class="text-[var(--tomato)]">♡</span>
 					</span>
 				</a>
 				<p class="text-xs leading-relaxed text-mute" data-i18n="footer.tagline">
-					A free cute pomodoro timer for studying and deep focus — made with ♡.
+					{t(lang, 'footer.tagline')}
 				</p>
 			</div>
 
 			<nav aria-label="Footer" data-i18n-aria="footer.linksAria">
 				<p class="eyebrow mb-3 text-center text-[var(--accent-ink)] sm:text-left">
-					<span data-i18n="footer.links">Site links</span> ♡
+					<span data-i18n="footer.links">{t(lang, 'footer.links')}</span> ♡
 				</p>
 				<ul class="flex flex-col items-center gap-2.5 sm:items-start">
 					{links.map(({ href, key, external }) => (
@@ -51,7 +51,7 @@ const year = new Date().getFullYear();
 								class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
 							>
 								<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>
-								<span data-i18n={key}>{key}</span>
+								<span data-i18n={key}>{t(lang, key as TranslationKey)}</span>
 							</a>
 						</li>
 					))}
@@ -61,7 +61,7 @@ const year = new Date().getFullYear();
 							class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
 						>
 							<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>
-							<span data-i18n="footer.embed">Embed in Notion, WordPress & Websites</span>
+							<span data-i18n="footer.embed">{t(lang, 'footer.embed')}</span>
 						</a>
 					</li>
 					<li>
@@ -72,7 +72,7 @@ const year = new Date().getFullYear();
 							class="group inline-flex items-center gap-1.5 text-sm font-semibold text-body transition-colors hover:text-ink"
 						>
 							<span class="text-[var(--accent)] opacity-0 transition-opacity group-hover:opacity-100">♡</span>
-							<span data-i18n="footer.github">GitHub</span>
+							<span data-i18n="footer.github">{t(lang, 'footer.github')}</span>
 						</a>
 					</li>
 				</ul>
@@ -81,7 +81,7 @@ const year = new Date().getFullYear();
 
 		<div class="mt-8 flex flex-col items-center gap-2 border-t border-[color-mix(in_srgb,var(--ink)_10%,transparent)] pt-6 sm:flex-row sm:justify-between">
 			<p class="text-xs text-mute">
-				© {year} Cute Pomodoro Timer. <span data-i18n="footer.rights">All rights reserved.</span>
+				© {year} Cute Pomodoro Timer. <span data-i18n="footer.rights">{t(lang, 'footer.rights')}</span>
 			</p>
 			<p class="flex items-center gap-1.5 text-xs text-mute">
 				Made with <span class="text-[var(--tomato)]">♡</span>

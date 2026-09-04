@@ -62,8 +62,8 @@
   --surface: #fffdfe;
   --surface-2: #fff0f6;
   --ink: #4b3450;
-  --body: #8a6685;
-  --mute: #ab87a6;
+  --body: #785675;
+  --mute: #765674;
   --line: #f9dce9;
 
   --sage: #53c48f;
@@ -73,7 +73,7 @@
   --peach: #ffab7a;
   --peach-soft: #ffe7d4;
   --tomato: #ff7ba6;
-  --tomato-deep: #f25a8c;
+  --tomato-deep: #c8245e;
   --tomato-soft: #ffe0ea;
   --sky: #8fc8f2;
   --sky-soft: #e1f0fd;
@@ -91,7 +91,7 @@
   --surface-2: #3b2e40;
   --ink: #ffe6f0;
   --body: #d1b2c9;
-  --mute: #9c80a0;
+  --mute: #bca4c0;
   --line: #453346;
 
   --sage: #6fe0b0;
@@ -101,7 +101,7 @@
   --peach: #ffc08d;
   --peach-soft: #432d1c;
   --tomato: #ff8fb4;
-  --tomato-deep: #ef4f83;
+  --tomato-deep: #c8245e;
   --tomato-soft: #462433;
   --sky: #9fcaf5;
   --sky-soft: #28314a;
@@ -325,10 +325,17 @@ body[data-phase='break'] {
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    will-change: transform;
+    animation: float var(--dur, 9s) ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+  .bg-deco-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     opacity: var(--o, 0.5);
-    animation:
-      float var(--dur, 9s) ease-in-out infinite,
-      twinkle var(--tw, 2.8s) ease-in-out infinite;
+    will-change: transform, opacity;
+    animation: twinkle var(--tw, 2.8s) ease-in-out infinite;
     animation-delay: var(--d, 0s);
   }
   .bg-deco-heart {
