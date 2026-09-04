@@ -123,7 +123,7 @@ const embedCode = `<iframe src="${embedUrl}" style="width:100%;max-width:420px;h
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -133,13 +133,7 @@ const embedCode = `<iframe src="${embedUrl}" style="width:100%;max-width:420px;h
 		<meta name="robots" content="index, follow" />
 		<meta
 			name="theme-color"
-			content="#fff3f8"
-			media="(prefers-color-scheme: light)"
-		/>
-		<meta
-			name="theme-color"
 			content="#231926"
-			media="(prefers-color-scheme: dark)"
 		/>
 		<link
 			rel="icon"
@@ -192,15 +186,16 @@ const embedCode = `<iframe src="${embedUrl}" style="width:100%;max-width:420px;h
 
 		<script is:inline>
 			(function () {
+				var params = new URLSearchParams(window.location.search);
+				var requested = params.get("theme");
 				var stored = null;
 				try {
 					stored = localStorage.getItem("pomo:theme");
 				} catch (e) {}
 				var theme =
-					stored ||
-					(window.matchMedia("(prefers-color-scheme: dark)").matches
-						? "dark"
-						: "light");
+					requested === "light" || requested === "dark"
+						? requested
+						: (stored || "dark");
 				document.documentElement.classList.toggle(
 					"dark",
 					theme === "dark",

@@ -156,6 +156,9 @@ body[data-phase='break'] {
 /* ------------------------------------------------------------------ */
 @layer base {
   html {
+    color-scheme: dark;
+  }
+  html:not(.dark) {
     color-scheme: light;
   }
   html.dark {

@@ -50,7 +50,7 @@ function applyTheme() {
 			theme = localStorage.getItem(THEME_KEY);
 		} catch {}
 	}
-	if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	if (!theme) theme = 'dark';
 	document.documentElement.classList.toggle('dark', theme === 'dark');
 }
 
