@@ -501,7 +501,10 @@ const embedCode = `<iframe src="${embedUrl}" style="width:100%;max-width:420px;h
 						<div class="space-y-3">
 							{
 								faqs.map(({ q, a }) => (
-									<details class="group overflow-hidden rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)]">
+									<details
+										name="faq"
+										class="group overflow-hidden rounded-2xl border-2 border-[color-mix(in_srgb,var(--ink)_10%,transparent)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)]"
+									>
 										<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-[color-mix(in_srgb,var(--ink)_4%,transparent)] [&::-webkit-details-marker]:hidden">
 											<h3 class="text-base font-bold leading-snug text-ink sm:text-lg">
 												{q}
@@ -523,6 +526,24 @@ const embedCode = `<iframe src="${embedUrl}" style="width:100%;max-width:420px;h
 							}
 						</div>
 					</section>
+
+					<script>
+						// Accordion fallback for browsers that don't support the `name` attribute on <details>
+						if (!('name' in HTMLDetailsElement.prototype)) {
+							document.querySelectorAll<HTMLDetailsElement>('details[name]').forEach((detail) => {
+								detail.addEventListener('toggle', () => {
+									if (detail.open) {
+										const name = detail.getAttribute('name');
+										document.querySelectorAll<HTMLDetailsElement>(`details[name="${name}"]`).forEach((other) => {
+											if (other !== detail && other.open) {
+												other.open = false;
+											}
+										});
+									}
+								});
+							});
+						}
+					</script>
 
 					<div
 						class="h-px w-full bg-[color-mix(in_srgb,var(--ink)_12%,transparent)]"
